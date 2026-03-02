@@ -60,7 +60,7 @@
 
         /* Container */
         .container {
-            max-width: 1200px; /* Zwiększona szerokość dla lepszego układu */
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -109,7 +109,7 @@
         .category-header {
             display: flex;
             align-items: center;
-            margin: 3rem 0 1.5rem 0;
+            margin: 4rem 0 2rem 0;
         }
 
         .category-header h2 {
@@ -180,40 +180,6 @@
             flex-wrap: wrap;
         }
 
-        .btn-link {
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 4px;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .btn-demo {
-            background-color: #fff0f0;
-            color: #cc0000;
-            border: 1px solid #ffcccc;
-        }
-        .btn-demo:hover {
-            background-color: #cc0000;
-            color: white;
-            border-color: #cc0000;
-        }
-
-        .btn-details {
-            background-color: #f1f5f9;
-            color: var(--dark);
-            border: 1px solid #cbd5e1;
-        }
-        .btn-details:hover {
-            background-color: var(--dark);
-            color: white;
-            border-color: var(--dark);
-        }
-
         .tech-stack-mini {
             font-size: 0.85rem;
             color: var(--text-main);
@@ -232,7 +198,8 @@
         .tech-stack-mini .fa-drafting-compass,
         .tech-stack-mini .fa-microchip, 
         .tech-stack-mini .fa-layer-group,
-        .tech-stack-mini .fa-tools {
+        .tech-stack-mini .fa-tools,
+        .tech-stack-mini .fa-cogs {
             color: var(--accent-hw);
         }
 
@@ -340,21 +307,6 @@
                 </div>
             </div>
 
-            <!-- Interactive Lamp -->
-            <div class="project-card">
-                <span class="status done">Completed</span>
-                <h3>Sensory Therapy Lamp</h3>
-                <p class="project-desc">
-                    Interactive sculpture designed for a foundation supporting children with cognitive disorders (hand-eye coordination).
-                    Features capacitive touch sensors and sequential lighting logic to engage users in therapeutic exercises.
-                </p>
-                <div class="tech-stack-mini">
-                    <i class="fas fa-lightbulb"></i> Embedded Logic
-                    <span style="color:#ddd">|</span>
-                    <i class="fas fa-drafting-compass"></i> Aesthetic Design
-                </div>
-            </div>
-
             <!-- Smart Home Controller -->
             <div class="project-card">
                 <span class="status done">Completed</span>
@@ -370,8 +322,8 @@
                 </div>
             </div>
 
-             <!-- WiFi Motion Controller -->
-             <div class="project-card">
+            <!-- WiFi Motion Controller -->
+            <div class="project-card">
                 <span class="status done">Completed</span>
                 <h3>WiFi Security Motion Controller</h3>
                 <p class="project-desc">
@@ -380,6 +332,21 @@
                 </p>
                 <div class="tech-stack-mini">
                     <i class="fas fa-wifi"></i> WiFi, Async SMTP
+                </div>
+            </div>
+
+            <!-- Interactive Lamp -->
+            <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>Sensory Therapy Lamp</h3>
+                <p class="project-desc">
+                    Interactive sculpture designed for a foundation supporting children with cognitive disorders (hand-eye coordination).
+                    Features capacitive touch sensors and sequential lighting logic to engage users in therapeutic exercises.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-lightbulb"></i> Embedded Logic
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-drafting-compass"></i> Aesthetic Design
                 </div>
             </div>
 
@@ -424,6 +391,21 @@
                 </div>
             </div>
 
+             <!-- Smart Scooter Dashboard -->
+             <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>Smart Scooter Dashboard</h3>
+                <p class="project-desc">
+                    Advanced telemetry logger for electric mobility. 
+                    Touchscreen interface logs GPS speed, IMU acceleration, and battery voltage. Includes collision detection algorithms.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-tachometer-alt"></i> IMU, GPS
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-layer-group"></i> 3D Case Design
+                </div>
+            </div>
+
             <!-- Robot Follower -->
             <div class="project-card">
                 <span class="status done">Completed</span>
@@ -454,28 +436,28 @@
                 </div>
             </div>
 
-             <!-- Scooter Dashboard -->
-             <div class="project-card">
+            <!-- DogTracker -->
+            <div class="project-card">
                 <span class="status done">Completed</span>
-                <h3>Smart Scooter Dashboard</h3>
+                <h3>Long-Range IoT DogTracker</h3>
                 <p class="project-desc">
-                    Advanced telemetry logger for electric mobility. 
-                    Touchscreen interface logs GPS speed, IMU acceleration, and battery voltage. Includes collision detection algorithms.
+                    GPS tracking system using RF transmission (10km range). 
+                    The receiver acts as a WiFi Gateway, pushing location and telemetry data to Google Sheets API for cloud logging and map visualization.
                 </p>
                 <div class="tech-stack-mini">
-                    <i class="fas fa-tachometer-alt"></i> IMU, GPS
+                    <i class="fas fa-map-marker-alt"></i> GPS, RF 433/868MHz
                     <span style="color:#ddd">|</span>
-                    <i class="fas fa-layer-group"></i> 3D Case Design
+                    <i class="fas fa-microchip"></i> Electronics
                 </div>
             </div>
 
              <!-- Solar Trackers -->
              <div class="project-card">
                 <span class="status done">Completed</span>
-                <h3>Double Axis Solar Tracker v2.0</h3>
+                <h3>Double Axis Solar Tracker v1.0 & v2.0</h3>
                 <p class="project-desc">
                     Sun-tracking algorithm for optimal solar panel positioning. 
-                    Includes a dedicated UI (LCD + Keyboard) and EEPROM parameter storage.
+                    Version 2.0 introduced a dedicated UI (LCD + Keyboard) and EEPROM parameter storage.
                     Mechanical structure designed and built from scratch.
                 </p>
                 <div class="tech-stack-mini">
@@ -487,7 +469,7 @@
 
         </div>
 
-        <!-- CATEGORY 3: Commercial Systems & Services -->
+        <!-- CATEGORY 3: Commercial & Automated Services -->
         <div class="category-header">
             <h2><i class="fas fa-shopping-cart"></i> Commercial & Automated Services</h2>
             <div class="category-line"></div>
@@ -518,4 +500,93 @@
                     Automated beverage dispensing system with RFID wallet. 
                     Web interface for flow monitoring, account validation, and valve security.
                     Custom housing and hydraulic system design.
-              
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-id-card"></i> RFID, Web, SQL
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-tools"></i> Hydraulics, CAD
+                </div>
+            </div>
+
+            <!-- Boat Sharing -->
+            <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>Boat Sharing System</h3>
+                <p class="project-desc">
+                    Rental logic for electric boats with time-based billing via RFID.
+                    Includes BMS monitoring, H-Bridge motor control, and safety sensors.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-ship"></i> RFID, BMS, RTC
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-microchip"></i> Electronics
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CATEGORY 4: Industrial Engineering & RTOS -->
+        <div class="category-header">
+            <h2><i class="fas fa-industry"></i> Industrial Engineering & RTOS</h2>
+            <div class="category-line"></div>
+        </div>
+        <div class="project-grid">
+
+            <!-- RTOS Voice Alert System -->
+            <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>RTOS Priority Voice Alarm System</h3>
+                <p class="project-desc">
+                    An advanced annunciator panel monitoring 10 digital/analog inputs.
+                    Utilizes <strong>RTOS</strong> for concurrent monitoring and an interrupt-based <strong>Priority Queue</strong> algorithm.
+                    Ensures critical alarms (e.g., Door Open) override lower priority warnings (e.g., Temp) in voice playback.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-tasks"></i> RTOS, Interrupts, Queue Algo
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-microchip"></i> Embedded C
+                </div>
+            </div>
+
+            <!-- SBSC Test Stand -->
+            <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>Industrial Ventilation Test Stand (SBSC)</h3>
+                <p class="project-desc">
+                    Desktop app communicating with a custom USB control box to test industrial fans (9950m3/h).
+                    Generates QA reports based on pressure drop measurements.
+                    Complete electrical schematic and control cabinet design.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-desktop"></i> Serial/USB, Data Viz
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-drafting-compass"></i> Schematics, 2D Doc
+                </div>
+            </div>
+
+            <!-- Bending Machine -->
+            <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>CNC Bending Machine Controller</h3>
+                <p class="project-desc">
+                    Industrial controller for metal processing. 
+                    Uses high-precision encoders and relay logic for exact bending angles.
+                    Retrofit of an existing industrial machine.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-cogs"></i> Encoders, Feedback Loops
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-tools"></i> Industrial Automation
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Maciej Haufa. Portfolio hosted on GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
