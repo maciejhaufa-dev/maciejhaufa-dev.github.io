@@ -359,3 +359,50 @@ footer {
         margin-right: 0;
     }
 }
+.video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.video-card {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.video-card img {
+    width: 100%;
+    display: block;
+}
+
+.video-card:hover {
+    transform: scale(1.03);
+}
+
+.play-button {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+    background: rgba(0,0,0,0.4);
+}
+
+.video-title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
