@@ -196,7 +196,8 @@ header {
     font-size: 1.8rem;
     color: var(--dark);
     margin-right: 1.5rem;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .category-line {
@@ -341,5 +342,20 @@ footer {
 
     .social-links {
         justify-content: center;
+    }
+
+     .category-header {
+        flex-direction: column;     /* Nagłówek nad linią */
+        align-items: flex-start;    /* Wyrównanie do lewej */
+        gap: 0.5rem;
+    }
+
+    .category-line {
+        width: 100%;                /* Linia pod nagłówkiem */
+    }
+
+    .category-header h2 {
+        font-size: 1.4rem;          /* Trochę mniejsza czcionka na telefonie */
+        margin-right: 0;
     }
 }
