@@ -105,6 +105,7 @@
             transition: transform 0.2s;
             display: flex;
             flex-direction: column;
+            border-top: 4px solid var(--primary);
         }
 
         .project-card:hover {
@@ -112,20 +113,21 @@
         }
 
         .project-card h3 {
-            color: var(--primary);
+            color: var(--dark);
             margin-bottom: 0.5rem;
+            font-size: 1.25rem;
         }
 
         .status {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: bold;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             display: inline-block;
         }
-        .status.done { color: #10b981; }
-        .status.wip { color: #f59e0b; }
+        .status.done { color: #10b981; } /* Green */
+        .status.wip { color: #f59e0b; }  /* Orange */
 
         .project-desc {
             color: var(--text-light);
@@ -134,11 +136,16 @@
             flex-grow: 1;
         }
 
+        .project-desc strong {
+            color: var(--text-main);
+        }
+
         .tech-stack-mini {
             font-size: 0.85rem;
-            color: var(--text-light);
+            color: var(--text-main);
+            font-weight: 500;
             border-top: 1px solid #f1f5f9;
-            padding-top: 0.5rem;
+            padding-top: 0.8rem;
             margin-top: auto;
         }
         
@@ -167,6 +174,7 @@
             color: var(--text-light);
             font-size: 0.9rem;
             margin-top: 3rem;
+            border-top: 1px solid #e2e8f0;
         }
     </style>
 </head>
@@ -176,32 +184,61 @@
         <h1>Maciej Haufa</h1>
         <p class="subtitle">Full Stack Developer & Mechatronics Engineer | Poznań</p>
         <div class="social-links">
-            <!-- PAMIĘTAJ ŻEBY PODMIENIĆ LINKI! -->
-            <a href="https://github.com/twojnick" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/twojnick" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:twoj@email.com" title="Email"><i class="fas fa-envelope"></i></a>
+            
+            <a href="https://github.com/maciejhaufa-dev" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/maciej-h-b23369161/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:maciej.haufa@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
     </header>
 
     <div class="container">
         
-        <!-- Sekcja Stack Technologiczny (Wnioskując z projektów) -->
         <div class="skills">
             <span class="skill-tag">C/C++</span>
             <span class="skill-tag">Python</span>
             <span class="skill-tag">Embedded Systems</span>
             <span class="skill-tag">IoT</span>
             <span class="skill-tag">ARM Architecture</span>
-            <span class="skill-tag">Desktop Apps</span>
-            <span class="skill-tag">Web Development</span>
+            <span class="skill-tag">PID Algorithms</span>
+            <span class="skill-tag">Web Audio API</span>
             <span class="skill-tag">SQL</span>
             <span class="skill-tag">AI/Computer Vision</span>
         </div>
 
-        <!-- Najbardziej zaawansowane projekty (Software + Hardware) -->
         <h2>Featured Projects</h2>
         <div class="project-grid">
             
+            <!-- Distributed Stage System -->
+            <div class="project-card">
+                <span class="status done">Completed & Deployed</span>
+                <h3>Distributed Stage Lighting & Audio System</h3>
+                <p class="project-desc">
+                    A pro-bono project for a theater group. Designed a distributed system based on <strong>3x ESP32</strong> nodes communicating via the <strong>ESP-NOW</strong> proprietary protocol (Master/Slave architecture).
+                    The system manages <strong>3 independent DMX universes</strong> (1500+ channels), dimmers, and relays wirelessly over a 20m range.
+                    The unique feature is a <strong>single-page web application (SPA)</strong> hosted on the Master node acting as the central HMI. 
+                    It synchronizes lighting control with multi-track audio playback using the <strong>Web Audio API</strong>, outputting to a Behringer X32 mixer via USB.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-network-wired"></i> ESP32, ESP-NOW, DMX512, Web Audio API, HTML/JS
+                </div>
+            </div>
+
+            <!-- Smart Home HVAC -->
+            <div class="project-card">
+                <span class="status wip">In Progress & Active Dev</span>
+                <h3>Modular Smart Home HVAC Optimization System</h3>
+                <p class="project-desc">
+                    An energy retrofitting project converting a legacy building into a Smart Home using a Linux Server (Home Assistant) and distributed ESP32 nodes.
+                    Key engineering feat is the implementation of a custom <strong>Software PID Controller</strong> for the gas furnace, replacing standard On/Off hysteresis.
+                    The algorithm uses <strong>adaptive tuning</strong> based on the last 50 cycles to handle thermal inertia and optimize energy consumption.
+                    The system aggregates data from BLE sensors (TH-05Y) to control heating, ventilation, and irrigation via a responsive HMI.
+                    Designed with a <strong>modular architecture</strong> to scale across different building sizes.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-server"></i> Linux, PID Algorithms, BLE, ESP32, Home Assistant
+                </div>
+            </div>
+
             <!-- DogTracker -->
             <div class="project-card">
                 <span class="status done">Completed</span>
@@ -224,7 +261,7 @@
                     Backend logic handles account validation, valve locking, and balance reloading by staff.
                 </p>
                 <div class="tech-stack-mini">
-                    <i class="fas fa-code"></i> Web Interface, Real-time Database, RFID
+                    <i class="fas fa-server"></i> Web Interface, Real-time Database, RFID
                 </div>
             </div>
 
@@ -241,6 +278,19 @@
                 </div>
             </div>
 
+            <!-- Cotton Candy Machine -->
+             <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>Autonomous Vending Machine</h3>
+                <p class="project-desc">
+                    Complex project controlled by an ARM single-board computer. 
+                    The application orchestrates multiple controllers to manage the furnace, rotary speed, robot arm movement, cleaning cycles, and paper straw dispensing.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-cogs"></i> ARM, State Machines, Automation
+                </div>
+            </div>
+
             <!-- SBSC Test Stand -->
             <div class="project-card">
                 <span class="status done">Completed</span>
@@ -254,26 +304,12 @@
                 </div>
             </div>
 
-             <!-- Cotton Candy Machine -->
-             <div class="project-card">
-                <span class="status wip">In Progress</span>
-                <h3>Autonomous Vending Machine</h3>
-                <p class="project-desc">
-                    Complex project controlled by an ARM single-board computer. 
-                    The application orchestrates multiple controllers to manage the furnace, rotary speed, robot arm movement, cleaning cycles, and paper straw dispensing.
-                </p>
-                <div class="tech-stack-mini">
-                    <i class="fas fa-cogs"></i> ARM, State Machines, Automation
-                </div>
-            </div>
-
         </div>
 
-        <!-- Pozostałe projekty inżynierskie -->
         <h2>Embedded & Engineering</h2>
         <ul class="compact-list">
             <li>
-                <h4>Boat Sharing System with RFID (In Progress)</h4>
+                <h4>Boat Sharing System with RFID</h4>
                 <p>Rental system logic with time-based billing stored on RFID cards. Features battery monitoring, motor direction switching, and environmental sensing (RTC, Temp).</p>
             </li>
             <li>
