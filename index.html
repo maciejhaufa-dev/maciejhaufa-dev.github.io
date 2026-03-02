@@ -12,6 +12,7 @@
             --light: #f8fafc;
             --text-main: #334155;
             --text-light: #64748b;
+            --accent-hw: #0ea5e9; /* Kolor dla hardware */
         }
 
         * {
@@ -59,28 +60,49 @@
 
         /* Container */
         .container {
-            max-width: 1100px;
+            max-width: 1200px; /* Zwiększona szerokość dla lepszego układu */
             margin: 0 auto;
             padding: 2rem;
         }
 
         /* Skills Section */
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
+        .skills-container {
             margin-bottom: 4rem;
+            text-align: center;
+        }
+        
+        .skills-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skills-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 700;
         }
 
         .skill-tag {
+            display: inline-block;
             background: white;
             border: 1px solid #e2e8f0;
-            padding: 8px 16px;
+            padding: 6px 14px;
+            margin: 4px;
             border-radius: 20px;
             font-weight: 500;
             color: var(--dark);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            font-size: 0.9rem;
+        }
+
+        /* Hardware Skills Styling */
+        .skill-hw {
+            border-color: var(--accent-hw);
+            color: var(--dark);
+            background: #f0f9ff;
         }
 
         /* Projects Section */
@@ -104,7 +126,7 @@
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
@@ -129,6 +151,7 @@
             color: var(--dark);
             margin-bottom: 0.5rem;
             font-size: 1.25rem;
+            line-height: 1.3;
         }
 
         .status {
@@ -149,6 +172,48 @@
             flex-grow: 1;
         }
 
+        /* Project Links (Buttons) */
+        .project-links {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-link {
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-demo {
+            background-color: #fff0f0;
+            color: #cc0000;
+            border: 1px solid #ffcccc;
+        }
+        .btn-demo:hover {
+            background-color: #cc0000;
+            color: white;
+            border-color: #cc0000;
+        }
+
+        .btn-details {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            border: 1px solid #cbd5e1;
+        }
+        .btn-details:hover {
+            background-color: var(--dark);
+            color: white;
+            border-color: var(--dark);
+        }
+
         .tech-stack-mini {
             font-size: 0.85rem;
             color: var(--text-main);
@@ -160,7 +225,15 @@
         
         .tech-stack-mini i {
             color: var(--primary);
-            margin-right: 5px;
+            margin-right: 3px;
+        }
+
+        /* Hardware icons specific color */
+        .tech-stack-mini .fa-drafting-compass,
+        .tech-stack-mini .fa-microchip, 
+        .tech-stack-mini .fa-layer-group,
+        .tech-stack-mini .fa-tools {
+            color: var(--accent-hw);
         }
 
         footer {
@@ -187,75 +260,98 @@
 
     <div class="container">
         
-        <div class="skills">
-            <span class="skill-tag">C/C++</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">IoT & ESP32</span>
-            <span class="skill-tag">ARM Architecture</span>
-            <span class="skill-tag">Linux / Home Assistant</span>
-            <span class="skill-tag">PID Algorithms</span>
-            <span class="skill-tag">Web Audio API</span>
-            <span class="skill-tag">Distributed Systems</span>
-            <span class="skill-tag">AI/Computer Vision</span>
+        <!-- SKILLS SECTION -->
+        <div class="skills-container">
+            <div class="skills-group">
+                <span class="skills-label">Software & Firmware</span>
+                <span class="skill-tag">C/C++</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">IoT & ESP32</span>
+                <span class="skill-tag">ARM Architecture</span>
+                <span class="skill-tag">RTOS</span>
+                <span class="skill-tag">Linux / Home Assistant</span>
+                <span class="skill-tag">PID Algorithms</span>
+                <span class="skill-tag">Web Audio API</span>
+                <span class="skill-tag">AI/Computer Vision</span>
+            </div>
+            
+            <div class="skills-group">
+                <span class="skills-label" style="color: var(--accent-hw);">Engineering & Hardware Design</span>
+                <span class="skill-tag skill-hw">PCB Design (KiCad/EasyEDA)</span>
+                <span class="skill-tag skill-hw">Schematics & 2D Doc</span>
+                <span class="skill-tag skill-hw">3D CAD Design</span>
+                <span class="skill-tag skill-hw">CNC & 3D Printing</span>
+                <span class="skill-tag skill-hw">Laser Cutting/Engraving</span>
+                <span class="skill-tag skill-hw">Prototyping</span>
+            </div>
         </div>
 
         <!-- CATEGORY 1: IoT & Smart Home -->
         <div class="category-header">
-            <h2><i class="fas fa-home"></i> IoT, Smart Home & Building Automation</h2>
+            <h2><i class="fas fa-home"></i> IoT, Smart Home & Automation</h2>
             <div class="category-line"></div>
         </div>
         <div class="project-grid">
 
             <!-- Smart Home HVAC (WIP) -->
             <div class="project-card">
-                <span class="status wip">In Progress & Active Dev</span>
+                <span class="status wip">In Progress</span>
                 <h3>Modular HVAC Optimization System</h3>
                 <p class="project-desc">
-                    Retrofitting a legacy building into a Smart Home using Linux/Home Assistant and distributed ESP32 nodes.
+                    Retrofitting a legacy building into a Smart Home using Linux/Home Assistant.
                     Features a custom <strong>Software PID Controller</strong> with adaptive tuning for gas furnace optimization.
                     Aggregates data from BLE sensors to control heating, ventilation, and irrigation via a responsive HMI.
                 </p>
                 <div class="tech-stack-mini">
-                    <i class="fas fa-server"></i> Linux, PID Algo, BLE, ESP32
+                    <i class="fas fa-server"></i> Linux, PID, BLE
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-microchip"></i> PCB Design
                 </div>
             </div>
 
             <!-- Distributed Stage System -->
             <div class="project-card">
-                <span class="status done">Completed & Deployed</span>
+                <span class="status done">Completed</span>
                 <h3>Distributed Stage Control System</h3>
                 <p class="project-desc">
-                    Pro-bono project for a theater. A distributed system (3x ESP32) using <strong>ESP-NOW</strong> protocol to manage lighting (DMX512) and relays wirelessly.
-                    The Master node hosts an SPA web app that synchronizes light scenes with audio playback via <strong>Web Audio API</strong>.
+                    Pro-bono project for a theater. A distributed system (3x ESP32) using <strong>ESP-NOW</strong> to manage DMX512 lighting and relays.
+                    The Master node hosts an SPA web app synchronizing light scenes with audio playback via <strong>Web Audio API</strong>.
                 </p>
                 <div class="tech-stack-mini">
-                    <i class="fas fa-network-wired"></i> ESP-NOW, DMX, Web Audio, HTML/JS
+                    <i class="fas fa-network-wired"></i> ESP-NOW, Web Audio
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-microchip"></i> PCB, Custom Drivers
                 </div>
             </div>
 
-             <!-- Solar Trackers -->
-             <div class="project-card">
-                <span class="status done">Completed</span>
-                <h3>Double Axis Solar Tracker v1.0 & v2.0</h3>
-                <p class="project-desc">
-                    Developed a sun-tracking algorithm for optimal solar panel positioning to maximize energy efficiency. 
-                    Version 2.0 introduced a dedicated UI (LCD + Keyboard) and EEPROM storage for user-defined configuration parameters.
-                </p>
-                <div class="tech-stack-mini">
-                    <i class="fas fa-sun"></i> C++, EEPROM, Servo Control
-                </div>
-            </div>
-
-            <!-- WiFi Motion Controller -->
+            <!-- Greenhouse Controller -->
             <div class="project-card">
                 <span class="status done">Completed</span>
-                <h3>WiFi Security Motion Controller</h3>
+                <h3>Automated Greenhouse Control System</h3>
                 <p class="project-desc">
-                    A security system utilizing PIR sensors to detect motion. 
-                    Upon detection, it triggers asynchronous notifications via e-mail over WiFi. Designed for remote monitoring.
+                    Full automation system for strawberry cultivation. Monitors soil moisture, LDR (sunlight), temp/humidity.
+                    Controls pumps, ventilation servos, heaters, and Red-Blue LED growth lights.
+                    Features USB data logging to PC for visualization of environmental charts.
                 </p>
                 <div class="tech-stack-mini">
-                    <i class="fas fa-wifi"></i> WiFi Stack, PIR Sensors, Async SMTP
+                    <i class="fas fa-leaf"></i> Automation, Data Logging
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-microchip"></i> PCB, Sensors
+                </div>
+            </div>
+
+            <!-- Interactive Lamp -->
+            <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>Sensory Therapy Lamp</h3>
+                <p class="project-desc">
+                    Interactive sculpture designed for a foundation supporting children with cognitive disorders (hand-eye coordination).
+                    Features capacitive touch sensors and sequential lighting logic to engage users in therapeutic exercises.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-lightbulb"></i> Embedded Logic
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-drafting-compass"></i> Aesthetic Design
                 </div>
             </div>
 
@@ -268,13 +364,130 @@
                     Integrates control of garden lighting, decorative fountains, and audio systems into one interface.
                 </p>
                 <div class="tech-stack-mini">
-                    <i class="fas fa-tablet-alt"></i> HMI, Relay Logic, Audio Integration
+                    <i class="fas fa-tablet-alt"></i> HMI, Relay Logic
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-microchip"></i> PCB Design
+                </div>
+            </div>
+
+             <!-- WiFi Motion Controller -->
+             <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>WiFi Security Motion Controller</h3>
+                <p class="project-desc">
+                    A security system utilizing PIR sensors to detect motion. 
+                    Upon detection, it triggers asynchronous notifications via e-mail over WiFi. Designed for remote monitoring.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-wifi"></i> WiFi, Async SMTP
                 </div>
             </div>
 
         </div>
 
-        <!-- CATEGORY 2: Commercial & Automated Services -->
+        <!-- CATEGORY 2: Robotics, Mobility & Automotive -->
+        <div class="category-header">
+            <h2><i class="fas fa-robot"></i> Robotics, Mobility & Automotive</h2>
+            <div class="category-line"></div>
+        </div>
+        <div class="project-grid">
+
+            <!-- Electronic Differential (eLSD) -->
+            <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>Electronic Limited-Slip Differential (eLSD)</h3>
+                <p class="project-desc">
+                    Designed and built a physical prototype of an active central differential controller.
+                    The algorithm dynamically distributes torque between front/rear axles based on engine parameters and wheel speed.
+                    Includes schematics, component selection, and a working scale model.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-car"></i> Torque Vectoring, Algo
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-drafting-compass"></i> Schematics, Prototyping
+                </div>
+            </div>
+
+            <!-- AI Robotic Arm -->
+            <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>AI Robotic Arm</h3>
+                <p class="project-desc">
+                    Robotic manipulator integrated with Computer Vision. 
+                    Detects and identifies objects in real-time using AI, calculating inverse kinematics to track and follow targets autonomously.
+                    Mechanical parts created via 3D printing.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-brain"></i> AI/CV, Kinematics
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-layer-group"></i> 3D Print, CAD
+                </div>
+            </div>
+
+            <!-- Robot Follower -->
+            <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>Autonomous Tracking Robot (4WD)</h3>
+                <p class="project-desc">
+                    Mobile platform with a scanning distance sensor mounted on a servo.
+                    Implements an object-following algorithm with area confinement logic (black line detection) to keep the robot within a designated zone.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-robot"></i> Algorithms, Sensors
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-tools"></i> Chassis Assembly
+                </div>
+            </div>
+
+            <!-- HTML 4WD Controller -->
+            <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>WiFi Teleoperated Platform (ESP32)</h3>
+                <p class="project-desc">
+                    4WD mobile platform controlled via Smartphone using a custom Joystick Interface hosted on ESP32.
+                    Low-latency communication over WiFi allows for precise remote maneuvering.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-gamepad"></i> ESP32 Web Server
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-microchip"></i> Motor Drivers
+                </div>
+            </div>
+
+             <!-- Scooter Dashboard -->
+             <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>Smart Scooter Dashboard</h3>
+                <p class="project-desc">
+                    Advanced telemetry logger for electric mobility. 
+                    Touchscreen interface logs GPS speed, IMU acceleration, and battery voltage. Includes collision detection algorithms.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-tachometer-alt"></i> IMU, GPS
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-layer-group"></i> 3D Case Design
+                </div>
+            </div>
+
+             <!-- Solar Trackers -->
+             <div class="project-card">
+                <span class="status done">Completed</span>
+                <h3>Double Axis Solar Tracker v2.0</h3>
+                <p class="project-desc">
+                    Sun-tracking algorithm for optimal solar panel positioning. 
+                    Includes a dedicated UI (LCD + Keyboard) and EEPROM parameter storage.
+                    Mechanical structure designed and built from scratch.
+                </p>
+                <div class="tech-stack-mini">
+                    <i class="fas fa-sun"></i> C++, Servo Control
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-tools"></i> Mechanics, CNC
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CATEGORY 3: Commercial Systems & Services -->
         <div class="category-header">
             <h2><i class="fas fa-shopping-cart"></i> Commercial & Automated Services</h2>
             <div class="category-line"></div>
@@ -286,11 +499,14 @@
                 <span class="status done">Completed</span>
                 <h3>Autonomous Vending Machine</h3>
                 <p class="project-desc">
-                    A complex vending machine (Cotton Candy) controlled by an ARM SBC. 
-                    Orchestrates furnace temperature, rotary motor speed, 3-axis robot arm movement, and self-cleaning cycles in a state-machine architecture.
+                    Complex vending machine (Cotton Candy) controlled by ARM SBC. 
+                    Orchestrates furnace, motors, 3-axis robot arm, and cleaning cycles using state machines.
+                    Extensive use of CNC and 3D printing for custom parts.
                 </p>
                 <div class="tech-stack-mini">
-                    <i class="fas fa-microchip"></i> ARM, State Machines, Automation
+                    <i class="fas fa-cogs"></i> ARM, State Machines
+                    <span style="color:#ddd">|</span>
+                    <i class="fas fa-layer-group"></i> CNC, 3D Print, CAD
                 </div>
             </div>
 
@@ -299,117 +515,7 @@
                 <span class="status done">Completed</span>
                 <h3>RFID Self-Service Drink Bar</h3>
                 <p class="project-desc">
-                    Automated beverage dispensing system with RFID wallet integration. 
-                    Features a web interface for real-time flow monitoring and a backend for account validation, balance reloading, and valve security.
-                </p>
-                <div class="tech-stack-mini">
-                    <i class="fas fa-id-card"></i> RFID, Web Interface, Flow Meters
-                </div>
-            </div>
-
-            <!-- Boat Sharing -->
-            <div class="project-card">
-                <span class="status done">Completed</span>
-                <h3>Boat Sharing System</h3>
-                <p class="project-desc">
-                    Rental logic system for electric boats with time-based billing via RFID.
-                    Includes battery BMS monitoring, motor direction control (H-Bridge), and environmental sensing (RTC, Temp) to ensure safety.
-                </p>
-                <div class="tech-stack-mini">
-                    <i class="fas fa-ship"></i> RFID, BMS, Motor Control, RTC
-                </div>
-            </div>
-
-        </div>
-
-        <!-- CATEGORY 3: Industrial Engineering -->
-        <div class="category-header">
-            <h2><i class="fas fa-industry"></i> Industrial Engineering & Tools</h2>
-            <div class="category-line"></div>
-        </div>
-        <div class="project-grid">
-
-            <!-- SBSC Test Stand -->
-            <div class="project-card">
-                <span class="status done">Completed</span>
-                <h3>Industrial Ventilation Test Stand (SBSC)</h3>
-                <p class="project-desc">
-                    Desktop application communicating with a custom USB control box to test high-capacity industrial fans (9950m3/h).
-                    Measures pressure drops, visualizes performance curves, and generates QA reports automatically.
-                </p>
-                <div class="tech-stack-mini">
-                    <i class="fas fa-desktop"></i> Desktop App, Serial/USB, Data Viz
-                </div>
-            </div>
-
-            <!-- Bending Machine -->
-            <div class="project-card">
-                <span class="status done">Completed</span>
-                <h3>CNC Bending Machine Controller</h3>
-                <p class="project-desc">
-                    Industrial controller for metal processing. 
-                    Utilizes high-precision encoders for feedback loops and relay logic to ensure exact bending angles and repeatability in production.
-                </p>
-                <div class="tech-stack-mini">
-                    <i class="fas fa-cogs"></i> Encoders, Feedback Loops, Industrial
-                </div>
-            </div>
-
-        </div>
-
-        <!-- CATEGORY 4: Robotics, AI & Mobility -->
-        <div class="category-header">
-            <h2><i class="fas fa-robot"></i> Robotics, AI & Mobility</h2>
-            <div class="category-line"></div>
-        </div>
-        <div class="project-grid">
-
-            <!-- AI Robotic Arm -->
-            <div class="project-card">
-                <span class="status done">Completed</span>
-                <h3>AI Robotic Arm</h3>
-                <p class="project-desc">
-                    Robotic manipulator integrated with Computer Vision. 
-                    The software detects and identifies objects in real-time using AI, calculating inverse kinematics to track and follow targets autonomously.
-                </p>
-                <div class="tech-stack-mini">
-                    <i class="fas fa-brain"></i> AI/CV, Kinematics, Python/C++
-                </div>
-            </div>
-
-            <!-- DogTracker -->
-            <div class="project-card">
-                <span class="status done">Completed</span>
-                <h3>Long-Range IoT DogTracker</h3>
-                <p class="project-desc">
-                    GPS tracking system using RF transmission (10km range). 
-                    The receiver acts as a WiFi Gateway, pushing location and telemetry data to Google Sheets API for cloud logging and map visualization.
-                </p>
-                <div class="tech-stack-mini">
-                    <i class="fas fa-map-marker-alt"></i> GPS, RF 433/868MHz, Google API
-                </div>
-            </div>
-
-            <!-- Scooter Dashboard -->
-            <div class="project-card">
-                <span class="status done">Completed</span>
-                <h3>Smart Scooter Dashboard</h3>
-                <p class="project-desc">
-                    Advanced telemetry logger for electric mobility. 
-                    Touchscreen interface displays and logs GPS speed, acceleration (IMU), battery voltage, and includes algorithms for collision detection.
-                </p>
-                <div class="tech-stack-mini">
-                    <i class="fas fa-tachometer-alt"></i> IMU, GPS, Touch Interface
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Maciej Haufa. Portfolio hosted on GitHub Pages.</p>
-    </footer>
-
-</body>
-</html>
+                    Automated beverage dispensing system with RFID wallet. 
+                    Web interface for flow monitoring, account validation, and valve security.
+                    Custom housing and hydraulic system design.
+              
