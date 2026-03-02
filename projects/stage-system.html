@@ -5,116 +5,57 @@
     <title>Distributed Stage Lighting System | Maciej Haufa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- GŁÓWNY CSS -->
+    <!-- Global Styles -->
     <link rel="stylesheet" href="../css/style.css">
 
-    <style>
-        .project-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .section {
-            margin-bottom: 3rem;
-        }
-
-        .section h2 {
-            margin-bottom: 1rem;
-            color: #1e293b;
-        }
-
-        .image-full {
-            width: 100%;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .gallery img {
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.03);
-        }
-
-        .back-btn {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-        }
-
-        .back-btn:hover {
-            background: #1e40af;
-        }
-    </style>
+    <!-- Page Specific Styles -->
+    <link rel="stylesheet" href="../css/project-stage.css">
 </head>
 
 <body>
 
-<!-- ===== HERO ===== -->
-<header style="background:#0f172a; color:white; padding:4rem 2rem;">
-    <div style="max-width:1000px; margin:0 auto;">
+<!-- ================= HERO SECTION ================= -->
 
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <span style="background:#ecfdf5; color:#059669; padding:4px 10px; border-radius:6px; font-size:0.8rem; font-weight:600;">
-                Live Production System
-            </span>
+<header class="project-hero">
+    <div class="project-hero-inner">
 
-            <span style="background:#eef2ff; color:#4338ca; padding:4px 10px; border-radius:6px; font-size:0.8rem; font-weight:600;">
-                Pro Bono Engineering
-            </span>
+        <div class="project-badges">
+            <span class="badge-live">Live Production System</span>
+            <span class="badge-probono">Pro Bono Engineering</span>
         </div>
 
-        <h1 style="margin-top:1.5rem; font-size:2.3rem;">
-            Distributed Stage Lighting & Audio Control System
-        </h1>
+        <h1>Distributed Stage Lighting & Audio Control System</h1>
 
-        <p style="max-width:800px; margin-top:1rem; opacity:0.9;">
-            A distributed ESP32-based Master/Slave architecture integrating lighting (PWM, SSR, DMX) 
-            with multi-track audio playback via Web Audio API. Designed for full theatrical productions 
-            with script synchronization and mobile rehearsal control.
+        <p class="project-lead">
+            A distributed ESP32-based Master/Slave architecture integrating
+            lighting (PWM, SSR, DMX) with multi-track audio playback via Web Audio API.
+            Designed for full theatrical productions with script synchronization.
         </p>
 
-        <p style="opacity:0.7; margin-top:0.5rem;">
+        <p class="project-subnote">
             Developed pro publico bono for a local amateur theatre group.
         </p>
 
     </div>
 </header>
 
-<!-- ===== CONTENT ===== -->
-<div class="project-content">
 
-    <!-- SYSTEM ARCHITECTURE -->
+<!-- ================= MAIN CONTENT ================= -->
+
+<section class="project-container">
+
+    <!-- ===== SYSTEM ARCHITECTURE ===== -->
     <div class="section">
         <h2>System Architecture</h2>
+
         <p>
-            The system consists of one MASTER controller and two SLAVE units communicating via 
-            <strong>ESP-NOW protocol</strong>.
+            The system consists of one MASTER controller and two SLAVE units
+            communicating via <strong>ESP-NOW protocol</strong>.
         </p>
 
         <ul>
             <li>4x PWM dimmers (16A per channel, with RC snubbers & filtering)</li>
-            <li>4x SSR outputs (40A ON/OFF reflectors)</li>
+            <li>4x SSR outputs (40A ON/OFF high-load reflectors)</li>
             <li>Independent DMX output (MAX RS-485 – 512 channels per controller)</li>
         </ul>
 
@@ -123,12 +64,12 @@
         </p>
     </div>
 
-    <!-- HMI -->
+    <!-- ===== HMI ===== -->
     <div class="section">
-        <h2>Web-Based HMI (SPIFFS + HTML + JS)</h2>
+        <h2>Web-Based HMI (SPIFFS + HTML + CSS + JS)</h2>
 
-        <img src="../images/stage-hmi-main.jpg" 
-             alt="Stage Lighting HMI Interface running on ESP32" 
+        <img src="../images/stage-hmi-main.jpg"
+             alt="Stage Lighting HMI Interface"
              class="image-full">
 
         <ul>
@@ -137,32 +78,33 @@
             <li>Skip sequence control</li>
             <li>Real-time communication monitoring</li>
             <li>Remote reset of slave controllers</li>
-            <li>Embedded PDF script viewer</li>
+            <li>Embedded PDF script viewer for synchronization</li>
         </ul>
     </div>
 
-    <!-- MOBILE CONTROL -->
+    <!-- ===== MOBILE CONTROL ===== -->
     <div class="section">
         <h2>Mobile Control During Rehearsals</h2>
 
         <p>
-            During stage rehearsals, the lighting system was controlled directly from a 
-            <strong>smartphone browser</strong>. The operator walked alongside the director, 
-            triggering scene sequences in real-time.
+            During rehearsals, the lighting system was controlled directly from a
+            <strong>smartphone browser</strong>.
+            The operator walked alongside the director, triggering scene transitions
+            in real-time.
         </p>
 
         <p>
-            This significantly increased flexibility and reduced iteration time when tuning 
-            transitions according to the director's requirements.
+            This significantly increased flexibility and reduced iteration time,
+            allowing rapid adjustments without being physically tied to a control console.
         </p>
     </div>
 
-    <!-- AUDIO -->
+    <!-- ===== AUDIO ENGINE ===== -->
     <div class="section">
         <h2>Audio Engine (Web Audio API)</h2>
 
         <p>
-            Integrated multi-track playback (up to 32 channels) compatible with 
+            Integrated multi-track playback (up to 32 channels) compatible with
             Behringer X32 mixer via USB multi-channel interface.
         </p>
 
@@ -173,7 +115,7 @@
         </ul>
     </div>
 
-    <!-- RELIABILITY -->
+    <!-- ===== RELIABILITY ===== -->
     <div class="section">
         <h2>Reliability & Safety Engineering</h2>
 
@@ -185,121 +127,75 @@
         </ul>
     </div>
 
-<div class="section">
-    <h2>Live Performances</h2>
+    <!-- ===== LIVE PERFORMANCES & GALLERY ===== -->
+    <div class="section">
+        <h2>Live Performances & System Gallery</h2>
 
-    <p>
-        The system was successfully used in full-scale live productions 
-        with hundreds of attendees.
-    </p>
+        <p>
+            The system was successfully used in full-scale live productions
+            with hundreds of attendees.
+        </p>
 
-    <div class="media-grid">
+        <div class="slider">
 
-        <!-- VIDEO 1 -->
-        <a href="https://www.youtube.com/watch?v=upOUXSUNDkA" 
-           target="_blank" 
-           class="media-card video">
-            <img src="https://img.youtube.com/vi/upOUXSUNDkA/hqdefault.jpg" 
-                 alt="Misterium 2025">
-            <div class="overlay">
-                ▶
+            <div class="slide active">
+                <a href="https://www.youtube.com/watch?v=upOUXSUNDkA" target="_blank">
+                    <img src="https://img.youtube.com/vi/upOUXSUNDkA/hqdefault.jpg">
+                </a>
+                <div class="caption">
+                    Misterium Męki Pańskiej 2025 – Full Production
+                </div>
             </div>
-        </a>
 
-        <!-- VIDEO 2 -->
-        <a href="https://www.youtube.com/watch?v=dLMtix2tgl8" 
-           target="_blank" 
-           class="media-card video">
-            <img src="https://img.youtube.com/vi/dLMtix2tgl8/hqdefault.jpg" 
-                 alt="Św. Rita">
-            <div class="overlay">
-                ▶
+            <div class="slide">
+                <a href="https://www.youtube.com/watch?v=dLMtix2tgl8" target="_blank">
+                    <img src="https://img.youtube.com/vi/dLMtix2tgl8/hqdefault.jpg">
+                </a>
+                <div class="caption">
+                    Św. Rita – Nadzieja w Bogu
+                </div>
             </div>
-        </a>
 
-        <!-- IMAGE 1 -->
-        <div class="media-card image">
-            <img src="../images/stage-photo1.jpg" alt="Stage Setup 1">
+            <div class="slide">
+                <img src="../images/stage-photo1.jpg">
+                <div class="caption">
+                    Installed Control Rack
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="../images/stage-photo2.jpg">
+                <div class="caption">
+                    Master Controller (ESP32 + DMX)
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="../images/stage-photo3.jpg">
+                <div class="caption">
+                    Lighting During Live Performance
+                </div>
+            </div>
+
+            <button class="prev">❮</button>
+            <button class="next">❯</button>
+
         </div>
-
-        <!-- IMAGE 2 -->
-        <div class="media-card image">
-            <img src="../images/stage-photo2.jpg" alt="Stage Setup 2">
-        </div>
-
-        <!-- IMAGE 3 -->
-        <div class="media-card image">
-            <img src="../images/stage-photo3.jpg" alt="Stage Setup 3">
-        </div>
-
     </div>
-</div>
 
-    <!-- BACK BUTTON -->
-    <div style="text-align:center; margin-top:3rem;">
+    <!-- ===== BACK BUTTON ===== -->
+    <div class="back-wrapper">
         <a href="../index.html" class="back-btn">
             ← Back to Portfolio
         </a>
     </div>
 
-</div>
+</section>
 
-<!-- ===== LIGHTBOX ===== -->
-<div id="lightbox" style="
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.85);
-    justify-content:center;
-    align-items:center;
-    z-index:1000;">
-    <img id="lightbox-img" 
-         style="max-width:90%; max-height:90%; border-radius:10px;">
-</div>
 
-<script>
-    const images = document.querySelectorAll('.gallery img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
+<!-- ================= PAGE SCRIPT ================= -->
 
-    images.forEach(img => {
-        img.addEventListener('click', () => {
-            lightbox.style.display = 'flex';
-            lightboxImg.src = img.src;
-        });
-    });
+<script src="../js/slider.js"></script>
 
-    lightbox.addEventListener('click', () => {
-        lightbox.style.display = 'none';
-    });
-</script>
-<div id="lightbox" style="
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.85);
-    justify-content:center;
-    align-items:center;
-    z-index:1000;">
-    <img id="lightbox-img" 
-         style="max-width:90%; max-height:90%; border-radius:10px;">
-</div>
-
-<script>
-    const images = document.querySelectorAll('.media-card.image img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    images.forEach(img => {
-        img.addEventListener('click', () => {
-            lightbox.style.display = 'flex';
-            lightboxImg.src = img.src;
-        });
-    });
-
-    lightbox.addEventListener('click', () => {
-        lightbox.style.display = 'none';
-    });
-</script>
 </body>
 </html>
