@@ -1,11 +1,11 @@
 :root {
-    --primary: #2563eb;       /* Główny niebieski */
-    --primary-dark: #1e40af;  /* Ciemniejszy niebieski dla hover */
-    --dark: #0f172a;          /* Bardzo ciemny granat tła nagłówka */
-    --light: #b3b6b9;         /* Tło strony */
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --dark: #0f172a;
+    --light: #cbd5e1;   
     --text-main: #334155;
     --text-light: #64748b;
-    --accent-hw: #0ea5e9;     /* Kolor akcentu dla Hardware */
+    --accent-hw: #0ea5e9;
 }
 
 * {
