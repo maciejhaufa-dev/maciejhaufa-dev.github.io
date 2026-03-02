@@ -273,6 +273,33 @@
         lightbox.style.display = 'none';
     });
 </script>
+<div id="lightbox" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+    z-index:1000;">
+    <img id="lightbox-img" 
+         style="max-width:90%; max-height:90%; border-radius:10px;">
+</div>
 
+<script>
+    const images = document.querySelectorAll('.media-card.image img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    images.forEach(img => {
+        img.addEventListener('click', () => {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = img.src;
+        });
+    });
+
+    lightbox.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+    });
+</script>
 </body>
 </html>
