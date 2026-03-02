@@ -3,28 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Distributed Stage Lighting System | Maciej Haufa</title>
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- GŁÓWNY CSS -->
     <link rel="stylesheet" href="../css/style.css">
 
     <style>
-        .project-container {
+        .project-content {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 3rem 2rem;
             background: white;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-
-        .project-container h1 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         .section {
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
 
         .section h2 {
@@ -35,161 +30,215 @@
         .image-full {
             width: 100%;
             border-radius: 8px;
-            margin: 1rem 0;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin: 1.5rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
-        .video-link {
-            display: inline-block;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
             margin-top: 1rem;
-            padding: 10px 16px;
-            background: #ef4444;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #2563eb;
             color: white;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 600;
         }
 
-        .video-link:hover {
-            background: #dc2626;
+        .back-btn:hover {
+            background: #1e40af;
         }
     </style>
 </head>
+
 <body>
-    
-<div style="padding: 1.5rem 2rem;">
-    <a href="../index.html" 
-       style="text-decoration:none; font-weight:600; color:#2563eb;">
-        ← Back to Portfolio
-    </a>
-</div>
-    
-<div class="container">
-    <div class="project-container">
 
-       <div class="section">
-    <span class="status done" 
-          style="background:#ecfdf5; color:#059669; padding:4px 8px; border-radius:6px; font-size:0.8rem;">
-        Live Production System
-    </span>
+<!-- ===== HERO ===== -->
+<header style="background:#0f172a; color:white; padding:4rem 2rem;">
+    <div style="max-width:1000px; margin:0 auto;">
 
-    <h1 style="margin-top:1rem;">
-        Distributed Stage Lighting & Audio Control System
-    </h1>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <span style="background:#ecfdf5; color:#059669; padding:4px 10px; border-radius:6px; font-size:0.8rem; font-weight:600;">
+                Live Production System
+            </span>
 
-    <p style="font-size:1.1rem; color:#475569; max-width:800px;">
-        A distributed ESP32-based Master/Slave architecture integrating 
-        lighting (PWM, SSR, DMX) with multi-track audio playback via Web Audio API.
-        Designed for full theatrical productions with script synchronization.
-    </p>
-</div>
-        <hr style="margin:1.5rem 0; opacity:0.2;">
-     
-        <!-- SYSTEM OVERVIEW -->
-        <div class="section">
-            <h2>System Architecture</h2>
-            <p>
-                The system consists of one MASTER controller and two SLAVE units communicating via <strong>ESP-NOW protocol</strong>.
-                Each controller includes:
-            </p>
-            <ul>
-                <li>4x PWM dimmers (16A each, with RC snubbers & filtering)</li>
-                <li>4x SSR outputs (40A ON/OFF high-load reflectors)</li>
-                <li>Independent DMX output (MAX RS-485) – 512 channels per controller</li>
-            </ul>
-            <p>
-                Total scalable capacity: <strong>1500+ DMX channels</strong>.
-            </p>
+            <span style="background:#eef2ff; color:#4338ca; padding:4px 10px; border-radius:6px; font-size:0.8rem; font-weight:600;">
+                Pro Bono Engineering
+            </span>
         </div>
 
-        <!-- HMI -->
-        <div class="section">
-            <h2>Web-Based HMI (SPIFFS + HTML + JS)</h2>
-            <p>
-                The MASTER unit hosts a WiFi network ("OSWIETLENIE SCENICZNE") and serves a full web-based control interface.
-            </p>
+        <h1 style="margin-top:1.5rem; font-size:2.3rem;">
+            Distributed Stage Lighting & Audio Control System
+        </h1>
 
-            <img src="../images/stage-hmi-main.jpg" 
-     alt="Stage Lighting HMI Interface running on ESP32" 
-     class="image-full">
+        <p style="max-width:800px; margin-top:1rem; opacity:0.9;">
+            A distributed ESP32-based Master/Slave architecture integrating lighting (PWM, SSR, DMX) 
+            with multi-track audio playback via Web Audio API. Designed for full theatrical productions 
+            with script synchronization and mobile rehearsal control.
+        </p>
 
-            <ul>
-                <li>Scene list with programmable time markers (hh:mm:ss)</li>
-                <li>Full blackout ("WYGAŚ WSZYSTKO") emergency button</li>
-                <li>Skip sequence control</li>
-                <li>Real-time communication status</li>
-                <li>Remote reset of slave controllers</li>
-                <li>Embedded PDF script viewer for operator synchronization</li>
-            </ul>
-        </div>
-        
-        <!-- MOBILE CONTROL -->
-        <div class="section">
-            <h2>Mobile Control During Rehearsals</h2>
-            <p>
-                During stage rehearsals, the lighting system was controlled directly from a 
-                <strong>smartphone browser</strong>. 
-                The operator walked alongside the director, triggering scene sequences in real-time,
-                allowing instant adjustments without being physically tied to the control console.
-            </p>
-            <p>
-                This significantly increased flexibility and reduced iteration time when tuning
-                transitions and timing according to the director's vision.
-            </p>
-        </div>
-        
-        <!-- AUDIO -->
-        <div class="section">
-            <h2>Audio Engine (Web Audio API)</h2>
-            <p>
-                Integrated multi-track playback (up to 32 channels) using <strong>Web Audio API</strong>.
-                Compatible with Behringer X32 via USB multi-channel interface.
-            </p>
-            <ul>
-                <li>Drag & drop playlist editing (even during playback)</li>
-                <li>Time-based navigation (manual hh:mm:ss jump)</li>
-                <li>Full synchronization with script timestamps</li>
-            </ul>
-        </div>
-
-        <!-- SAFETY -->
-        <div class="section">
-            <h2>Reliability & Safety Engineering</h2>
-            <ul>
-                <li>ESP-NOW for stable low-latency communication (20m+ range)</li>
-                <li>MAC address binding to prevent unauthorized slave pairing</li>
-                <li>RC snubber circuits for AC noise suppression</li>
-                <li>Separate DMX universes per controller</li>
-            </ul>
-        </div>
-
-        <!-- SCALABILITY -->
-        <div class="section">
-            <h2>Scalability</h2>
-            <p>
-                The system can be expanded by adding additional SLAVE units.
-                Each new controller is registered in the MASTER firmware via MAC address mapping.
-            </p>
-        </div>
-
-        <!-- LIVE PERFORMANCE -->
-        <div class="section">
-            <h2>Live Performances</h2>
-            <p>
-            The system was successfully used in full-scale live productions 
-            with hundreds of attendees.
-            </p>
-            <a class="video-link" href="https://www.youtube.com/watch?v=upOUXSUNDkA" target="_blank">
-                Misterium Męki Pańskiej 2025
-            </a>
-
-            <a class="video-link" href="https://www.youtube.com/watch?v=dLMtix2tgl8" target="_blank">
-                 Św. Rita – Nadzieja w Bogu
-            </a>
-        </div>
+        <p style="opacity:0.7; margin-top:0.5rem;">
+            Developed pro publico bono for a local amateur theatre group.
+        </p>
 
     </div>
+</header>
+
+<!-- ===== CONTENT ===== -->
+<div class="project-content">
+
+    <!-- SYSTEM ARCHITECTURE -->
+    <div class="section">
+        <h2>System Architecture</h2>
+        <p>
+            The system consists of one MASTER controller and two SLAVE units communicating via 
+            <strong>ESP-NOW protocol</strong>.
+        </p>
+
+        <ul>
+            <li>4x PWM dimmers (16A per channel, with RC snubbers & filtering)</li>
+            <li>4x SSR outputs (40A ON/OFF reflectors)</li>
+            <li>Independent DMX output (MAX RS-485 – 512 channels per controller)</li>
+        </ul>
+
+        <p>
+            Total scalable capacity: <strong>1500+ DMX channels</strong>.
+        </p>
+    </div>
+
+    <!-- HMI -->
+    <div class="section">
+        <h2>Web-Based HMI (SPIFFS + HTML + JS)</h2>
+
+        <img src="../images/stage-hmi-main.jpg" 
+             alt="Stage Lighting HMI Interface running on ESP32" 
+             class="image-full">
+
+        <ul>
+            <li>Scene list with programmable time markers (hh:mm:ss)</li>
+            <li>Full blackout emergency button</li>
+            <li>Skip sequence control</li>
+            <li>Real-time communication monitoring</li>
+            <li>Remote reset of slave controllers</li>
+            <li>Embedded PDF script viewer</li>
+        </ul>
+    </div>
+
+    <!-- MOBILE CONTROL -->
+    <div class="section">
+        <h2>Mobile Control During Rehearsals</h2>
+
+        <p>
+            During stage rehearsals, the lighting system was controlled directly from a 
+            <strong>smartphone browser</strong>. The operator walked alongside the director, 
+            triggering scene sequences in real-time.
+        </p>
+
+        <p>
+            This significantly increased flexibility and reduced iteration time when tuning 
+            transitions according to the director's requirements.
+        </p>
+    </div>
+
+    <!-- AUDIO -->
+    <div class="section">
+        <h2>Audio Engine (Web Audio API)</h2>
+
+        <p>
+            Integrated multi-track playback (up to 32 channels) compatible with 
+            Behringer X32 mixer via USB multi-channel interface.
+        </p>
+
+        <ul>
+            <li>Drag & drop playlist editing</li>
+            <li>Time-based navigation (hh:mm:ss jump)</li>
+            <li>Synchronization with script timestamps</li>
+        </ul>
+    </div>
+
+    <!-- RELIABILITY -->
+    <div class="section">
+        <h2>Reliability & Safety Engineering</h2>
+
+        <ul>
+            <li>ESP-NOW low-latency communication (20m+ range)</li>
+            <li>MAC binding for slave authorization</li>
+            <li>RC snubber circuits for AC stability</li>
+            <li>Independent DMX universes per controller</li>
+        </ul>
+    </div>
+
+    <!-- LIVE PERFORMANCE -->
+    <div class="section">
+        <h2>Live Performances</h2>
+
+        <p>
+            The system was successfully used in full-scale live productions 
+            with hundreds of attendees.
+        </p>
+
+        <div class="gallery">
+            <img src="../images/stage-performance1.jpg" alt="Live performance 1">
+            <img src="../images/stage-performance2.jpg" alt="Live performance 2">
+            <img src="../images/stage-hmi-main.jpg" alt="HMI interface">
+        </div>
+    </div>
+
+    <!-- BACK BUTTON -->
+    <div style="text-align:center; margin-top:3rem;">
+        <a href="../index.html" class="back-btn">
+            ← Back to Portfolio
+        </a>
+    </div>
+
 </div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div id="lightbox" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+    z-index:1000;">
+    <img id="lightbox-img" 
+         style="max-width:90%; max-height:90%; border-radius:10px;">
+</div>
+
+<script>
+    const images = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    images.forEach(img => {
+        img.addEventListener('click', () => {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = img.src;
+        });
+    });
+
+    lightbox.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+    });
+</script>
 
 </body>
 </html>
