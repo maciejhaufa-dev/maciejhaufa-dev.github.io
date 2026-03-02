@@ -21,7 +21,7 @@ body {
     background: var(--light);
 }
 
-/* --- HEADER SECTION (NOWY UKŁAD) --- */
+/* --- HEADER SECTION --- */
 header {
     background: var(--dark);
     color: white;
@@ -52,7 +52,7 @@ header {
 }
 
 .profile-img:hover {
-    transform: scale(1.02);
+    transform: scale(0.9);
     transition: transform 0.3s;
 }
 
