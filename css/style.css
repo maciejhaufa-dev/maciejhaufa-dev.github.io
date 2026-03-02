@@ -14,11 +14,18 @@
     box-sizing: border-box;
 }
 
+html {
+    -webkit-text-size-adjust: 100%; /* Zapobiega auto-zoomowi tekstu na iOS */
+    overflow-x: hidden;             /* Zapobiega przewijaniu na boki */
+}
+
 body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
     color: var(--text-main);
     background: var(--light);
+    overflow-x: hidden;             /* Zapobiega przewijaniu na boki */
+    width: 100%;
 }
 
 /* --- HEADER SECTION --- */
@@ -42,12 +49,12 @@ header {
 
 /* Stylizacja zdjęcia */
 .profile-img {
-    height: 220px;             
-    width: auto;               
-    aspect-ratio: 166/221;     
-    
-    object-fit: cover;         
-    border-radius: 12px;       
+    height: 220px;
+    width: auto;
+    max-width: 100%;           
+    aspect-ratio: 166/221;
+    object-fit: cover;
+    border-radius: 12px;
     border: 4px solid white;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     display: block;
@@ -201,7 +208,8 @@ header {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    /* ZMIANA z 350px na 300px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 2rem;
     margin-bottom: 2rem;
 }
@@ -310,4 +318,28 @@ footer {
     margin-top: 5rem;
     border-top: 1px solid #e2e8f0;
     background: white;
+}
+/* --- RESPANSYWNOŚĆ (TELEFONY) --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;       /* Mniejszy padding kontenera na telefonach */
+    }
+
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .header-text h1 {
+        font-size: 2.2rem;   /* Mniejszy nagłówek, żeby się nie łamał */
+    }
+    
+    .project-grid {
+        gap: 1.5rem;         /* Mniejsze odstępy między kartami */
+    }
+
+    .social-links {
+        justify-content: center;
+    }
 }
