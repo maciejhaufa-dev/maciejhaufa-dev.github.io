@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case Study: BWR-1S/1D Modernization | Maciej Haufa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Global & Project Styles (zakładamy, że masz je w CSS) -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .project-hero { background: #0f172a; color: white; padding: 4rem 2rem; }
+        .project-hero-inner { max-width: 1000px; margin: 0 auto; }
+        .project-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+        .badge-live { background: #fef2f2; color: #b91c1c; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+        .badge-role { background: #eef2ff; color: #4338ca; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+        .badge-nda { background: #fef3c7; color: #92400e; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+        .project-hero h1 { margin-top: 1.5rem; font-size: 2.3rem; color: #ef4444; }
+        .project-lead { margin-top: 1rem; max-width: 800px; opacity: 0.9; }
+
+        .project-container { max-width: 1000px; margin: 4rem auto; padding: 3rem; background: white; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .section { margin-bottom: 3rem; }
+        .section h2 { margin-bottom: 1.2rem; font-size: 1.6rem; color: #1e293b; border-left: 4px solid #ef4444; padding-left: 1rem; }
+        .section ul { margin-left: 1.2rem; }
+        .section ul li { margin-bottom: 0.5rem; }
+        
+        .nda-notice { background: #f8fafc; padding: 1rem; border-left: 4px solid #64748b; border-radius: 6px; margin: 2rem 0; }
+        
+        .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .media-card { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+        .media-card img { width: 100%; height: 100%; object-fit: cover; }
+        .media-card .overlay { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; font-size: 3rem; color: white; background: rgba(0,0,0,0.4); }
+
+        .back-wrapper { text-align: center; margin-top: 4rem; }
+        .back-btn { display: inline-block; padding: 14px 24px; background: #2563eb; color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: 0.2s; }
+        .back-btn:hover { background: #1e40af; }
+    </style>
+</head>
+
+<body>
+
+<!-- ===== HERO SECTION ===== -->
+<header class="project-hero">
+    <div class="project-hero-inner">
+        <div class="project-badges">
+            <span class="badge-live">Military Defense Project</span>
+            <span class="badge-role">Lead Systems Integration Engineer</span>
+            <span class="badge-nda">Public Information Only</span>
+        </div>
+        <h1>Deep Modernization of BWR-1S & BWR-1D Vehicles</h1>
+        <p class="project-lead">
+            Leading the electrical system integration for the deep modernization of Soviet-era reconnaissance vehicles, transforming them into state-of-the-art platforms compliant with modern NATO battlefield standards.
+        </p>
+    </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<section class="project-container">
+
+    <!-- NDA Notice -->
+    <div class="nda-notice">
+        <strong>Note:</strong> Due to the confidential nature of this defense project, this overview is based on publicly available information. Specific technical implementation details remain classified.
+    </div>
+
+    <!-- The Goal -->
+    <div class="section">
+        <h2>The Modernization Goal</h2>
+        <p>
+            The primary objective was to extend the operational life and significantly enhance the capabilities of the BWR-1S and BWR-1D reconnaissance vehicles. This involved replacing obsolete Soviet-era systems with modern, NATO-compliant technology, including advanced observation, communication, and battlefield management systems. My role was central to ensuring these new systems could be seamlessly integrated into the existing vehicle architecture.
+        </p>
+    </div>
+
+    <!-- My Role -->
+    <div class="section">
+        <h2>My Role: Architect of the New Electrical Backbone</h2>
+        <p>
+            As the Lead Electrical & Systems Integration Engineer, I was responsible for the complete redesign and implementation of the vehicle's electrical infrastructure. This included:
+        </p>
+        <ul>
+            <li>**Defining the new electrical system architecture** to support high-power, modern C4I systems.</li>
+            <li>**Designing and overseeing the manufacturing of new wire harnesses** compliant with military standards.</li>
+            <li>**Managing the integration** of dozens of new subsystems, including thermal cameras, laser rangefinders, BMS, and digital communication platforms.</li>
+            <li>**Leading the system validation process** during factory acceptance tests (FAT) and live polygon trials, including amphibious testing.</li>
+            <li>**Mentoring a team of engineers** and ensuring all technical documentation met stringent AQAP and military requirements.</li>
+        </ul>
+    </div>
+
+    <!-- Media Gallery -->
+    <div class="section">
+        <h2>Official Media Showcase</h2>
+        <div class="media-grid">
+            <!-- Wideo Prezentacja -->
+            <a href="https://www.youtube.com/watch?v=IEJ5AOOVZxM" target="_blank" class="media-card">
+                <img src="https://img.youtube.com/vi/IEJ5AOOVZxM/maxresdefault.jpg" alt="BWR Modernization Presentation">
+                <div class="overlay">▶</div>
+            </a>
+            <!-- Zdjęcie z testów pływania -->
+            <a href="https://wzm.pl/wp-content/uploads/2023/10/bwr-wizerunek-e1696281705116.jpg" target="_blank" class="media-card">
+                <img src="https://wzm.pl/wp-content/uploads/2023/10/bwr-wizerunek-e1696281705116.jpg" alt="BWR Amphibious Trials">
+                <div class="overlay"></div>
+            </a>
+        </div>
+    </div>
+
+    <!-- BACK BUTTON -->
+    <div class="back-wrapper">
+        <a href="../index.html" class="back-btn">
+            ← Back to Portfolio
+        </a>
+    </div>
+
+</section>
+
+</body>
+</html>
