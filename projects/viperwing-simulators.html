@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case Study: Viperwing Simulators | Maciej Haufa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Page Specific Styles (możemy stworzyć osobny plik lub dodać style tutaj) -->
+    <style>
+        .project-hero { background: #0f172a; color: white; padding: 4rem 2rem; }
+        .project-hero-inner { max-width: 1000px; margin: 0 auto; }
+        .project-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+        .badge-live { background: #ecfdf5; color: #059669; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+        .badge-role { background: #eef2ff; color: #4338ca; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+        .project-hero h1 { margin-top: 1.5rem; font-size: 2.3rem; color: #ef4444; }
+        .project-lead { margin-top: 1rem; max-width: 800px; opacity: 0.9; }
+
+        .project-container { max-width: 1000px; margin: 4rem auto; padding: 3rem; background: white; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .section { margin-bottom: 3rem; }
+        .section h2 { margin-bottom: 1.2rem; font-size: 1.6rem; color: #1e293b; border-left: 4px solid #ef4444; padding-left: 1rem; }
+        
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-top: 2rem; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.12); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        .back-wrapper { text-align: center; margin-top: 4rem; }
+        .back-btn { display: inline-block; padding: 14px 24px; background: #2563eb; color: white; text-decoration: none; border-radius: 10px; font-weight: 600; transition: 0.2s; }
+        .back-btn:hover { background: #1e40af; }
+    </style>
+</head>
+
+<body>
+
+<!-- ===== HERO SECTION (w stylu militarnym) ===== -->
+<header class="project-hero">
+    <div class="project-hero-inner">
+        <div class="project-badges">
+            <span class="badge-live">Commercial Product</span>
+            <span class="badge-role">Project Manager & Lead R&D Engineer</span>
+        </div>
+        <h1>Viperwing Combat Simulators</h1>
+        <p class="project-lead">
+            Leading the product evolution from software-based interfaces to high-fidelity, 1:1 scale physical cockpits, delivering an unparalleled level of realism and tactile immersion for professional pilot training.
+        </p>
+    </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<section class="project-container">
+
+    <!-- PROBLEM -->
+    <div class="section">
+        <h2>The Challenge: Bridging the Gap Between Simulation and Reality</h2>
+        <p>
+            The initial versions of the simulators relied on touchscreen panels to replicate the complex instrumentation of F-16 and F-35 cockpits. While functional, this approach lacked the critical **tactile feedback** and muscle memory development essential for effective pilot training. The primary goal was to transition to a fully physical, 1:1 scale cockpit to dramatically increase training realism and immersion.
+        </p>
+    </div>
+
+    <!-- MOJA ROLA -->
+    <div class="section">
+        <h2>My Role: Architect of the Physical Cockpit</h2>
+        <p>
+            As Project Manager and Lead R&D Engineer, I was responsible for the entire hardware integration lifecycle. This involved:
+        </p>
+        <ul>
+            <li>**Conceptual Design:** Defining the architecture for a modular, hardware-driven cockpit.</li>
+            <li>**Hardware-Software Integration:** Designing and implementing custom embedded systems to interface with the simulation software.</li>
+            <li>**Prototyping & Manufacturing:** Overseeing the creation of physical panels, switches, and gauges.</li>
+            <li>**System Validation:** Ensuring that every physical control responded with zero-latency and high fidelity.</li>
+        </ul>
+    </div>
+
+    <!-- ROZWIĄZANIE TECHNICZNE -->
+    <div class="section">
+        <h2>The Solution: A Distributed USB/HID Interface</h2>
+        <p>
+            To manage the complexity of hundreds of individual controls (toggle switches, rotary encoders, potentiometers, LED indicators), I designed a **distributed embedded system**. Each cockpit panel was equipped with its own microcontroller, which communicated with a central hub. This hub aggregated all inputs and presented them to the main simulation computer as a standard **USB Human Interface Device (HID)**.
+        </p>
+        <p>
+            This architecture ensured:
+        </p>
+        <ul>
+            <li>**Modularity and Scalability:** Easy to add or replace cockpit panels without redesigning the entire system.</li>
+            <li>**Zero-Latency Response:** Critical for realistic flight simulation.</li>
+            <li>**Plug-and-Play Compatibility:** The system was recognized by the simulation software without requiring custom drivers.</li>
+        </ul>
+    </div>
+
+    <!-- REZULTAT -->
+    <div class="section">
+        <h2>The Result: Unprecedented Realism</h2>
+        <p>
+            The successful transition to physical cockpits transformed the Viperwing simulators into top-tier training tools. The introduction of realistic tactile feedback significantly enhanced muscle memory development and procedural training for pilots, solidifying the product's position as a leader in the high-fidelity simulation market.
+        </p>
+        <p>
+            The final product is a testament to the power of integrating robust embedded engineering with advanced simulation software.
+        </p>
+    </div>
+
+    <!-- WIDEO -->
+    <div class="section">
+        <h2>Product Showcase</h2>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/F2ouFDyNgK4" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <!-- BACK BUTTON -->
+    <div class="back-wrapper">
+        <a href="../index.html" class="back-btn">
+            ← Back to Portfolio
+        </a>
+    </div>
+
+</section>
+
+</body>
+</html>
