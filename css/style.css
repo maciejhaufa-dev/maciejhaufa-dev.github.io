@@ -204,10 +204,26 @@ header {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Zamiast auto-fit, sztywno definiujemy 3 kolumny */
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
 
+/* Dodajemy responsywność, żeby na mniejszych ekranach było inaczej */
+@media (max-width: 1024px) {
+    .project-grid {
+        /* Na tabletach robimy 2 kolumny */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        /* Na telefonach robimy 1 kolumnę */
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
 .project-card {
     background: white;
     border-radius: 10px;
@@ -359,4 +375,43 @@ header {
         font-size: 1.4rem;
     }
 
+}
+/* Nowy wrapper dla karty, żeby była linkiem */
+.project-card-link {
+    text-decoration: none; /* Usuwa podkreślenie z linku */
+    color: inherit; /* Karta dziedziczy kolor tekstu, nie jest niebieska */
+    display: block; /* Sprawia, że link zachowuje się jak blok */
+}
+
+/* Modyfikacja .project-card, żeby nie miała paddingu */
+.project-card {
+    padding: 0; /* Usuwamy stary padding, bo teraz content jest w środku */
+    overflow: hidden; /* Zapobiega wychodzeniu obrazka poza zaokrąglone rogi */
+}
+
+/* Nowe style dla miniatury */
+.card-thumbnail {
+    width: 100%;
+    height: 200px; /* Stała wysokość dla wszystkich miniatur */
+    overflow: hidden;
+}
+
+.card-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Skaluje obrazek, żeby idealnie wypełnił ramkę */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Efekt "zoom" na miniaturze po najechaniu na kartę */
+.project-card:hover .card-thumbnail img {
+    transform: scale(1.05);
+}
+
+/* Nowy kontener na treść karty */
+.card-content {
+    padding: 1.5rem; /* Przenosimy padding tutaj */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
