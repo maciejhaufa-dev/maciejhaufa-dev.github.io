@@ -415,3 +415,11 @@ header {
     flex-direction: column;
     height: 100%;
 }
+/* Poprawka dla równych wysokości kart projektów */
+.project-card-link {
+    display: flex; /* Sprawia, że link-kontener jest elastyczny */
+}
+
+.project-card {
+    width: 100%;   /* Upewniamy się, że karta zajmuje całą szerokość linku */
+}
