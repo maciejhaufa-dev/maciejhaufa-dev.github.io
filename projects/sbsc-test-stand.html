@@ -5,59 +5,41 @@
     <title>Case Study: Automated Aerodynamic Test Stand (SBSC) | Maciej Haufa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- UŻYWAMY ISTNIEJĄCEGO STYLU, KTÓRY WIEMY ŻE DZIAŁA -->
+    <!-- PODPINAMY OBA PLIKI STYLÓW, TAK JAK NA INNYCH PODSTRONACH -->
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/project-stage.css">
 
-    <!-- IKONY (jeśli potrzebne) -->
+    <!-- IKONY -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<!-- ================= HERO SECTION ================= -->
-
-<header style="background:#0f172a; color:white; padding:4rem 2rem;">
-    <div style="max-width:1000px; margin:0 auto;">
-
-        <div style="display:flex; gap:10px;">
-            <span style="background:#ecfdf5; color:#059669; padding:4px 10px; border-radius:6px; font-size:0.8rem; font-weight:600;">
-                Completed System
-            </span>
-            <span style="background:#eef2ff; color:#4338ca; padding:4px 10px; border-radius:6px; font-size:0.8rem; font-weight:600;">
-                Industrial R&D Tool
-            </span>
+<!-- ===== HERO SECTION (używa klas z style.css) ===== -->
+<header class="project-hero">
+    <div class="project-hero-inner">
+        <div class="project-badges">
+            <span class="badge-live">Completed System</span>
+            <span class="badge-probono" style="background:#eef2ff; color:#4338ca;">Industrial R&D Tool</span>
         </div>
-
-        <h1 style="margin-top:1.5rem; font-size:2.3rem;">
-            Automated Aerodynamic Test Stand (SBSC v.1.0)
-        </h1>
-
-        <p style="max-width:800px; margin-top:1rem; opacity:0.9;">
-            A complete hardware-software solution for measuring pressure drops in ventilation components. The system features a custom USB controller, a desktop application, and automated data processing with PDF/CSV report generation.
+        <h1 style="color: #2563eb;">Automated Aerodynamic Test Stand (SBSC v.1.0)</h1>
+        <p class="project-lead">
+            A complete hardware-software solution for measuring pressure drops in ventilation components, featuring a custom USB controller, a desktop application, and automated PDF/CSV report generation.
         </p>
-
     </div>
 </header>
 
-
-<!-- ================= MAIN CONTENT ================= -->
-
+<!-- ===== MAIN CONTENT (używa klas z project-stage.css) ===== -->
 <div class="project-container">
 
-    <!-- ===== GOAL ===== -->
     <div class="section">
-        <h2>Project Goal: Automating Quality Assurance</h2>
-        <p>
-            The primary challenge was to replace manual, time-consuming testing with a reliable, computer-controlled system. The goal was to create a QA tool to accurately characterize aerodynamic performance and auto-generate standardized documentation.
-        </p>
+        <h2 style="border-left: 4px solid #2563eb; padding-left: 1rem;">Project Goal: Automating Quality Assurance</h2>
+        <p>The primary challenge was to replace manual, time-consuming testing with a reliable, computer-controlled system. The goal was to create a QA tool to accurately characterize aerodynamic performance and auto-generate standardized documentation.</p>
     </div>
 
-    <!-- ===== MY ROLE ===== -->
     <div class="section">
-        <h2>My Role: System Architect & Sole Developer</h2>
-        <p>
-            I was responsible for the entire system from concept to deployment. This involved:
-        </p>
-        <ul>
+        <h2 style="border-left: 4px solid #2563eb; padding-left: 1rem;">My Role: System Architect & Sole Developer</h2>
+        <p>As the sole designer, I was responsible for the entire system from concept to deployment. This involved:</p>
+        <ul style="list-style-type: disc; margin-left: 1.2rem;">
             <li>Designing the custom hardware controller and its USB protocol.</li>
             <li>Developing the C# (.NET) desktop application as the HMI.</li>
             <li>Implementing data acquisition and a statistical filtering algorithm.</li>
@@ -65,73 +47,51 @@
         </ul>
     </div>
 
-    <!-- ===== TECHNICAL SOLUTION ===== -->
     <div class="section">
-        <h2>Technical Solution: Hardware-Software Co-Design</h2>
-        <p>
-            The desktop app communicates via USB with a custom controller managing a high-power fan and pressure sensors (0-2000Pa). The software automates the test sequence, filters data for accuracy, and generates PDF reports or CSV exports.
-        </p>
+        <h2 style="border-left: 4px solid #2563eb; padding-left: 1rem;">Technical Solution: Hardware-Software Co-Design</h2>
+        <p>The desktop app communicates via USB with a custom controller managing a high-power fan and pressure sensors (0-2000Pa). The software automates the test sequence, filters data for accuracy, and generates PDF reports or CSV exports.</p>
     </div>
 
-    <!-- ===== GALLERY / SLIDER ===== -->
     <div class="section">
-        <h2>System Showcase</h2>
-
+        <h2 style="border-left: 4px solid #2563eb; padding-left: 1rem;">System Showcase</h2>
         <div class="slider">
             <div class="slide active">
                 <a href="https://www.youtube.com/watch?v=MgP70IJzZ-o" target="_blank">
-                    <img src="https://img.youtube.com/vi/MgP70IJzZ-o/maxresdefault.jpg" alt="SBSC Test Stand in Action">
+                    <!-- ZMIEŃ STATUS FILMU NA YOUTUBE NA "NIEPUBLICZNY" (UNLISTED) -->
+                    <img src="https://img.youtube.com/vi/MgP70IJzZ-o/hqdefault.jpg" alt="SBSC Test Stand in Action">
                 </a>
-                <div class="caption">
-                    Live Demonstration of the SBSC Test Stand
-                </div>
+                <div class="caption">Live Demonstration of fan control by PC desktop app at the SBSC Test Stand</div>
             </div>
-
             <div class="slide">
                 <img src="../images/sbsc-app-screenshot.jpg" alt="Desktop Application HMI">
-                <div class="caption">
-                    HMI of the Desktop Control Application (C#/.NET)
-                </div>
+                <div class="caption">HMI of the Desktop Control Application (C#/.NET)</div>
             </div>
-
             <button class="prev">❮</button>
             <button class="next">❯</button>
         </div>
     </div>
 
-    <!-- ===== BACK BUTTON ===== -->
     <div class="back-wrapper">
-        <a href="../index.html" class="back-btn">
-            ← Back to Portfolio
-        </a>
+        <a href="../index.html" class="back-btn">← Back to Portfolio</a>
     </div>
-
 </div>
 
-
-<!-- ================= PAGE SCRIPT ================= -->
+<!-- ===== SCRIPT DLA SLIDERA ===== -->
 <script>
-    const slides = document.querySelectorAll('.slide');
-    const next = document.querySelector('.next');
-    const prev = document.querySelector('.prev');
-
-    if (slides.length > 0) {
-        let index = 0;
-
-        function showSlide(i) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[i].classList.add('active');
+    const slider = document.querySelector('.slider');
+    if (slider) {
+        const slides = slider.querySelectorAll('.slide');
+        const next = slider.querySelector('.next');
+        const prev = slider.querySelector('.prev');
+        if (slides.length > 0) {
+            let index = 0;
+            function showSlide(i) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[i].classList.add('active');
+            }
+            next.addEventListener('click', () => { index = (index + 1) % slides.length; showSlide(index); });
+            prev.addEventListener('click', () => { index = (index - 1 + slides.length) % slides.length; showSlide(index); });
         }
-
-        next.addEventListener('click', () => {
-            index = (index + 1) % slides.length;
-            showSlide(index);
-        });
-
-        prev.addEventListener('click', () => {
-            index = (index - 1 + slides.length) % slides.length;
-            showSlide(index);
-        });
     }
 </script>
 
