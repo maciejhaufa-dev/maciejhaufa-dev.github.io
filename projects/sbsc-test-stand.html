@@ -4,83 +4,80 @@
     <meta charset="UTF-8">
     <title>Case Study: Automated Aerodynamic Test Stand (SBSC) | Maciej Haufa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-        /* Dodajemy niestandardowy styl dla niebieskiego akcentu w tym projekcie */
-        .section h2 { border-left-color: var(--primary); }
-    </style>
-</head>
 
+    <!-- UŻYWAMY ISTNIEJĄCEGO STYLU, KTÓRY WIEMY ŻE DZIAŁA -->
+    <link rel="stylesheet" href="../css/project-stage.css">
+
+    <!-- IKONY (jeśli potrzebne) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
 <body>
 
-<!-- ===== HERO SECTION ===== -->
-<header class="project-hero">
-    <div class="project-hero-inner">
-        <div class="project-badges">
-            <span class="badge-live">Completed System</span>
-            <span class="badge-probono">Industrial R&D / QA Tool</span>
+<!-- ================= HERO SECTION ================= -->
+
+<header style="background:#0f172a; color:white; padding:4rem 2rem;">
+    <div style="max-width:1000px; margin:0 auto;">
+
+        <div style="display:flex; gap:10px;">
+            <span style="background:#ecfdf5; color:#059669; padding:4px 10px; border-radius:6px; font-size:0.8rem; font-weight:600;">
+                Completed System
+            </span>
+            <span style="background:#eef2ff; color:#4338ca; padding:4px 10px; border-radius:6px; font-size:0.8rem; font-weight:600;">
+                Industrial R&D Tool
+            </span>
         </div>
-        <h1>Automated Aerodynamic Test Stand (SBSC v.1.0)</h1>
-        <p class="project-lead">
-            A complete hardware-software solution for measuring pressure drops in ventilation components. The system features a custom USB controller, a desktop application for test management, and automated data processing with PDF/CSV report generation.
+
+        <h1 style="margin-top:1.5rem; font-size:2.3rem;">
+            Automated Aerodynamic Test Stand (SBSC v.1.0)
+        </h1>
+
+        <p style="max-width:800px; margin-top:1rem; opacity:0.9;">
+            A complete hardware-software solution for measuring pressure drops in ventilation components. The system features a custom USB controller, a desktop application, and automated data processing with PDF/CSV report generation.
         </p>
+
     </div>
 </header>
 
-<!-- ===== MAIN CONTENT ===== -->
-<section class="project-container">
 
-    <!-- The Goal -->
+<!-- ================= MAIN CONTENT ================= -->
+
+<div class="project-container">
+
+    <!-- ===== GOAL ===== -->
     <div class="section">
         <h2>Project Goal: Automating Quality Assurance</h2>
         <p>
-            The primary challenge was to replace manual, time-consuming, and error-prone testing methods with a reliable, repeatable, and computer-controlled system. The goal was to create a tool for the Quality Assurance department that could accurately characterize the aerodynamic performance of ventilation components (ducts, elbows, etc.) and automatically generate standardized test documentation.
+            The primary challenge was to replace manual, time-consuming testing with a reliable, computer-controlled system. The goal was to create a QA tool to accurately characterize aerodynamic performance and auto-generate standardized documentation.
         </p>
     </div>
 
-    <!-- My Role -->
+    <!-- ===== MY ROLE ===== -->
     <div class="section">
-        <h2>My Role: System Architect & Developer</h2>
+        <h2>My Role: System Architect & Sole Developer</h2>
         <p>
-            As the sole designer and developer, I was responsible for the entire system from concept to deployment. This involved:
+            I was responsible for the entire system from concept to deployment. This involved:
         </p>
         <ul>
-            <li>Designing the custom hardware controller and its communication protocol.</li>
-            <li>Developing the desktop application in C# (.NET) to act as the Human-Machine Interface (HMI).</li>
-            <li>Implementing the data acquisition and processing logic.</li>
-            <li>Integrating the entire solution into a functional, production-ready test stand.</li>
+            <li>Designing the custom hardware controller and its USB protocol.</li>
+            <li>Developing the C# (.NET) desktop application as the HMI.</li>
+            <li>Implementing data acquisition and a statistical filtering algorithm.</li>
+            <li>Integrating the solution into a production-ready test stand.</li>
         </ul>
     </div>
 
-    <!-- Technical Solution -->
+    <!-- ===== TECHNICAL SOLUTION ===== -->
     <div class="section">
-        <h2>Technical Solution: A Hardware-Software Co-Design</h2>
+        <h2>Technical Solution: Hardware-Software Co-Design</h2>
         <p>
-            The system is a classic example of hardware-software co-design, where each component was developed to work in synergy.
+            The desktop app communicates via USB with a custom controller managing a high-power fan and pressure sensors (0-2000Pa). The software automates the test sequence, filters data for accuracy, and generates PDF reports or CSV exports.
         </p>
-        <ol>
-            <li>
-                <strong>Hardware Layer:</strong> A custom USB-based controller interfaces with the high-power ventilation fan and a pair of high-precision pressure sensors (0-2000Pa range) placed in the aerodynamic tunnel.
-            </li>
-            <li>
-                <strong>Software Layer (Desktop App):</strong> The C#/.NET application provides a user-friendly interface to configure test parameters (part number, operator data), initiate the automated test sequence, and manage results.
-            </li>
-            <li>
-                <strong>Automated Data Processing & Reporting:</strong>
-                <ul>
-                    <li>The system automatically performs a sequence of 5 measurements, then applies a **statistical filtering algorithm** (discarding min/max values and averaging the rest) to ensure data robustness against outliers.</li>
-                    <li>Results are stored in a local database to generate a pressure drop vs. fan speed characteristic curve.</li>
-                    <li>Operators can instantly generate a formal **PDF report** with an automatic timestamp or **export raw data to CSV** for further analysis.</li>
-                </ul>
-            </li>
-        </ol>
     </div>
 
-    <!-- GALLERY / SLIDER -->
+    <!-- ===== GALLERY / SLIDER ===== -->
     <div class="section">
         <h2>System Showcase</h2>
-        <div class="slider">
 
+        <div class="slider">
             <div class="slide active">
                 <a href="https://www.youtube.com/watch?v=MgP70IJzZ-o" target="_blank">
                     <img src="https://img.youtube.com/vi/MgP70IJzZ-o/maxresdefault.jpg" alt="SBSC Test Stand in Action">
@@ -91,32 +88,52 @@
             </div>
 
             <div class="slide">
-                <!-- Pamiętaj, żeby wgrać to zdjęcie do folderu /images/ -->
                 <img src="../images/sbsc-app-screenshot.jpg" alt="Desktop Application HMI">
                 <div class="caption">
                     HMI of the Desktop Control Application (C#/.NET)
                 </div>
             </div>
 
-            <!-- Możesz tu dodać więcej slajdów, np. ze zdjęciem raportu PDF -->
-
             <button class="prev">❮</button>
             <button class="next">❯</button>
-
         </div>
     </div>
 
-    <!-- BACK BUTTON -->
+    <!-- ===== BACK BUTTON ===== -->
     <div class="back-wrapper">
         <a href="../index.html" class="back-btn">
             ← Back to Portfolio
         </a>
     </div>
 
-</section>
+</div>
 
-<!-- Globalny skrypt JS -->
-<script src="../js/script.js"></script>
+
+<!-- ================= PAGE SCRIPT ================= -->
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const next = document.querySelector('.next');
+    const prev = document.querySelector('.prev');
+
+    if (slides.length > 0) {
+        let index = 0;
+
+        function showSlide(i) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[i].classList.add('active');
+        }
+
+        next.addEventListener('click', () => {
+            index = (index + 1) % slides.length;
+            showSlide(index);
+        });
+
+        prev.addEventListener('click', () => {
+            index = (index - 1 + slides.length) % slides.length;
+            showSlide(index);
+        });
+    }
+</script>
 
 </body>
 </html>
