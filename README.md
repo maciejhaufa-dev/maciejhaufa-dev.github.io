@@ -45,7 +45,7 @@ You can view the live version of the portfolio here:
 
 Full details and case studies are available on the [Live Website](https://maciejhaufa-dev.github.io).
 
-*   **BWP "Borsuk" PowerPack Diagnostics:** Lead R&D Engineer for drive unit diagnostics & field calibration (570kN).
+*   **BWP "Borsuk" PowerPack Diagnostics:** Lead R&D Engineer for drive unit diagnostics & field calibration (530kN).
 *   **BWR-1S/1D Deep Upgrade:** Lead System Integrator for military reconnaissance vehicles.
 *   **Viperwing Simulators:** Project Manager for 1:1 F-16/F-35 combat simulators.
 *   **Distributed Stage System:** Wireless DMX control via ESP-NOW protocol.
