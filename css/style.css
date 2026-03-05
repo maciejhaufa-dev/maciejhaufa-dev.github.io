@@ -340,6 +340,40 @@ header {
     opacity: 0.7;
 }
 
+/* =====================================================
+   BIO SECTION (pod nagłówkiem)
+===================================================== */
+.bio-section {
+    background-color: #e2e8f0; /* Lekko inny odcień niż tło, żeby się wyróżniało */
+    padding: 3rem 2rem;
+    border-bottom: 1px solid #cbd5e1;
+}
+
+.bio-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bio-container h2 {
+    font-size: 1.8rem;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.bio-container p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-main);
+    max-width: 800px;
+    margin: 0 auto 1rem auto;
+}
+
+.bio-container p strong {
+    color: var(--primary);
+    font-weight: 700;
+}
 
 /* =====================================================
    RESPONSIVE
