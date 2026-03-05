@@ -252,3 +252,78 @@ header {
         font-size: 1.4rem;
     }
 }
+/* =====================================================
+   POPRAWKA UKŁADU BIO & SKILLS
+===================================================== */
+
+/* Styl dla całej sekcji */
+.intro-section {
+    background-color: white;
+    padding: 5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Układ dwukolumnowy na PC */
+.intro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+/* Style dla tekstu BIO po lewej */
+.intro-text {
+    text-align: left;
+}
+.intro-text h2 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+.contact-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    margin-top: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: white;
+    background-color: var(--primary);
+    border-radius: 8px;
+}
+
+/* Style dla SKILLS po prawej */
+.skills-showcase {
+    text-align: left;
+}
+.skills-showcase .skills-group {
+    margin-bottom: 1.5rem;
+}
+.skills-showcase .skills-label {
+    text-align: left;
+}
+.skills-showcase .skill-tag {
+    margin-left: 0;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+/* Układ jednokolumnowy na mobile */
+@media (max-width: 992px) {
+    .intro-container {
+        grid-template-columns: 1fr; /* Zmiana na jedną kolumnę */
+        gap: 3rem;
+    }
+    .intro-text, .skills-showcase {
+        text-align: center; /* Wycentrowanie dla estetyki na mobile */
+    }
+    .skills-showcase .skills-label {
+        text-align: center;
+    }
+}
