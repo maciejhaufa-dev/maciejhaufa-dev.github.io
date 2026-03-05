@@ -339,26 +339,26 @@ header {
     margin-top: 0.5rem;
     opacity: 0.7;
 }
-
 /* =====================================================
    NOWA SEKCJA INTRO (BIO + SKILLS)
 ===================================================== */
 .intro-section {
-    background-color: white; /* Czyste, białe tło jak dla skillsów */
-    padding: 4rem 2rem;
+    background-color: white;
+    padding: 5rem 2rem; /* Większy padding dla oddechu */
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .intro-container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.2fr 1fr; /* Dwie kolumny, tekst ma więcej miejsca */
+    grid-template-columns: 1.2fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: flex-start; /* Wyrównanie do góry, nie do środka */
 }
 
 .intro-text h2 {
-    font-size: 2.2rem;
+    font-size: 2.5rem; /* Nieco większy, mocniejszy nagłówek */
     color: var(--dark);
     margin-bottom: 1.5rem;
     font-weight: 800;
@@ -367,7 +367,7 @@ header {
 
 .intro-text p {
     font-size: 1.1rem;
-    line-height: 1.7;
+    line-height: 1.8; /* Większa interlinia dla czytelności */
     color: var(--text-light);
     margin-bottom: 1.5rem;
 }
@@ -381,7 +381,7 @@ header {
     display: inline-block;
     background: var(--primary);
     color: white;
-    padding: 12px 24px;
+    padding: 12px 28px; /* Lekko większy przycisk */
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
@@ -393,12 +393,9 @@ header {
     background: var(--primary-dark);
 }
 
-/* Dostosowanie kontenera na skille */
-.skills-showcase .skills-container {
-    padding: 0; /* Usuwamy dodatkowy padding */
-    box-shadow: none; /* Usuwamy cień, bo jest już w białym tle */
-    margin: 0;
-    text-align: left; /* Wyrównanie do lewej! */
+/* Teraz stylujemy bezpośrednio .skills-showcase, a nie .skills-container */
+.skills-showcase {
+    text-align: left; /* Zapewnia wyrównanie do lewej */
 }
 
 .skills-showcase .skills-label {
@@ -408,101 +405,22 @@ header {
 .skills-showcase .skill-tag {
     margin-left: 0;
     margin-right: 8px;
+    margin-bottom: 8px; /* Dodatkowy odstęp, żeby tagi się nie sklejały */
 }
 
 /* Responsywność dla nowej sekcji */
 @media (max-width: 992px) {
     .intro-container {
-        grid-template-columns: 1fr; /* Na tabletach i telefonach jedna kolumna */
+        grid-template-columns: 1fr;
         gap: 3rem;
     }
-    .intro-text, .skills-showcase .skills-container {
-        text-align: center; /* Na mniejszych ekranach wracamy do centrowania */
+    .intro-text {
+        text-align: center; /* Na mniejszych ekranach tekst jest wycentrowany */
+    }
+    .skills-showcase {
+        text-align: center; /* Na mniejszych ekranach skille też są wycentrowane */
     }
     .skills-showcase .skills-label {
         text-align: center;
     }
-}
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media (max-width: 768px) {
-
-    .container {
-        padding: 1rem;
-    }
-
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-    }
-
-    .header-text h1 {
-        font-size: 2.2rem;
-    }
-
-    .category-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .category-line {
-        width: 100%;
-    }
-
-    .category-header h2 {
-        font-size: 1.4rem;
-    }
-
-}
-/* Nowy wrapper dla karty, żeby była linkiem */
-.project-card-link {
-    text-decoration: none; /* Usuwa podkreślenie z linku */
-    color: inherit; /* Karta dziedziczy kolor tekstu, nie jest niebieska */
-    display: block; /* Sprawia, że link zachowuje się jak blok */
-}
-
-/* Modyfikacja .project-card, żeby nie miała paddingu */
-.project-card {
-    padding: 0; /* Usuwamy stary padding, bo teraz content jest w środku */
-    overflow: hidden; /* Zapobiega wychodzeniu obrazka poza zaokrąglone rogi */
-}
-
-/* Nowe style dla miniatury */
-.card-thumbnail {
-    width: 100%;
-    height: 200px; /* Stała wysokość dla wszystkich miniatur */
-    overflow: hidden;
-}
-
-.card-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Skaluje obrazek, żeby idealnie wypełnił ramkę */
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Efekt "zoom" na miniaturze po najechaniu na kartę */
-.project-card:hover .card-thumbnail img {
-    transform: scale(1.05);
-}
-
-/* Nowy kontener na treść karty */
-.card-content {
-    padding: 1.5rem; /* Przenosimy padding tutaj */
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-/* Poprawka dla równych wysokości kart projektów */
-.project-card-link {
-    display: flex; /* Sprawia, że link-kontener jest elastyczny */
-}
-
-.project-card {
-    width: 100%;   /* Upewniamy się, że karta zajmuje całą szerokość linku */
 }
