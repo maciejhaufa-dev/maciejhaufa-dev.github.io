@@ -513,3 +513,19 @@ header {
         text-align: center;
     }
 }
+/* =====================================================
+   MARGINESY I PROPORCJE MINIATUR
+===================================================== */
+
+/* 1. Przywrócenie kontenera z marginesami dla siatki projektów */
+.project-grid {
+    /* Upewniamy się, że siatka jest w kontenerze, ale jeśli nie, to ten kod zadziała jako zabezpieczenie */
+    max-width: 1200px; /* Maksymalna szerokość jak w .container */
+    margin: 0 auto;    /* Wycentrowanie siatki */
+}
+
+/* 2. Poprawka dla miniatur, żeby nie były ucięte */
+.card-thumbnail img {
+    object-fit: contain; /* Zamiast 'cover', używamy 'contain' */
+    background-color: #f0f4f8; /* Dodajemy subtelne tło, żeby nie było białych pasów */
+}
