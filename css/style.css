@@ -341,38 +341,87 @@ header {
 }
 
 /* =====================================================
-   BIO SECTION (pod nagłówkiem)
+   NOWA SEKCJA INTRO (BIO + SKILLS)
 ===================================================== */
-.bio-section {
-    background-color: #e2e8f0; /* Lekko inny odcień niż tło, żeby się wyróżniało */
-    padding: 3rem 2rem;
-    border-bottom: 1px solid #cbd5e1;
+.intro-section {
+    background-color: white; /* Czyste, białe tło jak dla skillsów */
+    padding: 4rem 2rem;
 }
 
-.bio-container {
-    max-width: 900px;
+.intro-container {
+    max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Dwie kolumny, tekst ma więcej miejsca */
+    gap: 4rem;
+    align-items: center;
 }
 
-.bio-container h2 {
-    font-size: 1.8rem;
+.intro-text h2 {
+    font-size: 2.2rem;
     color: var(--dark);
     margin-bottom: 1.5rem;
-    font-weight: 700;
+    font-weight: 800;
+    line-height: 1.2;
 }
 
-.bio-container p {
+.intro-text p {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: var(--text-main);
-    max-width: 800px;
-    margin: 0 auto 1rem auto;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
 }
 
-.bio-container p strong {
+.intro-text strong {
     color: var(--primary);
     font-weight: 700;
+}
+
+.contact-btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background-color 0.2s;
+}
+
+.contact-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* Dostosowanie kontenera na skille */
+.skills-showcase .skills-container {
+    padding: 0; /* Usuwamy dodatkowy padding */
+    box-shadow: none; /* Usuwamy cień, bo jest już w białym tle */
+    margin: 0;
+    text-align: left; /* Wyrównanie do lewej! */
+}
+
+.skills-showcase .skills-label {
+    text-align: left;
+}
+
+.skills-showcase .skill-tag {
+    margin-left: 0;
+    margin-right: 8px;
+}
+
+/* Responsywność dla nowej sekcji */
+@media (max-width: 992px) {
+    .intro-container {
+        grid-template-columns: 1fr; /* Na tabletach i telefonach jedna kolumna */
+        gap: 3rem;
+    }
+    .intro-text, .skills-showcase .skills-container {
+        text-align: center; /* Na mniejszych ekranach wracamy do centrowania */
+    }
+    .skills-showcase .skills-label {
+        text-align: center;
+    }
 }
 
 /* =====================================================
