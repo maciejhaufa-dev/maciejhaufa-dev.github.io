@@ -423,3 +423,93 @@ header {
 .project-card {
     width: 100%;   /* Upewniamy się, że karta zajmuje całą szerokość linku */
 }
+/* =====================================================
+   POPRAWKA STYLÓW DLA SEKCJI BIO I SKILLS
+===================================================== */
+
+/* Nowy kontener dla BIO, żeby oddzielić je od reszty */
+.bio-wrapper {
+    background-color: white; /* Ustawiamy białe tło dla całej sekcji */
+    padding: 4rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Usuwamy stare style z .bio-section i .skills-container, żeby nie było konfliktów */
+.bio-section, .skills-container {
+    background-color: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    text-align: left !important; /* Wszystko wyrównujemy do lewej */
+}
+
+/* Układ dwukolumnowy */
+.intro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Tekst ma więcej miejsca */
+    gap: 4rem;
+    align-items: flex-start; /* Wyrównanie do góry */
+}
+
+/* Style dla tekstu BIO w lewej kolumnie */
+.intro-text h2 {
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: left; /* Wymuszenie lewego wyrównania */
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    text-align: left; /* Wymuszenie lewego wyrównania */
+}
+
+.intro-text strong {
+    color: var(--primary);
+}
+
+.contact-btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+/* Style dla SKILLS w prawej kolumnie */
+.skills-showcase .skills-label {
+    text-align: left; /* Wymuszenie lewego wyrównania */
+}
+
+.skills-showcase .skill-tag {
+    margin-left: 0;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+/* Responsywność dla nowego układu */
+@media (max-width: 992px) {
+    .intro-container {
+        grid-template-columns: 1fr !important; /* Jedna kolumna na mniejszych ekranach */
+        gap: 3rem;
+    }
+
+    .intro-text, .skills-showcase {
+        text-align: center; /* Centrowanie na mobilnych dla estetyki */
+    }
+
+    .skills-showcase .skills-label {
+        text-align: center;
+    }
+}
