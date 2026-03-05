@@ -1,426 +1,49 @@
 /* =====================================================
-   VARIABLES
+   VARIABLES & GLOBAL RESET
 ===================================================== */
-
 :root {
-    --primary: #2563eb;
-    --primary-dark: #1e40af;
-    --dark: #0f172a;
-    --light: #cbd5e1;
-    --text-main: #334155;
-    --text-light: #64748b;
+    --primary: #2563eb; --primary-dark: #1e40af; --dark: #0f172a;
+    --light: #cbd5e1; --text-main: #334155; --text-light: #64748b;
     --accent-hw: #0ea5e9;
 }
-
-
-/* =====================================================
-   RESET & GLOBAL
-===================================================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    -webkit-text-size-adjust: 100%;
-    overflow-x: hidden;
-}
-
-body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    line-height: 1.6;
-    color: var(--text-main);
-    background: var(--light);
-    overflow-x: hidden;
-    width: 100%;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: var(--text-main); background: var(--light); }
 
 /* =====================================================
-   MAIN HEADER (Portfolio Homepage)
+   MAIN HEADER
 ===================================================== */
-
-header {
-    background: var(--dark);
-    color: white;
-    padding: 3rem 2rem;
-    border-bottom: 5px solid var(--primary);
-}
-
-.header-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    text-align: left;
-}
-
-.profile-img {
-    height: 220px;
-    width: auto;
-    max-width: 100%;
-    aspect-ratio: 166/221;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 4px solid white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-.profile-img:hover {
-    transform: scale(1.02);
-    transition: transform 0.3s;
-}
-
-.header-text h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.1;
-}
-
-.portfolio-label {
-    font-size: 0.9rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    opacity: 0.7;
-    margin-bottom: 0.8rem;
-    font-weight: 600;
-    color: #94a3b8;
-}
-
-.subtitle {
-    font-size: 1.3rem;
-    color: #e2e8f0;
-    margin-bottom: 1.5rem;
-    font-weight: 300;
-}
-
-.social-links {
-    display: flex;
-    gap: 20px;
-}
-
-.social-links a {
-    color: white;
-    font-size: 1.8rem;
-    transition: all 0.3s;
-    opacity: 0.8;
-}
-
-.social-links a:hover {
-    color: var(--primary);
-    opacity: 1;
-    transform: translateY(-3px);
-}
-
+header { background: var(--dark); color: white; padding: 3rem 2rem; border-bottom: 5px solid var(--primary); }
+.header-content { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 3rem; text-align: left; }
+.profile-img { height: 220px; width: auto; max-width: 100%; aspect-ratio: 166/221; object-fit: cover; border-radius: 12px; border: 4px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s; }
+.profile-img:hover { transform: scale(1.02); }
+.header-text h1 { font-size: 3rem; font-weight: 700; line-height: 1.1; }
+.portfolio-label { font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.8rem; font-weight: 600; color: #94a3b8; }
+.subtitle { font-size: 1.3rem; color: #e2e8f0; margin-bottom: 1.5rem; font-weight: 300; }
+.social-links { display: flex; gap: 20px; }
+.social-links a { color: white; font-size: 1.8rem; transition: all 0.3s; opacity: 0.8; }
+.social-links a:hover { color: var(--primary); opacity: 1; transform: translateY(-3px); }
 
 /* =====================================================
-   CONTAINER
+   INTRO SECTION (BIO + SKILLS)
 ===================================================== */
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-
-/* =====================================================
-   SKILLS SECTION
-===================================================== */
-
-.skills-container {
-    margin-bottom: 4rem;
-    text-align: center;
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-}
-
-.skills-group {
-    margin-bottom: 1.5rem;
-}
-
-.skills-label {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-light);
-    margin-bottom: 12px;
-    display: block;
-    font-weight: 700;
-}
-
-.skill-tag {
-    display: inline-block;
-    background: white;
-    border: 1px solid #e2e8f0;
-    padding: 6px 14px;
-    margin: 4px;
-    border-radius: 20px;
-    font-weight: 500;
-    color: var(--dark);
-    font-size: 0.9rem;
-    transition: transform 0.2s;
-}
-
-.skill-tag:hover {
-    transform: translateY(-2px);
-    border-color: var(--primary);
-}
-
-.skill-hw {
-    border-color: var(--accent-hw);
-    background: #f0f9ff;
-}
-
+.intro-section { background-color: white; padding: 5rem 2rem; border-bottom: 1px solid #e2e8f0; }
+.intro-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: flex-start; }
+.intro-text h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 1.5rem; font-weight: 800; line-height: 1.2; }
+.intro-text p { font-size: 1.1rem; line-height: 1.8; color: var(--text-light); margin-bottom: 1.5rem; }
+.intro-text strong { color: var(--primary); font-weight: 700; }
+.contact-btn { display: inline-block; background: var(--primary); color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 1rem; transition: background-color 0.2s; }
+.contact-btn:hover { background: var(--primary-dark); }
+.skills-showcase { text-align: left; }
+.skills-showcase .skills-label { text-align: left; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); margin-bottom: 12px; display: block; font-weight: 700; }
+.skills-showcase .skill-tag { display: inline-block; background: white; border: 1px solid #e2e8f0; padding: 6px 14px; margin: 4px 8px 8px 0; border-radius: 20px; font-weight: 500; color: var(--dark); font-size: 0.9rem; }
+.skills-showcase .skill-hw { border-color: var(--accent-hw); background: #f0f9ff; }
 
 /* =====================================================
    PROJECT CARDS
 ===================================================== */
-
-.category-header {
-    display: flex;
-    align-items: center;
-    margin: 4rem 0 2rem 0;
-}
-
-.category-header h2 {
-    font-size: 1.8rem;
-    margin-right: 1.5rem;
-    white-space: normal;
-}
-
-.category-line {
-    flex-grow: 1;
-    height: 2px;
-    background: #cbd5e1;
-    opacity: 0.5;
-}
-
-.project-grid {
-    display: grid;
-    /* Zamiast auto-fit, sztywno definiujemy 3 kolumny */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-/* Dodajemy responsywność, żeby na mniejszych ekranach było inaczej */
-@media (max-width: 1024px) {
-    .project-grid {
-        /* Na tabletach robimy 2 kolumny */
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .project-grid {
-        /* Na telefonach robimy 1 kolumnę */
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-}
-.project-card {
-    background: white;
-    border-radius: 10px;
-    padding: 1.8rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    border-top: 4px solid var(--primary);
-    transition: 0.2s;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-}
-
-.project-card h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
-.status {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    font-weight: 800;
-    margin-bottom: 0.8rem;
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-.status.done { color: #059669; background: #ecfdf5; }
-.status.wip { color: #d97706; background: #fffbeb; }
-
-.project-desc {
-    font-size: 0.95rem;
-    color: var(--text-light);
-    margin-bottom: 1.2rem;
-    flex-grow: 1;
-}
-
-.btn-more {
-    display: inline-flex;
-    align-items: center;
-    color: var(--primary);
-    font-weight: 600;
-    text-decoration: none;
-    margin-bottom: 1rem;
-}
-
-.btn-more:hover {
-    color: var(--primary-dark);
-}
-
-.tech-stack-mini {
-    font-size: 0.85rem;
-    font-weight: 600;
-    border-top: 1px solid #f1f5f9;
-    padding-top: 1rem;
-}
-
-
-/* =====================================================
-   PROJECT HERO (Subpages)
-===================================================== */
-
-.project-hero {
-    background: var(--dark);
-    color: white;
-    padding: 4rem 2rem;
-}
-
-.project-hero-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.project-badges {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.badge-live {
-    background: #ecfdf5;
-    color: #059669;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.badge-probono {
-    background: #eef2ff;
-    color: #4338ca;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.project-hero h1 {
-    margin-top: 1.5rem;
-    font-size: 2.3rem;
-}
-
-.project-lead {
-    margin-top: 1rem;
-    max-width: 800px;
-    opacity: 0.9;
-}
-
-.project-subnote {
-    margin-top: 0.5rem;
-    opacity: 0.7;
-}
-/* =====================================================
-   NOWA SEKCJA INTRO (BIO + SKILLS)
-===================================================== */
-.intro-section {
-    background-color: white;
-    padding: 5rem 2rem; /* Większy padding dla oddechu */
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.intro-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 4rem;
-    align-items: flex-start; /* Wyrównanie do góry, nie do środka */
-}
-
-.intro-text h2 {
-    font-size: 2.5rem; /* Nieco większy, mocniejszy nagłówek */
-    color: var(--dark);
-    margin-bottom: 1.5rem;
-    font-weight: 800;
-    line-height: 1.2;
-}
-
-.intro-text p {
-    font-size: 1.1rem;
-    line-height: 1.8; /* Większa interlinia dla czytelności */
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
-}
-
-.intro-text strong {
-    color: var(--primary);
-    font-weight: 700;
-}
-
-.contact-btn {
-    display: inline-block;
-    background: var(--primary);
-    color: white;
-    padding: 12px 28px; /* Lekko większy przycisk */
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: 1rem;
-    transition: background-color 0.2s;
-}
-
-.contact-btn:hover {
-    background: var(--primary-dark);
-}
-
-/* Teraz stylujemy bezpośrednio .skills-showcase, a nie .skills-container */
-.skills-showcase {
-    text-align: left; /* Zapewnia wyrównanie do lewej */
-}
-
-.skills-showcase .skills-label {
-    text-align: left;
-}
-
-.skills-showcase .skill-tag {
-    margin-left: 0;
-    margin-right: 8px;
-    margin-bottom: 8px; /* Dodatkowy odstęp, żeby tagi się nie sklejały */
-}
-
-/* Responsywność dla nowej sekcji */
-@media (max-width: 992px) {
-    .intro-container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    .intro-text {
-        text-align: center; /* Na mniejszych ekranach tekst jest wycentrowany */
-    }
-    .skills-showcase {
-        text-align: center; /* Na mniejszych ekranach skille też są wycentrowane */
-    }
-    .skills-showcase .skills-label {
-        text-align: center;
-    }
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+.category-header { display: flex; align-items: center; margin: 4rem 0 2rem 0; }
+.category-header h2 { font-size: 1.8rem; margin-right: 1.5rem; white-space: normal; }
+.category-line { flex-grow: 1; height: 2px; background: #cbd5e1; opacity: 0.5; }
+.project-grid { 
