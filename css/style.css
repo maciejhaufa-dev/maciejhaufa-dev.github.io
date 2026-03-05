@@ -306,13 +306,33 @@ header {
     margin-bottom: 1.5rem;
 }
 .skills-showcase .skills-label {
+    display: block; /* Wymusza, aby nagłówek był w osobnej linii */
     text-align: left;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    margin-bottom: 1rem; /* Zwiększony margines dla czytelności */
+    font-weight: 700;
 }
+
 .skills-showcase .skill-tag {
-    margin-left: 0;
-    margin-right: 8px;
-    margin-bottom: 8px;
+    display: inline-block; /* To sprawia, że tagi znów są kafelkami */
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 6px 14px;
+    margin: 0 8px 8px 0; /* Uporządkowane marginesy */
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    line-height: 1.2; /* Lepsze wyrównanie tekstu wewnątrz tagu */
 }
+.skills-showcase .skill-hw {
+    border-color: var(--accent-hw);
+    background-color: #f0f9ff;
+}
+
 
 /* Układ jednokolumnowy na mobile */
 @media (max-width: 992px) {
@@ -327,3 +347,4 @@ header {
         text-align: center;
     }
 }
+
