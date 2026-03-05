@@ -90,3 +90,106 @@ header { background: var(--dark); color: white; padding: 3rem 2rem; border-botto
     .category-header h2 { font-size: 1.4rem; }
     .category-line { width: 100%; }
 }
+/* =====================================================
+   NADPISANIE STYLÓW
+===================================================== */
+
+/* Przywrócenie oryginalnego paddingu dla .project-card */
+.project-card {
+    padding: 1.8rem !important; /* Używamy !important, żeby mieć pewność nadpisania */
+    overflow: visible !important; /* Przywracamy, żeby cienie nie były obcinane */
+    width: auto !important; /* Resetujemy szerokość */
+}
+
+/* Przywrócenie działania .project-card-link */
+.project-card-link {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block !important;
+}
+
+/* Ukrywamy stare klasy, których nie używamy w nowym layoucie */
+.card-thumbnail, .card-content {
+    display: none !important;
+}
+
+/* NOWA SEKCJA INTRO (BIO + SKILLS) - Poprawione style */
+.intro-section {
+    background-color: white;
+    padding: 4rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.intro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+.intro-text h2 {
+    font-size: 2.2rem;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.contact-btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+/* Style dla sekcji skills w nowym layoucie */
+.skills-showcase {
+    text-align: left;
+}
+.skills-showcase .skills-group {
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+}
+.skills-showcase .skills-label {
+    text-align: left;
+}
+.skills-showcase .skill-tag {
+    margin-left: 0;
+    margin-right: 8px;
+}
+
+/* RESPONSIVE DLA NOWEJ SEKCJI INTRO (MOBILNA) */
+@media (max-width: 992px) {
+    .intro-container {
+        grid-template-columns: 1fr !important; /* ZAWSZE jedna kolumna na mniejszych ekranach */
+        gap: 3rem;
+    }
+    .intro-text, .skills-showcase {
+        text-align: center; /* Centrowanie na mobilnych */
+    }
+    .skills-showcase .skills-label {
+        text-align: center;
+    }
+}
+
+/* Poprawka zdjęcia profilowego na mobilnych */
+@media (max-width: 768px) {
+    .profile-img {
+        width: 180px !important;
+        height: auto !important;
+    }
+}
