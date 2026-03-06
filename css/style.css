@@ -319,7 +319,7 @@ header {
 }
 
 .skills-showcase .skill-tag {
-    display: inline-block; /* To sprawia, że tagi znów są kafelkami */
+    display: inline-block;
     background: white;
     border: 1px solid #e2e8f0;
     padding: 6px 14px;
@@ -454,11 +454,12 @@ skills-showcase .skill-b {
     }
 }
 /* Styl dla certyfikatów SEP */
-.sep-cert {
-    background-color: #fffbeb; /* Żółtawy kolor, jak ostrzeżenie / energia */
-    color: #b45309;
+
+.skills-showcase .skill-tag.sep-cert {
+    background-color: #fffbeb !important;
+    color: #b45309 !important;
+    border-color: #fde68a !important;
     font-weight: 600;
-    border-color: #fde68a;
 }
 /* Kontener na całą sekcję z logami w nagłówku podstrony */
 .vetted-by {
