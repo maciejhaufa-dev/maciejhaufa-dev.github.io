@@ -357,4 +357,100 @@ skills-showcase .skill-b {
         text-align: center;
     }
 }
+/* ######################## DODANO STYLE DO SEKCJI ACHIVENEMTS ##########################*/
+/* =====================================================
+   ACADEMIC ACHIEVEMENTS SECTION
+===================================================== */
+.academic-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    overflow: hidden; /* Ważne, żeby obrazek nie wychodził poza zaokrąglone rogi */
+}
+
+.academic-text {
+    padding: 3rem;
+}
+
+.academic-text h2 {
+    font-size: 1.8rem;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+}
+
+.academic-text p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.academic-text h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #d97706; /* Złoty akcent */
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.academic-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.academic-text ul li {
+    margin-bottom: 0.5rem;
+}
+
+.academic-visual {
+    height: 100%;
+}
+
+.visual-link {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.visual-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.visual-link:hover img {
+    transform: scale(1.05);
+}
+
+.visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    color: white;
+    text-align: left;
+}
+
+.visual-overlay h3 {
+    font-size: 1.5rem;
+}
+
+.visual-overlay p {
+    opacity: 0.8;
+}
+
+@media (max-width: 992px) {
+    .academic-card {
+        grid-template-columns: 1fr;
+    }
+    .academic-visual {
+        height: 300px; /* Stała wysokość na mobile */
+    }
+}
 
