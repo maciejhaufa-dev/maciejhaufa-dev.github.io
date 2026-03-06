@@ -505,3 +505,18 @@ skills-showcase .skill-b {
     filter: none; /* Zdejmuje filtr - logo staje się kolorowe (jeśli jest) i w oryginalnej jasności */
     opacity: 1;   /* Pełna widoczność */
 }
+
+/* =====================================================
+  ROZJAŚNIENIE CIEMNEGO LOGO
+===================================================== */
+
+/* Specjalny styl dla ciemnych logotypów, które trzeba "odwrócić" */
+.logo-strip .logo-inverted {
+    filter: brightness(0) invert(1); /* Magiczny trik: zamienia czarne na białe */
+    opacity: 0.7;
+}
+
+.logo-strip .logo-inverted:hover {
+    filter: none; /* Po najechaniu wraca do oryginału */
+    opacity: 1;
+}
