@@ -9,6 +9,8 @@
     --text-main: #334155;
     --text-light: #64748b;
     --accent-hw: #0ea5e9;
+    --accent-a: #ef4444;
+    --accent-b: #7c3aea;
 }
 
 /* =====================================================
@@ -333,11 +335,11 @@ header {
     background-color: #f0f9ff;
 }
 skills-showcase .skill-a {
-    border-color: var(--accent-hw);
+    border-color: var(--accent-a);
     background-color: #ef4444;
 }
 skills-showcase .skill-b {
-    border-color: var(--accent-hw);
+    border-color: var(--accent-b);
     background-color: #7c3aed;
 }
 
