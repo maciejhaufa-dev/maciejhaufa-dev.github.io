@@ -490,7 +490,7 @@ skills-showcase .skill-b {
 
 /* Styl dla każdego obrazka z logo */
 .logo-strip img {
-    height: 30px; /* Stała wysokość dla wszystkich logotypów */
+    height: 80px; /* Stała wysokość dla wszystkich logotypów */
     width: auto;  /* Szerokość dopasowuje się automatycznie */
     
    
