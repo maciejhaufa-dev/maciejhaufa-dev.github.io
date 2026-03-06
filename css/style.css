@@ -460,13 +460,14 @@ skills-showcase .skill-b {
     font-weight: 600;
     border-color: #fde68a;
 }
-/* Styl dla sekcji z logami "Judged by" */
+/* Kontener na całą sekcję z logami w nagłówku podstrony */
 .vetted-by {
     margin-top: 2.5rem;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Tekst nad logami, np. "Judged by..." */
 .vetted-by span {
     display: block;
     text-align: center;
@@ -477,6 +478,7 @@ skills-showcase .skill-b {
     margin-bottom: 1.5rem;
 }
 
+/* Kontener na same loga */
 .logo-strip {
     display: flex;
     justify-content: center;
@@ -485,15 +487,20 @@ skills-showcase .skill-b {
     flex-wrap: wrap;
 }
 
+/* Styl dla każdego obrazka z logo */
 .logo-strip img {
     height: 30px; /* Stała wysokość dla wszystkich logotypów */
-    width: auto;
-    filter: grayscale(100%) brightness(1.5); /* Efekt skali szarości, żeby nie były krzykliwe */
-    opacity: 0.7;
-    transition: all 0.3s;
+    width: auto;  /* Szerokość dopasowuje się automatycznie */
+    
+   
+    filter: grayscale(100%) brightness(1.5); /* Zamienia logo na skalę szarości i lekko je rozjaśnia */
+    
+    opacity: 0.7; /* Lekko je przygasza, żeby nie rzucało się w oczy */
+    transition: all 0.3s; /* Płynne przejście efektu */
 }
 
+/* Efekt po najechaniu myszką */
 .logo-strip img:hover {
-    filter: grayscale(0%) brightness(1);
-    opacity: 1;
+    filter: none; /* Zdejmuje filtr - logo staje się kolorowe (jeśli jest) i w oryginalnej jasności */
+    opacity: 1;   /* Pełna widoczność */
 }
