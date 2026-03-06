@@ -453,4 +453,10 @@ skills-showcase .skill-b {
         height: 300px; /* Stała wysokość na mobile */
     }
 }
-
+/* Styl dla certyfikatów SEP */
+.sep-cert {
+    background-color: #fffbeb; /* Żółtawy kolor, jak ostrzeżenie / energia */
+    color: #b45309;
+    font-weight: 600;
+    border-color: #fde68a;
+}
