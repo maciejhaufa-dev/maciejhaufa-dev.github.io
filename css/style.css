@@ -332,6 +332,14 @@ header {
     border-color: var(--accent-hw);
     background-color: #f0f9ff;
 }
+skills-showcase .skill-a {
+    border-color: var(--accent-hw);
+    background-color: #ef4444;
+}
+skills-showcase .skill-b {
+    border-color: var(--accent-hw);
+    background-color: #7c3aed;
+}
 
 
 /* Układ jednokolumnowy na mobile */
