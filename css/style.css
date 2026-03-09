@@ -254,9 +254,6 @@ header {
         font-size: 1.4rem;
     }
 }
-/* =====================================================
-   POPRAWKA UKŁADU BIO & SKILLS
-===================================================== */
 
 /* Styl dla całej sekcji */
 .intro-section {
@@ -334,13 +331,34 @@ header {
     border-color: var(--accent-hw);
     background-color: #f0f9ff;
 }
-skills-showcase .skill-a {
+.skills-showcase .skill-tag.skill-a {
     border-color: var(--accent-a);
     background-color: #ef4444;
 }
-skills-showcase .skill-b {
+.skills-showcase .skill-tag.skill-b   {
     border-color: var(--accent-b);
     background-color: #7c3aed;
+}
+/* =====================================================
+   SOFT SKILLS - NOWE KATEGORIE
+===================================================== */
+
+/* Project Management - zielony */
+.skills-showcase .skill-tag.skill-pm {
+    border-color: #10b981;
+    background-color: #ecfdf5;
+}
+
+/* Technical Leadership - pomarańczowy/złoty */
+.skills-showcase .skill-tag.skill-lead {
+    border-color: #f59e0b;
+    background-color: #fffbeb;
+}
+
+/* Engineering Approach - fioletowy */
+.skills-showcase .skill-tag.skill-approach {
+    border-color: #8b5cf6;
+    background-color: #f5f3ff;
 }
 
 
