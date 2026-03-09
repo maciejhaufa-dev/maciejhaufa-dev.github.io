@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFID Drink Bar System | Maciej Haufa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css"> <!-- Ścieżka do głównego CSS -->
+    <link rel="stylesheet" href="../css/project-stage.css"> <!-- Ścieżka do CSS podstron -->
+    <style>
+        /* Dodatkowe style specyficzne dla tej podstrony */
+        .project-hero-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border: 1px solid #e2e8f0;
+        }
+        .meta-item strong {
+            display: block;
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+            background: #000;
+        }
+        .video-container iframe, .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .arch-box {
+            background: white;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 0 8px 8px 0;
+        }
+        @media (max-width: 768px) {
+            .architecture-grid { grid-template-columns: 1fr; }
+            .project-hero-img { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header style="padding: 2rem; text-align: center;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">RFID Self-Service Drink Bar</h1>
+        <p class="subtitle" style="margin-bottom: 0;">End-to-End Commercial IoT Deployment</p>
+    </header>
+
+    <div class="project-container">
+        
+        <!-- MIEJSCE NA ŁADNE ZDJĘCIE Z FACEBOOKA (np. ściana z kranami) -->
+        <img src="../images/piwo-ty-nalewasz.jpg" alt="Deployed RFID Tap System" class="project-hero-img">
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <strong>Role</strong>
+                Lead Embedded Engineer
+            </div>
+            <div class="meta-item">
+                <strong>Status</strong>
+                Deployed & Commercialized
+            </div>
+            <div class="meta-item">
+                <strong>Key Tech</strong>
+                ESP32, RFID, SPIFFS, Web HMI
+            </div>
+            <div class="meta-item">
+                <strong>Scale</strong>
+                20 Independent Tap Nodes
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-flag"></i> Project Context & The Challenge</h2>
+            <p>
+                The client aimed to create a self-service, automated pub experience where customers use prepaid RFID cards to pour their own drinks. The initial conceptual work ran into severe technical roadblocks regarding hardware reliability and software architecture.
+            </p>
+            <p>
+                I was brought in to take ownership of the project, re-engineer the system architecture, and deliver a robust, <strong>End-to-End (E2E) solution</strong> that could scale to 20 independent pouring stations while adhering to the client's chosen hardware ecosystem (ESP32).
+            </p>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-microchip"></i> System Architecture</h2>
+            <p>
+                Instead of relying on a single central server that could act as a single point of failure, I designed a distributed edge-computing architecture. Each tap operates as an independent node.
+            </p>
+            
+            <div class="architecture-grid">
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-server"></i> Embedded Web Server (HMI)</h3>
+                    <p style="font-size: 0.95rem;">Each ESP32 hosts its own localized Web HMI stored in SPIFFS memory (HTML/CSS/JS). A dedicated tablet at each tap displays this interface. The background is a dynamically loaded beer banner, while an overlay displays real-time wallet balance and pouring status.</p>
+                </div>
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-tint"></i> Real-Time Hardware Logic</h3>
+                    <p style="font-size: 0.95rem;">When an authorized RFID card is inserted, a relay unlocks the solenoid valve. Hardware interrupts from a flowmeter count the liquid volume in real-time, recalculating the cost and deducting it from the prepaid card. If the balance hits zero, the valve shuts instantly.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-flask"></i> Behind the Scenes: Prototyping & Validation</h2>
+            <p>
+                Before finalizing the PCBs and hiding the electronics inside the pub's custom woodwork, the core logic had to be flawlessly validated. The video below demonstrates the <strong>functional MVP</strong> (Minimum Viable Product) during client acceptance testing. It highlights the real-time interaction between the RFID reader, flowmeter logic, and the localized Web HMI.
+            </p>
+
+            <!-- KONTENER NA WIDEO -->
+            <div class="video-container">
+
+                <iframe src="https://www.youtube.com/watch?v=qhvmtHktqt0" frameborder="0" allowfullscreen></iframe>
+                
+            </div>
+            <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: -1rem;">
+                <em>Engineering Prototype: Validating hardware interrupts, RFID polling, and SPIFFS web-server latency.</em>
+            </p>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-check-circle"></i> Business Outcome</h2>
+            <p>
+                The system was successfully deployed across 20 taps. The distributed architecture ensured that if one tap required maintenance, the remaining 19 continued to generate revenue. By integrating the logic directly onto the edge nodes, latency between the physical pour and the HMI update was practically eliminated, resulting in a seamless experience for the end-user.
+            </p>
+        </div>
+
+        <div class="back-wrapper">
+            <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <center><p style="margin-top: 2rem; color: #64748b;">&copy; <span id="current-year"></span> Maciej Haufa. Portfolio hosted on GitHub Pages.</p></center>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
