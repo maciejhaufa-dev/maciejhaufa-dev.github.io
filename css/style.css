@@ -319,6 +319,32 @@ header {
 }
 
 /* --- SKILLS GRID (DÓŁ) --- */
+
+/* Nowy kontener spinający cały blok kompetencji */
+.skills-section-wrapper {
+    width: 100%;
+}
+
+/* Nowy elegancki nagłówek dla całej sekcji skilli */
+.skills-main-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--dark);
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+/* Niebieska linia podkreślająca tytuł (profesjonalny akcent) */
+.skills-main-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary);
+    margin: 0.8rem auto 0;
+    border-radius: 2px;
+}
+
 .skills-showcase {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -400,6 +426,9 @@ header {
         text-align: left; /* Wyłączenie justowania na telefonie */
         text-indent: 0;   /* Wyłączenie wcięcia na telefonie */
         font-size: 1.05rem;
+    }
+    .skills-main-title {
+        font-size: 1.6rem;
     }
 }
 
