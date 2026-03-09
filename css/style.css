@@ -327,18 +327,20 @@ header {
     color: var(--text-main);
     line-height: 1.2; /* Lepsze wyrównanie tekstu wewnątrz tagu */
 }
-.skills-showcase .skill-hw {
+.skills-showcase .skill-b {
     border-color: var(--accent-hw);
     background-color: #f0f9ff;
 }
-.skills-showcase .skill-tag.skill-a {
-    border-color: var(--accent-a);
-    background-color: #ef4444;
+.skills-showcase .skill-tag.skill-b {
+    border-color: var(--accent-hw);
+    background-color: #f5a4a4;
 }
-.skills-showcase .skill-tag.skill-b   {
+.skills-showcase .skill-tag.skill-a   {
     border-color: var(--accent-b);
-    background-color: #7c3aed;
+    background-color: #bda2eb;
 }
+
+
 /* =====================================================
    SOFT SKILLS - NOWE KATEGORIE
 ===================================================== */
