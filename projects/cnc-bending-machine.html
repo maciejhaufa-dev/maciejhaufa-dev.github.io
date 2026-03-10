@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNC Bending Machine Controller | Maciej Haufa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-stage.css">
+</head>
+<body>
+
+    <header style="padding: 2rem; text-align: center;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">CNC Bending Machine Controller</h1>
+        <p class="subtitle" style="margin-bottom: 0;">Industrial Automation & Kinematic Tracking</p>
+    </header>
+
+    <div class="project-container">
+        
+        <!-- Główne zdjęcie wyciągnięte z klatki filmu -->
+        <img src="../images/bending-machine-hero.jpg" alt="CNC Controller Panel" class="project-hero-img" style="object-fit: cover; background: #1e293b;">
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <strong>Industry</strong>
+                Maritime Manufacturing
+            </div>
+            <div class="meta-item">
+                <strong>Hardware</strong>
+                Arduino Mega, LCD, Relays
+            </div>
+            <div class="meta-item">
+                <strong>Sensors</strong>
+                3x Industrial Rotary Encoders
+            </div>
+            <div class="meta-item">
+                <strong>Actuation</strong>
+                3-Phase Geared Motor (Reversible)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-industry"></i> Project Context & The Challenge</h2>
+            <p>
+                The client—a manufacturer of electric boats (the same client for whom I developed the Boat Sharing system)—needed a reliable way to manufacture custom stainless steel railings and structural mounts from raw 6-meter pipes. 
+            </p>
+            <p>
+                Manual bending was error-prone and lacked repeatability. I was tasked with designing a custom CNC control system to retrofit a heavy-duty mechanical bender, providing the operator with real-time positional data and automated sequence execution to ensure precise, repeatable bends according to CAD technical drawings.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-project-diagram"></i> 3-Axis Kinematic Tracking & Firmware Optimization</h2>
+            <p>
+                To achieve absolute precision, the system monitors the spatial orientation of the pipe in real-time using three independent rotary encoders connected to an Arduino Mega via hardware interrupts.
+            </p>
+            
+            <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; padding: 1.2rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+                <h4 style="color: #0369a1; margin-bottom: 0.5rem;"><i class="fas fa-microchip"></i> Firmware Optimization: 4x Quadrature Decoding</h4>
+                <p style="font-size: 0.95rem; margin-bottom: 0;">
+                    The industrial encoders used had a native physical resolution of 400 Pulses Per Revolution (PPR). To maximize precision without increasing hardware costs, I implemented custom <strong>Software Quadrature Decoding</strong>. By evaluating both the rising and falling edges of the binary phase-shifted channels (A and B), I artificially quadrupled the system's resolution. This resulted in a staggering <strong>1,600 pulses per 360-degree rotation</strong> across all three axes, unlocking extreme sub-degree manufacturing precision.
+                </p>
+            </div>
+            
+            <div class="architecture-grid">
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Z-Axis: Linear Feed</h3>
+                    <p style="font-size: 0.95rem;">An encoder positioned under the track measures exactly how far the raw pipe has been pushed into the machine, pinpointing the exact location for the next bend.</p>
+                </div>
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">X-Axis: Axial Rotation</h3>
+                    <p style="font-size: 0.95rem;">Measures the rotation of the pipe along its own length. Essential for complex 3D structures where bends occur in multiple different spatial planes.</p>
+                </div>
+                <div class="arch-box" style="grid-column: 1 / -1;">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Y-Axis: Bend Angle (Motor Control)</h3>
+                    <p style="font-size: 0.95rem;">Attached to the bending mechanism itself. It tracks the physical angle of the die. Once the target angle is reached, the microcontroller instantly triggers the relay module to halt and reverse the 3-phase geared motor.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-desktop"></i> HMI UX & Automated Mass Production Logic</h2>
+            <p>
+                The Human-Machine Interface (4x20 LCD + Membrane Keypad) was designed strictly around operator efficiency. The screen is split into two distinct logical zones:
+                <strong>the left side displays the programmed target setpoints</strong>, while <strong>the right side displays real-time actual values</strong> read directly from the encoders.
+            </p>
+            <p>
+                Upon pressing "Start", the microcontroller engages the 3-phase motor relays and enters a high-speed polling loop. The moment the actual encoder reading matches the target setpoint, the system automatically cuts power and halts the bend with pinpoint accuracy.
+            </p>
+            
+            <ul style="margin-top: 1rem; list-style-type: square; padding-left: 2rem;">
+                <li style="margin-bottom: 0.8rem;">
+                    <strong>Sequence Programming & EEPROM:</strong> To support mass production, the operator can program a sequence of up to 20 consecutive operations (e.g., Feed, Rotate, Bend, Repeat). These recipes are saved directly to the MCU's non-volatile EEPROM, allowing the facility to power down the machine and perfectly resume producing the exact same part the next morning.
+                </li>
+                <li>
+                    <strong>Spring-Back Compensation:</strong> Stainless steel possesses significant elasticity. A 90-degree physical bend often springs back to 88 degrees once released. I implemented a programmable offset feature, allowing the operator to input a target of 90°, while the system automatically over-bends to 92° (or any calibrated value) to achieve the perfect final geometry.
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-video"></i> System Demonstration</h2>
+            <p>
+                The video below demonstrates the prototype controller navigating the programming menu, highlighting the real-time split-screen UI responding to encoder manipulation.
+            </p>
+
+            <!-- KONTENER NA WIDEO YOUTUBE -->
+            <div class="video-container">
+                <!-- Wklej tutaj swój link wygenerowany przez YouTube (Opcja "Umieść" / "Embed") -->
+                <iframe src="https://www.youtube.com/embed/TWOJ_ID_FILMU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="back-wrapper">
+            <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <center><p style="margin-top: 2rem; color: #64748b;">&copy; <span id="current-year"></span> Maciej Haufa. Portfolio hosted on GitHub Pages.</p></center>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
