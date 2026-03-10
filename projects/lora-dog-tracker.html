@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long-Range LoRa Telemetry System | Maciej Haufa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-stage.css">
+</head>
+<body>
+
+    <header style="padding: 2rem; text-align: center;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Long-Range LoRa Telemetry (DogTracker)</h1>
+        <p class="subtitle" style="margin-bottom: 0;">Edge-to-Cloud IoT Architecture & RF Communication</p>
+    </header>
+
+    <div class="project-container">
+        
+        <!-- MIEJSCE NA SCHEMAT BLOKOWY (zamiast zdjęcia!) -->
+        <img src="../images/dog-tracker-arch.png" alt="System Architecture Diagram" class="project-hero-img" style="object-fit: contain; background: #f8fafc; border: 1px solid #e2e8f0; padding: 2rem;">
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <strong>Tech Stack</strong>
+                C++, REST API, NMEA Parsing
+            </div>
+            <div class="meta-item">
+                <strong>RF Communication</strong>
+                LoRa (Long Range) up to 10km
+            </div>
+            <div class="meta-item">
+                <strong>Hardware</strong>
+                Arduino Micro IoT, GPS, BMP180
+            </div>
+            <div class="meta-item">
+                <strong>Cloud Services</strong>
+                Google Sheets API / Maps
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-map-marked-alt"></i> Project Context & Client Constraints</h2>
+            <p>
+                A local farmer approached me with a practical problem: his dog frequently escaped the property, making retrieval difficult across vast rural terrain. The client provided two Arduino Micro IoT boards and requested a custom tracking solution.
+            </p>
+            <p>
+                Cellular (GSM) coverage in the area was unreliable and required a paid subscription. Therefore, I designed a subscription-free, <strong>Edge-to-Cloud architecture relying on Long-Range RF communication (LoRa)</strong> to transmit telemetry data directly from the animal to a base station at the farm.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-network-wired"></i> Distributed System Architecture</h2>
+            <p>
+                The system was split into two distinct physical nodes, each with specific power and communication constraints:
+            </p>
+            
+            <div class="architecture-grid">
+                <!-- NADAJNIK (Edge Node) -->
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-broadcast-tower"></i> Mobile Edge Node (Transmitter)</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">A compact, battery-powered (3.7V) device attached to the collar. Its primary logic loop handled:</p>
+                    <ul style="font-size: 0.9rem; padding-left: 1.2rem;">
+                        <li><strong>GPS Parsing:</strong> Extracting real-time coordinate data via NMEA sentences.</li>
+                        <li><strong>Biological Status:</strong> Reading a BMP180 sensor (temperature/pressure)—a specific client request to monitor the animal's physical state.</li>
+                        <li><strong>Payload Packing:</strong> Serializing the data and transmitting it via the LoRa module.</li>
+                    </ul>
+                </div>
+
+                <!-- ODBIORNIK (Gateway Node) -->
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-home"></i> WiFi Gateway Node (Base Station)</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">Mounted at the client's home, this node acted as the bridge between the RF network and the Internet.</p>
+                    <ul style="font-size: 0.9rem; padding-left: 1.2rem;">
+                        <li><strong>RF Reception:</strong> Equipped with a 50cm, high-gain (15dB) SMA antenna mounted on the roof, achieving a tested range of up to 10km.</li>
+                        <li><strong>Network Translation:</strong> The microcontroller received the LoRa payload, connected to the local WiFi network, and established a secure TCP/IP connection.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" style="margin-top: 3rem;">
+            <h2><i class="fas fa-cloud-upload-alt"></i> Serverless Cloud Dashboard (Google API)</h2>
+            <p>
+                To provide the client with a user-friendly, zero-cost interface accessible from their smartphone, I integrated the Gateway Node with the <strong>Google Sheets REST API</strong>.
+            </p>
+            <p>
+                Every 10 seconds, the Gateway dispatched an HTTP POST request containing the parsed GPS coordinates and sensor data. The Google Sheet acted as a live database, dynamically updating a custom Google Maps link. This allowed the client to open an app on their phone and instantly see a real-time breadcrumb trail of the animal's movement across the terrain.
+            </p>
+        </div>
+
+        <div class="back-wrapper">
+            <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <center><p style="margin-top: 2rem; color: #64748b;">&copy; <span id="current-year"></span> Maciej Haufa. Portfolio hosted on GitHub Pages.</p></center>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
