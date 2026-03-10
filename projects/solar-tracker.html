@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual-Axis Solar Tracker | Maciej Haufa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-stage.css">
+</head>
+<body>
+
+    <header style="padding: 2rem; text-align: center;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Autonomous Dual-Axis Solar Tracker</h1>
+        <p class="subtitle" style="margin-bottom: 0;">Energy Optimization, Kinematics & Fail-Safe Logic</p>
+    </header>
+
+    <div class="project-container">
+        
+        <!-- MIEJSCE NA ZDJĘCIE (Użyj swojego modelu 3D obudowy) -->
+        <img src="../images/solar-tracker-3d.jpg" alt="Solar Tracker CAD Model" class="project-hero-img" style="object-fit: cover; background: #f8fafc; border: 1px solid #e2e8f0;">
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <strong>Goal</strong>
+                Solar Yield Maximization
+            </div>
+            <div class="meta-item">
+                <strong>Hardware</strong>
+                Arduino, LCD, Limit Switches
+            </div>
+            <div class="meta-item">
+                <strong>Sensors</strong>
+                Custom LDR Array, Anemometer
+            </div>
+            <div class="meta-item">
+                <strong>Documentation</strong>
+                KiCad Schematics, 3D CAD
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-sun"></i> Project Context & Closed-Loop Logic</h2>
+            <p>
+                To maximize the efficiency of photovoltaic (PV) panels, they must remain perpendicular to the sun's rays throughout the day. I was tasked with designing an autonomous control unit capable of driving a heavy-duty, dual-axis mechanical structure.
+            </p>
+            <p>
+                Instead of relying on complex astronomical algorithms, I designed a reactive, closed-loop differential system. I engineered a <strong>custom cross-configured Light Dependent Resistor (LDR) array</strong>. The microcontroller continuously evaluates the analog voltage differentials across the 4 quadrants of the sensor, triggering the X and Y-axis motor relays until a state of luminous equilibrium is reached.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-shield-alt"></i> Edge-Cases & Structural Fail-Safes</h2>
+            <p>
+                A mature industrial system must account for environmental hazards and mechanical boundaries. The core tracking logic is overridden by critical operational states:
+            </p>
+            
+            <div class="architecture-grid">
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-wind"></i> Storm Protection (Anemometer)</h3>
+                    <p style="font-size: 0.95rem;">High winds pose a severe structural threat to large PV arrays. The system continuously polls an anemometer. If wind speeds exceed a critical threshold (e.g., 20 m/s), the MCU triggers a hardware override, driving the motors to park the panels in a flat, horizontal orientation to minimize aerodynamic drag.</p>
+                </div>
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-moon"></i> Dawn Anticipation & Limit Switches</h3>
+                    <p style="font-size: 0.95rem;">After sunset, the system automatically executes a homing sequence, returning the azimuthal axis to the East to capture early morning rays. This sequence relies on <strong>hardware limit switches</strong> to safely establish the absolute zero-position, preventing mechanical over-travel and structural damage.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" style="margin-top: 3rem;">
+            <h2><i class="fas fa-level-up-alt"></i> Evolution to v2.0: Introducing the HMI</h2>
+            <p>
+                Version 1.0 of the system was hardcoded. To make the system commercially viable and user-friendly, I developed Version 2.0.
+            </p>
+            <p>
+                V2 integrated a localized Human-Machine Interface (HMI) featuring a 2x16 LCD and a 4-button tactile keypad (Back, +, -, Enter). This empowered the end-user to dynamically adjust critical parameters such as LDR sensitivity margins, wind speed thresholds, and motor actuation delays. All user-defined parameters are securely stored in the MCU's EEPROM.
+            </p>
+            
+            <!-- SCHEMAT ELEKTRYCZNY (Zrób screena z Twojego PDF i wrzuć do folderu images) -->
+            <figure style="margin: 2rem 0; text-align: center;">
+                <img src="../images/solar-tracker-schematic.png" alt="Electrical Schematic" class="image-full" style="box-shadow: none; border: 1px solid #e2e8f0; background: white;">
+                <figcaption style="font-size: 0.85rem; color: #64748b; margin-top: -1rem;">System schematic detailing MCU I/O, relay logic, and limit switch integration.</figcaption>
+            </figure>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-video"></i> Prototype Demonstration (v2.0)</h2>
+            <p>
+                The video below demonstrates the V2.0 workbench prototype. It showcases the menu navigation via the LCD interface, real-time sensor polling, and the relay actuation logic based on simulated LDR input.
+            </p>
+
+            <!-- KONTENER NA WIDEO YOUTUBE -->
+            <div class="video-container">
+                <!-- Wklej tutaj swój link wygenerowany przez YouTube (Opcja "Umieść" / "Embed") -->
+                <iframe src="https://www.youtube.com/embed/TWOJ_ID_FILMU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="back-wrapper">
+            <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <center><p style="margin-top: 2rem; color: #64748b;">&copy; <span id="current-year"></span> Maciej Haufa. Portfolio hosted on GitHub Pages.</p></center>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
