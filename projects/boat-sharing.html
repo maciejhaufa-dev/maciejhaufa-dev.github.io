@@ -5,86 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marine Mobility & Boat Sharing | Maciej Haufa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css"> <!-- Ścieżka do głównego CSS -->
-    <link rel="stylesheet" href="../css/project-stage.css"> <!-- Ścieżka do CSS podstron -->
+    
+    <!-- Główne style -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-stage.css">
+
     <style>
-        /* Dodatkowe style specyficzne dla tej podstrony (Skopiowane z Drink Bar) */
-        .project-hero-img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 16px;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .project-meta {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            border: 1px solid #e2e8f0;
-        }
-        .meta-item strong {
-            display: block;
-            color: var(--primary);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.3rem;
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin: 2rem 0;
-            background: #000;
-        }
-        .video-container iframe, .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .architecture-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .arch-box {
-            background: white;
-            border-left: 4px solid var(--primary);
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-radius: 0 8px 8px 0;
+        /* --- WYJĄTKI TYLKO DLA TEJ PODSTRONY --- */
+        
+        /* 1. Obsługa YouTube Shorts (Wideo Pionowe) 
+           Nadpisujemy domyślne 16:9 z project-stage.css */
+        .video-container.vertical {
+            padding-bottom: 177.77%; /* Proporcje 9:16 */
+            max-width: 350px;       /* Ograniczenie szerokości na komputerze */
+            margin: 2rem auto;      /* Wyśrodkowanie */
         }
         
-        /* Dodatkowa klasa specjalnie dla 2 zdjęć na dole (Sterownik i Nextion) */
-        .image-grid {
+        /* 2. Siatka dla zdjęć (np. sterownik + HMI, produkcja) */
+        .gallery-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
             margin: 2rem 0;
         }
-        .image-grid img {
+        .gallery-grid img {
             width: 100%;
             height: auto;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             object-fit: cover;
         }
+        .gallery-caption {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #64748b;
+            text-align: center;
+            font-style: italic;
+        }
 
+        /* Responsywność wyjątków */
         @media (max-width: 768px) {
-            .architecture-grid { grid-template-columns: 1fr; }
-            .image-grid { grid-template-columns: 1fr; }
-            .project-hero-img { height: 250px; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .video-container.vertical { max-width: 100%; }
         }
     </style>
 </head>
@@ -97,7 +59,7 @@
 
     <div class="project-container">
         
-        <!-- MIEJSCE NA GŁÓWNE ZDJĘCIE (np. z hali produkcyjnej) -->
+        <!-- MAIN HERO IMAGE -->
         <img src="../images/boat-hero.jpg" alt="Boat Sharing System" class="project-hero-img" onerror="this.src='https://via.placeholder.com/1000x400/e2e8f0/64748b?text=Main+Boat+Photo'">
 
         <div class="project-meta">
@@ -119,6 +81,7 @@
             </div>
         </div>
 
+        <!-- CONTEXT -->
         <div class="section">
             <h2><i class="fas fa-flag"></i> Project Context & The Challenge</h2>
             <p>
@@ -129,6 +92,7 @@
             </p>
         </div>
 
+        <!-- ARCHITECTURE & BILLING VIDEO -->
         <div class="section">
             <h2><i class="fas fa-microchip"></i> System Architecture & Edge-Billing</h2>
             <p>
@@ -145,8 +109,19 @@
                     <p style="font-size: 0.95rem;">Custom logic monitors the 48V battery pack, preventing deep discharge by translating voltage into a user-friendly "remaining sailing hours" metric. Digital DS18B20 sensors provide precise (0.1°C) ambient and water temperature readings.</p>
                 </div>
             </div>
+
+            <!-- VIDEO: BILLING SYSTEM (SHORTS) -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <h4 style="color: #475569; margin-bottom: 1rem;">System Demo: RFID Payment Logic</h4>
+                <!-- Dodajemy klasę .vertical żeby nadpisać style 16:9 -->
+                <div class="video-container vertical">
+                    <iframe src="https://www.youtube.com/embed/H8kiYjwMonk" title="Boat Sharing Billing System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="gallery-caption">Custom desktop app reading billing data directly from the RFID card.</p>
+            </div>
         </div>
 
+        <!-- SPECS & PRODUCTION PHOTOS -->
         <div class="section">
             <h2><i class="fas fa-anchor"></i> Fleet Technical Specifications</h2>
             <p>
@@ -158,7 +133,7 @@
                     <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-ship"></i> Utility Boat (5m)</h3>
                     <p style="font-size: 0.95rem;">
                         <strong>Propulsion:</strong> Single 1000W BLDC motor with classic tiller handle and Hall sensor throttle.<br><br>
-                        <strong>Interface:</strong> Industrial 320x128 LCD screen displaying RTC time, elapsed trip time, and telemetry.<br><br>
+                        <strong>Interface:</strong> Industrial 320x240 LCD screen displaying RTC time, elapsed trip time, and telemetry.<br><br>
                         <strong>Safety:</strong> Relay-based engine immobilizer tied directly to the RFID presence.
                     </p>
                 </div>
@@ -171,25 +146,50 @@
                     </p>
                 </div>
             </div>
+
+            <h3 style="margin-top: 2.5rem; color: #475569; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem;">Production & Assembly Insight</h3>
+            
+            <div class="gallery-grid">
+                <div>
+                    <img src="../images/boat-production-yellow.jpg" alt="Yellow Boat Hull Assembly">
+                    <div class="gallery-caption">Final Assembly: Helm station installation on "Model B".</div>
+                </div>
+                <div>
+                    <img src="../images/boat-production-green.jpg" alt="Green Boat Hull Structure">
+                    <div class="gallery-caption">Structural Fit-out: Harness routing for "Model A".</div>
+                </div>
+            </div>
         </div>
 
+        <!-- HARDWARE & CONTROLLER VIDEO -->
         <div class="section">
             <h2><i class="fas fa-flask"></i> Behind the Scenes: Hardware & HMI</h2>
             <p>
                 Below is the completed controller unit for the small boat and the designed HMI layout for the larger catamaran's Nextion display.
             </p>
 
-            <!-- KONTENER NA ZDJĘCIA (Sterownik + HMI) -->
-            <div class="image-grid">
-                <img src="../images/small-boat-controller.jpg" alt="Small Boat Hardware Controller" onerror="this.src='https://via.placeholder.com/600x450/e2e8f0/64748b?text=Small+Boat+Controller'">
-                <img src="../images/large-boat-hmi.png" alt="Nextion HMI Layout" onerror="this.src='https://via.placeholder.com/600x450/e2e8f0/64748b?text=Nextion+HMI+Layout'">
+            <div class="gallery-grid">
+                <div>
+                    <img src="../images/small-boat-controller.jpg" alt="Small Boat Hardware Controller" onerror="this.src='https://via.placeholder.com/600x450/e2e8f0/64748b?text=Small+Boat+Controller'">
+                    <div class="gallery-caption">Custom PCB & Relay Logic Assembly</div>
+                </div>
+                <div>
+                    <img src="../images/large-boat-hmi.png" alt="Nextion HMI Layout" onerror="this.src='https://via.placeholder.com/600x450/e2e8f0/64748b?text=Nextion+HMI+Layout'">
+                    <div class="gallery-caption">Nextion HMI Interface Design</div>
+                </div>
             </div>
-                
-            <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-top: -1rem;">
-                <em>Engineering Prototype: Validating hardware logic and touch interface layout.</em>
-            </p>
+
+            <!-- VIDEO: BENCH TEST -->
+            <div style="margin-top: 3rem;">
+                <h4 style="color: #475569; margin-bottom: 1rem; text-align: center;">Controller Bench Testing</h4>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Ad21JZV_8F8" title="Controller Bench Test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="gallery-caption">Validating logic, relay latching, and LCD updates on the test bench.</p>
+            </div>
         </div>
 
+        <!-- STATUS -->
         <div class="section">
             <h2><i class="fas fa-check-circle"></i> Project Status</h2>
             <p>
@@ -204,7 +204,7 @@
     </div>
 
     <footer>
-        <center><p style="margin-top: 2rem; color: #64748b;">&copy; <span id="current-year"></span> Maciej Haufa. Portfolio hosted on GitHub Pages.</p></center>
+        <center><p style="margin-top: 2rem; color: #64748b;">&copy; <span id="current-year">2026</span> Maciej Haufa. Portfolio hosted on GitHub Pages.</p></center>
     </footer>
 
     <script src="../js/script.js"></script>
