@@ -11,10 +11,9 @@
     <link rel="stylesheet" href="../css/project-stage.css">
 
     <style>
-        /* --- WYJĄTKI TYLKO DLA TEJ PODSTRONY --- */
+        /* --- WYJĄTKI DLA TEJ PODSTRONY --- */
         
-        /* Siatka dla zdjęć (np. sterownik + HMI, produkcja) 
-           Tego nie ma w project-stage.css, więc dodajemy tutaj lokalnie */
+        /* Siatka dla zdjęć (dokumentacja / produkcja) */
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -36,7 +35,7 @@
             font-style: italic;
         }
 
-        /* Responsywność siatki zdjęć */
+        /* Responsywność */
         @media (max-width: 768px) {
             .gallery-grid { grid-template-columns: 1fr; }
         }
@@ -46,7 +45,7 @@
 
     <header style="padding: 2rem; text-align: center;">
         <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Marine Mobility & Boat Sharing</h1>
-        <p class="subtitle" style="margin-bottom: 0;">End-to-End Commercial IoT & Hardware Architecture</p>
+        <p class="subtitle" style="margin-bottom: 0;">Commercial IoT Architecture & Propulsion Control</p>
     </header>
 
     <div class="project-container">
@@ -65,51 +64,50 @@
             </div>
             <div class="meta-item">
                 <strong>Key Tech</strong>
-                Arduino Mega, RFID, Nextion HMI, BLDC
+                ATmega2560 (Custom PCB), RFID, Nextion, BLDC
             </div>
             <div class="meta-item">
-                <strong>Scale</strong>
-                2 Vessel Archetypes (5m & 7m+)
+                <strong>Domain</strong>
+                Marine Automation & FinTech
             </div>
         </div>
 
         <!-- CONTEXT -->
         <div class="section">
-            <h2><i class="fas fa-flag"></i> Project Context & The Challenge</h2>
+            <h2><i class="fas fa-flag"></i> Project Objectives & Scope</h2>
             <p>
-                The client aimed to create a self-service, automated boat rental system—similar to a car-sharing model—designed for lakes in Poland and Switzerland. The project required engineering the complete electronic architecture from scratch for two distinct vessels: a rugged 5-meter single-engine utility boat, and a luxurious 7-meter recreational catamaran.
+                The objective was to engineer a robust, commercial-grade automated rental ecosystem for electric vessels, deployed across inland waterways in Poland and Switzerland. The project scope encompassed the design and implementation of a proprietary electronic architecture for two distinct vessel archetypes: a rugged 5-meter utility unit and a premium 7-meter recreational catamaran.
             </p>
             <p>
-                I was brought in to take ownership of the hardware integration, motor control, and user interfaces (HMI). The biggest challenge was designing a highly reliable, <strong>End-to-End (E2E) billing solution</strong> that could operate flawlessly on open water, where GSM or WiFi connectivity is notoriously unreliable.
+                As the Lead System Architect, I assumed full responsibility for hardware selection, PCB design, firmware development, and propulsion logic integration. The critical requirement was to deliver a <strong>fault-tolerant, decentralized billing infrastructure</strong> capable of operating reliably in connectivity-denied environments common on open lakes.
             </p>
         </div>
 
         <!-- ARCHITECTURE & BILLING VIDEO -->
         <div class="section">
-            <h2><i class="fas fa-microchip"></i> System Architecture & Edge-Billing</h2>
+            <h2><i class="fas fa-microchip"></i> System Architecture & Edge Computing</h2>
             <p>
-                Instead of relying on a central server that could act as a single point of failure on the lake, I designed a resilient edge-computing architecture. The user's RFID card acts as both the physical key and the local database.
+                To eliminate Single Points of Failure (SPOF) associated with cloud-dependent systems, a resilient edge-computing model was implemented. The system utilizes the user's RFID credential as a secure, portable database.
             </p>
             
             <div class="architecture-grid">
                 <div class="arch-box">
-                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-id-card"></i> Offline Billing Logic</h3>
-                    <p style="font-size: 0.95rem;">An authorized RFID card must remain in the slot to unlock the motor relays. The microcontroller calculates elapsed usage time (down to the minute) and continuously <strong>writes this data directly to the RFID card's memory</strong>. Reception software simply reads the card to calculate the fee. No internet required.</p>
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-id-card"></i> Distributed Transaction Logic</h3>
+                    <p style="font-size: 0.95rem;">The embedded controller enforces a hardware-level interlock. Propulsion relays are energized only upon validation of an encrypted RFID token. Usage telemetry is calculated in real-time and written directly to the card's EEPROM, enabling offline settlement at the marina reception.</p>
                 </div>
                 <div class="arch-box">
-                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-battery-half"></i> Telemetry & Safety</h3>
-                    <p style="font-size: 0.95rem;">Custom logic monitors the 48V battery pack, preventing deep discharge by translating voltage into a user-friendly "remaining sailing hours" metric. Digital DS18B20 sensors provide precise (0.1°C) ambient and water temperature readings.</p>
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-battery-half"></i> Battery Management Integration</h3>
+                    <p style="font-size: 0.95rem;">The ECU interfaces with the 48V LiFePO4 bank, translating raw voltage data into a "Remaining Time" metric for the end-user. Safety algorithms include "Limp Mode" activation to ensure return-to-base capability during low-charge events.</p>
                 </div>
             </div>
 
-            <!-- VIDEO: BILLING SYSTEM (SHORTS) -->
-            <div style="text-align: center; margin-top: 3rem;">
-                <h4 style="color: #475569; margin-bottom: 1rem;">System Demo: RFID Payment Logic</h4>
-                <!-- Dodajemy klasę .vertical żeby nadpisać style 16:9 -->
-                <div class="video-container vertical">
+            <!-- VIDEO 1: BILLING SYSTEM -->
+            <div style="margin-top: 3rem; text-align: center;">
+                <h4 style="color: #475569; margin-bottom: 1rem;">Architecture Demo: Offline Transaction Protocol</h4>
+                <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/H8kiYjwMonk" title="Boat Sharing Billing System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <p class="gallery-caption">Custom desktop app reading billing data directly from the RFID card.</p>
+                <p class="gallery-caption">Verification of the desktop settlement application reading encrypted telemetry from the RFID token.</p>
             </div>
         </div>
 
@@ -117,83 +115,84 @@
         <div class="section">
             <h2><i class="fas fa-anchor"></i> Fleet Technical Specifications</h2>
             <p>
-                Both systems share the same core billing logic but differ drastically in motor control and user interface approaches.
+                The architecture is modular, allowing the core billing logic to be reused across different propulsion topologies.
             </p>
             
             <div class="architecture-grid">
                 <div class="arch-box">
-                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-ship"></i> Utility Boat (5m)</h3>
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-ship"></i> Utility Class (5m)</h3>
                     <p style="font-size: 0.95rem;">
-                        <strong>Propulsion:</strong> Single 1000W BLDC motor with classic tiller handle and Hall sensor throttle.<br><br>
-                        <strong>Interface:</strong> Industrial 320x240 LCD screen displaying RTC time, elapsed trip time, and telemetry.<br><br>
-                        <strong>Safety:</strong> Relay-based engine immobilizer tied directly to the RFID presence.
+                        <strong>Propulsion:</strong> Single 1000W BLDC (Tiller/Hall Sensor).<br><br>
+                        <strong>HMI:</strong> Industrial monochrome LCD (320x240) for high-contrast readability.<br><br>
+                        <strong>Safety:</strong> Hardware-based immobilization circuit tied to RFID presence.
                     </p>
                 </div>
                 <div class="arch-box">
-                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-tachometer-alt"></i> Catamaran (7m+)</h3>
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-tachometer-alt"></i> Catamaran Class (7m+)</h3>
                     <p style="font-size: 0.95rem;">
-                        <strong>Propulsion:</strong> Twin 1000W BLDC motors.<br><br>
-                        <strong>Control:</strong> Custom 3-axis joystick enabling "tank-style" differential steering (zero-radius turns).<br><br>
-                        <strong>Interface:</strong> Advanced 7-inch Nextion Touchscreen displaying telemetry and controlling deck LED lighting.
+                        <strong>Propulsion:</strong> Twin 1000W BLDC configuration.<br><br>
+                        <strong>Control:</strong> Differential Thrust Algorithm (Tank Steering) via 3-axis industrial joystick.<br><br>
+                        <strong>HMI:</strong> 7-inch Nextion Touchscreen handling telemetry and auxiliary systems (lighting/audio).
                     </p>
                 </div>
             </div>
 
-            <h3 style="margin-top: 2.5rem; color: #475569; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem;">Production & Assembly Insight</h3>
+            <h3 style="margin-top: 2.5rem; color: #475569; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem;">Production & Assembly</h3>
             
             <div class="gallery-grid">
-
-                <div>
-                    <img src="../images/boat-production-green.jpg" alt="Green Boat Hull Structure">
-                    <div class="gallery-caption">Structural Fit-out: Harness routing for "Model A".</div>
-                </div>
                 <div>
                     <img src="../images/boat-production-yellow.jpg" alt="Yellow Boat Hull Assembly">
-                    <div class="gallery-caption">Final Assembly: Helm station installation on "Model B".</div>
+                    <div class="gallery-caption">Final Assembly Phase: Helm station integration (Catamaran Class).</div>
+                </div>
+                <div>
+                    <img src="../images/boat-production-green.jpg" alt="Green Boat Hull Structure">
+                    <div class="gallery-caption">Structural Fit-out: Harness routing and mounting preparation (Utility Class).</div>
                 </div>
             </div>
         </div>
 
         <!-- HARDWARE & CONTROLLER VIDEO -->
         <div class="section">
-            <h2><i class="fas fa-flask"></i> Behind the Scenes: Hardware & HMI</h2>
+            <h2><i class="fas fa-flask"></i> Engineering Implementation: Hardware & HMI</h2>
             <p>
-                Below is the completed controller unit for the small boat and the designed HMI layout for the larger catamaran's Nextion display.
+                The system relies on a custom-designed ECU utilizing an ATmega2560 core, featuring optically isolated I/O to mitigate noise from the high-current traction system.
             </p>
 
             <div class="gallery-grid">
                 <div>
                     <img src="../images/small-boat-controller.jpg" alt="Small Boat Hardware Controller" onerror="this.src='https://via.placeholder.com/600x450/e2e8f0/64748b?text=Small+Boat+Controller'">
-                    <div class="gallery-caption">Custom PCB & Relay Logic Assembly</div>
+                    <div class="gallery-caption">Proprietary ECU & Relay Logic Assembly.</div>
                 </div>
                 <div>
                     <img src="../images/large-boat-hmi.png" alt="Nextion HMI Layout" onerror="this.src='https://via.placeholder.com/600x450/e2e8f0/64748b?text=Nextion+HMI+Layout'">
-                    <div class="gallery-caption">Nextion HMI Interface Design</div>
+                    <div class="gallery-caption">Nextion HMI GUI Architecture.</div>
                 </div>
             </div>
 
-            <!-- VIDEO: BENCH TEST -->
-            <div style="margin-top: 3rem;">
-                <h4 style="color: #475569; margin-bottom: 1rem; text-align: center;">Controller Bench Testing</h4>
+            <!-- VIDEO 2: SMALL BOAT BENCH TEST -->
+            <div style="margin-top: 3rem; text-align: center;">
+                <h4 style="color: #475569; margin-bottom: 1rem;">Utility ECU: Bench Validation</h4>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/Ad21JZV_8F8" title="Controller Bench Test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <p class="gallery-caption">Validating logic, relay latching, and LCD updates on the test bench.</p>
+                <p class="gallery-caption">Validation of relay latching logic and LCD refresh rates under simulated load.</p>
             </div>
         </div>
-  <div class="section">
-            <h2><i class="fas fa-water"></i> Catamaran Propulsion & Sea Trials</h2>
+        
+        <!-- VIDEO 3: CATAMARAN STEERING -->
+        <div class="section">
+            <h2><i class="fas fa-water"></i> Propulsion Logic & Field Validation</h2>
             <p>
-                The 7-meter catamaran required a more complex control strategy. I implemented a "Tank Steering" algorithm that translates joystick X/Y coordinates into differential PWM signals for the twin motors, enabling zero-radius turns.
+                The twin-engine catamaran required a complex "Drive-by-Wire" strategy. I engineered a differential thrust algorithm that translates X/Y cartesian inputs from the joystick into independent PWM signals for port and starboard motors, enabling zero-radius maneuverability.
             </p>
             
             <div style="margin-top: 2rem; text-align: center;">
-                <h4 style="color: #475569; margin-bottom: 1rem;">Catamaran: Steering Logic & Field Tests</h4>
+                <h4 style="color: #475569; margin-bottom: 1rem;">Differential Steering: Bench to Field Test</h4>
                 <div class="video-container">
-                   
+                    <!-- TU WKLEJ ID FILMU Z CANVY -->
                     <iframe src="https://www.youtube.com/embed/GHS62FNtEHE?si=mHAf61GTz0_-JYt8" title="Catamaran Steering Test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <p class="gallery-caption">Bench testing the differential steering algorithm followed by real-world sea trials.</p>
+                <p class="gallery-caption">Verification of the steering algorithm followed by hydrodynamic validation on inland waterways.</p>
             </div>
         </div>
 
@@ -201,7 +200,7 @@
         <div class="section">
             <h2><i class="fas fa-check-circle"></i> Project Status</h2>
             <p>
-                The technical delivery is fully complete. Both control systems were fully engineered, programmed, and successfully tested on the water. Currently, the commercial deployment is paused due to external business factors on the client's side and complex maritime certification processes in Switzerland. This project stands as a prime example of delivering robust, production-ready engineering despite shifting business landscapes.
+                Technical delivery has been successfully executed. Both control architectures were engineered, programmed, and validated in operational environments. The project demonstrates the capability to deliver production-ready, resilient embedded systems for commercial maritime applications.
             </p>
         </div>
 
