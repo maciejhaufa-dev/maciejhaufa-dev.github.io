@@ -13,15 +13,8 @@
     <style>
         /* --- WYJĄTKI TYLKO DLA TEJ PODSTRONY --- */
         
-        /* 1. Obsługa YouTube Shorts (Wideo Pionowe) 
-           Nadpisujemy domyślne 16:9 z project-stage.css */
-        .video-container.vertical {
-            padding-bottom: 177.77%; /* Proporcje 9:16 */
-            max-width: 350px;       /* Ograniczenie szerokości na komputerze */
-            margin: 2rem auto;      /* Wyśrodkowanie */
-        }
-        
-        /* 2. Siatka dla zdjęć (np. sterownik + HMI, produkcja) */
+        /* Siatka dla zdjęć (np. sterownik + HMI, produkcja) 
+           Tego nie ma w project-stage.css, więc dodajemy tutaj lokalnie */
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -43,10 +36,9 @@
             font-style: italic;
         }
 
-        /* Responsywność wyjątków */
+        /* Responsywność siatki zdjęć */
         @media (max-width: 768px) {
             .gallery-grid { grid-template-columns: 1fr; }
-            .video-container.vertical { max-width: 100%; }
         }
     </style>
 </head>
@@ -150,13 +142,14 @@
             <h3 style="margin-top: 2.5rem; color: #475569; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem;">Production & Assembly Insight</h3>
             
             <div class="gallery-grid">
-                <div>
-                    <img src="../images/boat-production-yellow.jpg" alt="Yellow Boat Hull Assembly">
-                    <div class="gallery-caption">Final Assembly: Helm station installation on "Model B".</div>
-                </div>
+
                 <div>
                     <img src="../images/boat-production-green.jpg" alt="Green Boat Hull Structure">
                     <div class="gallery-caption">Structural Fit-out: Harness routing for "Model A".</div>
+                </div>
+                <div>
+                    <img src="../images/boat-production-yellow.jpg" alt="Yellow Boat Hull Assembly">
+                    <div class="gallery-caption">Final Assembly: Helm station installation on "Model B".</div>
                 </div>
             </div>
         </div>
