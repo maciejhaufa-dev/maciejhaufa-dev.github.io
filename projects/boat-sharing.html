@@ -3,128 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marine Mobility & Boat Sharing System - Maciej Haufa</title>
+    <title>Marine Mobility & Boat Sharing - Maciej Haufa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/project-stage.css">
+    <style>
+        /* Lokalne style nadpisujące, aby idealnie dopasować się do layoutu "Drink Bar" */
+        body {
+            background-color: #f8fafc; /* Jasnoszare tło strony */
+            color: #334155;
+        }
+        .case-header {
+            background-color: #1e293b; /* Ciemny granat */
+            color: white;
+            padding: 3rem 1rem 4rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+        .case-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+        .case-header .subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+        .back-nav {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+        .back-nav:hover {
+            color: #ffffff;
+        }
+        .case-container {
+            max-width: 1000px;
+            margin: -2rem auto 4rem auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+        .hero-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            background-color: #e2e8f0;
+        }
+        .meta-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .meta-item h4 {
+            color: #3b82f6; /* Jasnoniebieski nagłówek */
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        .meta-item p {
+            color: #475569;
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+        .section-title {
+            font-size: 1.75rem;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-title i {
+            color: #334155;
+        }
+        .case-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #475569;
+            margin-bottom: 1.5rem;
+        }
+        .arch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2.5rem 0 4rem 0;
+        }
+        .arch-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .arch-card h3 {
+            color: #2563eb;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .arch-card p, .arch-card ul {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .arch-card ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .arch-card li {
+            margin-bottom: 0.5rem;
+        }
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .media-item {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #cbd5e1;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .meta-box { grid-template-columns: 1fr 1fr; }
+            .arch-grid { grid-template-columns: 1fr; }
+            .media-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-content" style="text-align: left; display: flex; align-items: center; gap: 2rem;">
-            <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
-            <div>
-                <h1>Marine Mobility & Boat Sharing System</h1>
-                <p class="subtitle" style="color: #60a5fa;">End-to-End Hardware & HMI Architecture</p>
-            </div>
-        </div>
+    <header class="case-header">
+        <a href="../index.html" class="back-nav"><i class="fas fa-arrow-left"></i> Back</a>
+        <h1>Marine Mobility & Boat Sharing</h1>
+        <p class="subtitle">End-to-End Commercial IoT & HMI Deployment</p>
     </header>
 
-    <div class="container">
-        <!-- Project Overview -->
-        <div class="project-header">
-            <div class="project-meta">
-                <span class="status done"><i class="fas fa-check-circle"></i> Technical Delivery Completed</span>
-                <span class="status wip" style="background: #fef3c7; color: #d97706;"><i class="fas fa-file-signature"></i> Awaiting Client Certification</span>
-            </div>
-            
-            <p class="project-description">
-                Designed and engineered the complete hardware, firmware, and user interface for a commercial "Boat Sharing" startup aimed at lakes in Poland and Switzerland. The project involved creating two distinct electronic architectures for two types of vessels: a 5m single-engine utility boat and a 7m twin-engine recreational catamaran. 
-            </p>
+    <div class="case-container">
+        
+        <!-- HERO IMAGE (Zdjęcie łodzi na wodzie lub z hali) -->
+        <img src="../images/boat-hero.jpg" alt="Boat Sharing System" class="hero-image" onerror="this.src='https://via.placeholder.com/1000x450/e2e8f0/64748b?text=Boat+Hero+Image'">
 
-            <div class="tech-stack-container">
-                <span class="skill-tag skill-hw">Arduino Mega 2560</span>
-                <span class="skill-tag skill-hw">BLDC Motor Control (1000W)</span>
-                <span class="skill-tag skill-sw">Nextion 7" HMI</span>
-                <span class="skill-tag skill-sw">C++ Firmware</span>
-                <span class="skill-tag skill-approach">RFID Edge-Billing</span>
-                <span class="skill-tag skill-approach">Differential Steering (Tank-style)</span>
-                <span class="skill-tag skill-hw">Custom Battery BMS Logic</span>
-                <span class="skill-tag skill-hw">I2C / 1-Wire (DS18B20)</span>
+        <!-- META INFO BOX -->
+        <div class="meta-box">
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Lead Embedded Architect</p>
+            </div>
+            <div class="meta-item">
+                <h4>Status</h4>
+                <p>Technical Delivery Completed</p>
+            </div>
+            <div class="meta-item">
+                <h4>Key Tech</h4>
+                <p>Arduino Mega, RFID, Nextion HMI, BLDC Control</p>
+            </div>
+            <div class="meta-item">
+                <h4>Scale</h4>
+                <p>2 Vessel Archetypes (5m & 7m+)</p>
             </div>
         </div>
 
-        <!-- The Clever Solution Section -->
-        <div class="stage-card" style="border-left: 4px solid #8b5cf6; background: #faf5ff;">
-            <div class="stage-header">
-                <div class="stage-icon" style="background: #8b5cf6;"><i class="fas fa-lightbulb"></i></div>
-                <h3>Architectural Highlight: "Offline" Edge-Billing</h3>
+        <!-- CONTEXT & CHALLENGE -->
+        <h2 class="section-title"><i class="fas fa-flag"></i> Project Context & The Challenge</h2>
+        <p class="case-text">
+            The client aimed to create a self-service, automated boat rental system—similar to a car-sharing model—designed for lakes in Poland and Switzerland. The project required engineering the complete electronic architecture from scratch for two distinct vessels: a rugged 5-meter single-engine utility boat, and a luxurious 7-meter recreational catamaran.
+        </p>
+        <p class="case-text">
+            I was brought in to take ownership of the hardware integration, motor control, and HMI. The biggest challenge was designing a highly reliable, <strong>End-to-End (E2E) billing solution</strong> that could operate flawlessly on open water, where GSM or WiFi connectivity is notoriously unreliable.
+        </p>
+
+        <!-- ARCHITECTURE / OFFLINE LOGIC -->
+        <h2 class="section-title" style="margin-top: 4rem;"><i class="fas fa-microchip"></i> System Architecture & "Offline" Edge-Billing</h2>
+        <p class="case-text">
+            Instead of relying on a central server that could act as a single point of failure on the lake, I designed a resilient edge-computing architecture based on RFID technology. The user's RFID card acts as both the physical key and the database.
+        </p>
+
+        <div class="arch-grid">
+            <div class="arch-card">
+                <h3><i class="fas fa-id-card"></i> Edge-Billing Logic</h3>
+                <p>
+                    An authorized RFID card must remain in the slot to unlock the motor relays. The microcontroller calculates elapsed usage time (down to the minute) and continuously <strong>writes this data directly to the RFID card's memory</strong>. When the user returns to the port, the reception software simply reads the card to calculate the fee. No internet required.
+                </p>
             </div>
-            <div class="stage-content">
-                <p>One of the biggest challenges in marine environments is unreliable network coverage. Instead of building a complex, network-dependent cloud infrastructure, I designed an <strong>edge-computing billing logic based on RFID technology.</strong></p>
-                <ul class="task-list">
-                    <li><i class="fas fa-check"></i> The user must keep their assigned RFID card in the slot to unlock the engine (immobilizer relay).</li>
-                    <li><i class="fas fa-check"></i> Firmware calculates the elapsed usage time (to the minute) and <strong>writes this data directly to the RFID card's memory</strong> continuously.</li>
-                    <li><i class="fas fa-check"></i> Upon returning to the port, the reception software simply reads the card, calculates the fee based on the stored minutes, and wipes the card for the next user. A highly resilient, 100% offline solution.</li>
+            <div class="arch-card">
+                <h3><i class="fas fa-battery-half"></i> Battery & Telemetry Management</h3>
+                <p>
+                    Built custom logic to monitor the 48V battery pack, preventing deep discharge by translating voltage into a user-friendly "remaining sailing hours" metric. Digital DS18B20 sensors provide precise (0.1°C) ambient and water temperature readings directly to the HMI.
+                </p>
+            </div>
+        </div>
+
+        <!-- FLEET SPECIFICATIONS -->
+        <h2 class="section-title"><i class="fas fa-anchor"></i> Fleet Technical Specifications</h2>
+        <p class="case-text">
+            The system required two distinct hardware and UX approaches based on the vessel's purpose. Both systems share the same core billing logic (Arduino Mega 2560) but differ drastically in motor control and user interface.
+        </p>
+
+        <div class="arch-grid" style="margin-top: 2rem;">
+            <div class="arch-card">
+                <h3><i class="fas fa-ship"></i> Utility Boat (5m)</h3>
+                <p>Designed for reliability and fishing trips.</p>
+                <ul>
+                    <li><strong>Propulsion:</strong> Single 1000W BLDC motor with classic tiller handle and Hall sensor throttle.</li>
+                    <li><strong>Interface:</strong> Industrial 320x128 LCD screen (non-touch) displaying RTC time, elapsed trip time, and telemetry.</li>
+                    <li><strong>Safety:</strong> Relay-based engine immobilizer tied directly to the RFID presence.</li>
+                </ul>
+            </div>
+            <div class="arch-card">
+                <h3><i class="fas fa-tachometer-alt"></i> Catamaran (7m+)</h3>
+                <p>A recreational flagship requiring complex coordination.</p>
+                <ul>
+                    <li><strong>Propulsion:</strong> Twin 1000W BLDC motors.</li>
+                    <li><strong>Control:</strong> Custom 3-axis joystick (pitch, roll, twist) enabling "tank-style" differential steering (zero-radius turns).</li>
+                    <li><strong>Interface:</strong> Advanced 7-inch Nextion Touchscreen displaying telemetry and controlling deck LED lighting.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- System Variations -->
-        <h2 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--text-primary);">Fleet Technical Specifications</h2>
-        
-        <div class="grid-2-col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
-            <!-- Small Boat -->
-            <div class="stage-card">
-                <div class="stage-header">
-                    <div class="stage-icon" style="background: #3b82f6;"><i class="fas fa-anchor"></i></div>
-                    <h3>Utility / Fishing Boat (5m)</h3>
-                </div>
-                <div class="stage-content">
-                    <p>Designed for reliability and utility, featuring a single-engine propulsion system.</p>
-                    <ul class="task-list">
-                        <li><strong>Propulsion:</strong> 1x 1000W Golden Motor BLDC (48V) with classic tiller handle and Hall sensor throttle.</li>
-                        <li><strong>Display:</strong> Industrial 320x128 LCD screen showing RTC time, accumulated trip time, and battery range estimation.</li>
-                        <li><strong>Telemetry:</strong> 2x DS18B20 digital sensors for highly accurate (0.1°C) ambient and water temperature readings.</li>
-                        <li><strong>Safety:</strong> Custom battery voltage monitoring circuit to prevent deep discharge, dynamically calculating "remaining sailing hours".</li>
-                    </ul>
-                </div>
-            </div>
+        <!-- BEHIND THE SCENES -->
+        <h2 class="section-title" style="margin-top: 4rem;"><i class="fas fa-flask"></i> Behind the Scenes: Prototyping & HMI</h2>
+        <p class="case-text">
+            Below is the completed controller unit for the small boat and the designed HMI layout for the larger catamaran's Nextion display. The technical delivery is fully complete, currently awaiting complex maritime client certifications.
+        </p>
 
-            <!-- Large Catamaran -->
-            <div class="stage-card">
-                <div class="stage-header">
-                    <div class="stage-icon" style="background: #ec4899;"><i class="fas fa-ship"></i></div>
-                    <h3>Recreational Catamaran (7m+)</h3>
-                </div>
-                <div class="stage-content">
-                    <p>A flagship vessel requiring advanced HMI and complex motor coordination.</p>
-                    <ul class="task-list">
-                        <li><strong>Propulsion:</strong> Twin 1000W BLDC Motors.</li>
-                        <li><strong>Control Interface:</strong> Custom 3-axis joystick (pitch, roll, yaw/twist with auto-return).</li>
-                        <li><strong>Differential Steering:</strong> Programmed "tank-style" steering, allowing the catamaran to perform zero-radius turns in tight marinas (one engine full forward, one full reverse).</li>
-                        <li><strong>HMI:</strong> 7-inch Nextion Touchscreen displaying full telemetry, trip data, and controlling deck LED lighting systems.</li>
-                    </ul>
-                </div>
+        <div class="media-grid">
+            <!-- Miejsce na zdjęcie małego sterownika -->
+            <div class="media-item">
+                <img src="../images/small-boat-controller.jpg" alt="Small Boat Hardware Controller" onerror="this.parentElement.innerHTML='<span style=\'color:#475569\'><i class=\'fas fa-hdd fa-2x\'></i><br>Small Boat Controller</span>'">
             </div>
-        </div>
-
-        <!-- Project Images (Placeholders for now) -->
-        <h2 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--text-primary);">Engineering & Assembly</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem;">
-            <div style="background: #e2e8f0; border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                <!-- ZMIEŃ SRC NA SWOJE ZDJĘCIE -->
-                <img src="../images/boat-hall-1.jpg" alt="Boat in production hall" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color: #64748b; font-weight: 500;\'><i class=\'fas fa-camera\'></i> Production Hall Photo</span>';">
-            </div>
-            <div style="background: #e2e8f0; border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                <!-- ZMIEŃ SRC NA SWOJE ZDJĘCIE -->
-                <img src="../images/boat-hmi.jpg" alt="HMI and Controller" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color: #64748b; font-weight: 500;\'><i class=\'fas fa-microchip\'></i> Controller / Nextion HMI Photo</span>';">
-            </div>
-        </div>
-
-        <!-- Lessons Learned / Status -->
-        <div class="stage-card" style="border-left: 4px solid #10b981;">
-            <div class="stage-header">
-                <div class="stage-icon" style="background: #10b981;"><i class="fas fa-flag-checkered"></i></div>
-                <h3>Project Status & Real-World Constraints</h3>
-            </div>
-            <div class="stage-content">
-                <p>
-                    Both control systems were fully engineered, programmed, and successfully tested on the water. The small boat controller is 100% completed, and the large boat system is technically functional. 
-                </p>
-                <p style="margin-top: 10px;">
-                    Currently, the commercial deployment is paused due to external business factors on the client's side (changes in corporate structure and complex maritime certification processes in Switzerland). This project stands as a prime example of delivering robust, production-ready engineering despite shifting business landscapes, demonstrating my ability to design scalable, fault-tolerant architectures for the real world.
-                </p>
+            <!-- Miejsce na zrzut ekranu/layout z Nextiona -->
+            <div class="media-item">
+                <img src="../images/large-boat-hmi.png" alt="Nextion HMI Layout" onerror="this.parentElement.innerHTML='<span style=\'color:#475569\'><i class=\'fas fa-desktop fa-2x\'></i><br>Nextion HMI Layout</span>'">
             </div>
         </div>
 
