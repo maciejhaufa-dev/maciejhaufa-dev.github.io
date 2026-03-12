@@ -11,85 +11,136 @@
     <link rel="stylesheet" href="../css/project-stage.css">
 
 <style>
- .feature-split {
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 2rem;
-    align-items: start;
-    margin-top: 2rem;
-}
+   .project-hero-img.interface-mode,
+        .hmi-full-image {
+            width: 100%;
+            height: auto !important;
+            object-fit: contain !important;
+            display: block;
+            background-color: #0f172a;
+            border-radius: 12px;
+        }
 
-.feature-left {
-    display: flex;
-    flex-direction: column;
-}
+        .hmi-block {
+            margin: 2rem 0;
+        }
 
-.feature-list {
-    margin-bottom: 1.5rem;
-}
+        /* Architektura */
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
 
-.feature-list li {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
+        .arch-box {
+            background: white;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 0 8px 8px 0;
+        }
 
-.feature-list strong {
-    color: var(--primary);
-}
+        /* Sekcja tekst + zdjęcia */
+        .feature-split {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 2rem;
+            align-items: start;
+            margin-top: 2rem;
+        }
 
-.side-image {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    display: block;
-}
+        .feature-left {
+            display: flex;
+            flex-direction: column;
+        }
 
-.feature-right {
-    display: flex;
-    flex-direction: column;
-}
+        .feature-list {
+            margin-bottom: 1.5rem;
+        }
 
-.stage-photo-frame {
-    width: 100%;
-    height: 620px; /* kontrolowana wysokość */
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    background: #e5e7eb;
-}
+        .feature-list li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
 
-.stage-photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    display: block;
-}
+        .feature-list strong {
+            color: var(--primary);
+        }
 
-.gallery-caption {
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    color: #64748b;
-    text-align: center;
-    font-style: italic;
-}
+        .side-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
 
-@media (max-width: 768px) {
-    .feature-split {
-        grid-template-columns: 1fr;
-    }
+        .feature-right {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .stage-photo-frame {
-        height: auto;
-        max-height: none;
-    }
+        .stage-photo-frame {
+            width: 100%;
+            height: 620px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background: #e5e7eb;
+        }
 
-    .stage-photo-frame img {
-        height: auto;
-    }
-}
-</style>
+        .stage-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+        }
+
+        .gallery-caption {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #64748b;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Video */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            background: #000;
+            margin-bottom: 2rem;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        @media (max-width: 768px) {
+            .architecture-grid,
+            .feature-split {
+                grid-template-columns: 1fr;
+            }
+
+            .stage-photo-frame {
+                height: auto;
+            }
+
+            .stage-photo-frame img {
+                height: auto;
+            }
+        }
+    </style>
 </head>
 <body>
 
