@@ -11,6 +11,18 @@
     <link rel="stylesheet" href="../css/project-stage.css">
 
     <style>
+        /* --- NAPRAWA DIAGRAMU (Override) --- */
+        /* Nadpisujemy globalne style hero-img tylko dla tej podstrony, 
+           aby diagram skalował się w całości i nie był ucięty */
+        .project-hero-img.diagram-mode {
+            height: auto !important;     /* Pozwól na pełną wysokość */
+            min-height: 300px;
+            object-fit: contain !important; /* Pokaż cały obrazek, nie ucinaj! */
+            background: #ffffff;         /* Białe tło pod diagramem */
+            padding: 1rem;               /* Oddech od krawędzi */
+            border: 1px solid #e2e8f0;   /* Delikatna ramka */
+        }
+
         /* Specyficzne dla tej podstrony: lista priorytetów */
         .priority-list {
             list-style: none;
@@ -60,8 +72,9 @@
 
     <div class="project-container">
         
-        <!-- MAIN HERO IMAGE (Twój diagram z Canvy) -->
-        <img src="../images/rtos-diagram.png" alt="RTOS System Architecture Diagram" class="project-hero-img" style="background: white; padding: 1rem;" onerror="this.src='https://via.placeholder.com/1000x500/e2e8f0/64748b?text=Diagram+Not+Found'">
+        <!-- MAIN HERO IMAGE (Diagram z Canvy) -->
+        <!-- Dodałem klasę "diagram-mode" która naprawia ucinanie -->
+        <img src="../images/rtos-diagram.png" alt="RTOS System Architecture Diagram" class="project-hero-img diagram-mode" onerror="this.src='https://via.placeholder.com/1000x600/e2e8f0/64748b?text=Diagram+Not+Found'">
 
         <div class="project-meta">
             <div class="meta-item">
