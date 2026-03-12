@@ -11,8 +11,16 @@
     <link rel="stylesheet" href="../css/project-stage.css">
 
     <style>
-        /* --- STYLE LOKALNE DLA TEJ PODSTRONY --- */
-        
+        /* --- NAPRAWA ZDJĘCIA HERO (Dla interfejsów HMI) --- */
+        .project-hero-img.interface-mode {
+            height: auto !important;        /* Wysokość automatyczna, żeby nie rozciągać */
+            min-height: 300px;
+            object-fit: contain !important; /* Pokaż całość, nie ucinaj! */
+            background-color: #0f172a;      /* Ciemne tło pasujące do interfejsu HMI */
+            border-radius: 12px;
+        }
+
+        /* --- STYLE LOKALNE --- */
         .architecture-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -81,8 +89,9 @@
 
     <div class="project-container">
         
-        <!-- MAIN HERO IMAGE -->
-        <img src="../images/stage-system.jpg" alt="Stage Lighting System" class="project-hero-img" onerror="this.src='https://via.placeholder.com/1000x400/e2e8f0/64748b?text=Stage+System+Hero'">
+        <!-- MAIN HERO IMAGE (HMI Screenshot) -->
+        <!-- Dodana klasa 'interface-mode' naprawia ucinanie -->
+        <img src="../images/stage-hmi-main.jpg" alt="Web HMI Interface" class="project-hero-img interface-mode" onerror="this.src='https://via.placeholder.com/1000x500/0f172a/64748b?text=HMI+Interface+Screenshot'">
 
         <div class="project-meta">
             <div class="meta-item">
@@ -145,6 +154,7 @@
 
             <div class="gallery-grid">
                 <div>
+                    <!-- Tutaj też używamy HMI jako miniaturki, ale w trybie cover (wypełnienie) jest OK dla małych kafelków -->
                     <img src="../images/stage-hmi-main.jpg" alt="Web Interface HMI" onerror="this.src='https://via.placeholder.com/600x400/e2e8f0/64748b?text=HMI+Interface'">
                     <div class="gallery-caption">Responsive HMI: Scene management & Script viewer.</div>
                 </div>
