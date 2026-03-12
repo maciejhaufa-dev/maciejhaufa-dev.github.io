@@ -10,90 +10,136 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/project-stage.css">
 
-    <style>
-        /* --- STYLE POMOCNICZE --- */
-        
-        /* 1. Naprawa zdjęć HMI */
-        .project-hero-img.interface-mode {
-            height: auto !important;
-            min-height: 300px;
-            object-fit: contain !important;
-            background-color: #0f172a;
-            border-radius: 12px;
-            width: 100%;
-        }
+<style>
+    /* --- STYLE POMOCNICZE --- */
+    
+    .project-hero-img.interface-mode {
+        height: auto !important;
+        min-height: 300px;
+        object-fit: contain !important;
+        background-color: #0f172a;
+        border-radius: 12px;
+        width: 100%;
+    }
 
-        /* 2. Grid dla architektury */
-        .architecture-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .arch-box {
-            background: white;
-            border-left: 4px solid var(--primary);
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-radius: 0 8px 8px 0;
-        }
+    .architecture-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    .arch-box {
+        background: white;
+        border-left: 4px solid var(--primary);
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        border-radius: 0 8px 8px 0;
+    }
 
-        /* 3. Specjalny Grid: Tekst+Zdjęcie (lewa) vs Wysokie zdjęcie (prawa) */
+    /* --- FEATURE SPLIT --- */
+    .feature-split {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 2rem;
+        align-items: stretch; /* KLUCZOWE */
+        margin-top: 2rem;
+    }
+
+    .feature-left,
+    .feature-right {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .feature-left {
+        justify-content: flex-start;
+    }
+
+    .feature-right {
+        height: 100%;
+    }
+
+    .feature-list {
+        margin-bottom: 1.5rem;
+    }
+
+    .feature-list li {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    .feature-list strong {
+        color: var(--primary);
+    }
+
+    .side-image {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: block;
+    }
+
+    .tall-fit-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .tall-fit-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* KLUCZOWE */
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: block;
+        flex-grow: 1;
+    }
+
+    .gallery-caption {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: #64748b;
+        text-align: center;
+        font-style: italic;
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        background: #000;
+        margin-bottom: 2rem;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    @media (max-width: 768px) {
+        .architecture-grid,
         .feature-split {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr; /* Proporcje kolumn */
-            gap: 2rem;
-            align-items: start; /* Równanie do góry! */
-            margin-top: 2rem;
-        }
-        
-        .feature-list li {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-        .feature-list strong {
-            color: var(--primary);
+            grid-template-columns: 1fr;
         }
 
-        .side-image {
-            width: 100%;
+        .feature-right,
+        .tall-fit-wrapper {
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .gallery-caption {
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-            color: #64748b;
-            text-align: center;
-            font-style: italic;
+        .tall-fit-image {
+            height: auto;
+            max-height: 500px;
         }
-
-        /* 4. Wideo */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            background: #000;
-            margin-bottom: 2rem;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        @media (max-width: 768px) {
-            .architecture-grid, .feature-split { grid-template-columns: 1fr; }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
 
@@ -173,33 +219,32 @@
                 <div class="gallery-caption">Responsive HMI: Scene management, blackout controls & Script viewer.</div>
             </div>
 
-            <!-- TEKST+ZDJĘCIE (LEWA) vs WYSOKIE ZDJĘCIE (PRAWA) -->
-            <div class="feature-split">
-                
-                <!-- Lewa kolumna: Tekst + Puszki -->
-                <div>
-                    <h3 style="color: #475569; margin-bottom: 1rem;">Feature Implementation</h3>
-                    <ul class="feature-list">
-                        <li><strong>Web Audio API:</strong> Supports multi-track playback (up to 32 channels) mapped to a Behringer X32 mixer via USB.</li>
-                        <li><strong>Mobile Freedom:</strong> The director can trigger cues from a smartphone while walking on stage, drastically reducing rehearsal iteration time.</li>
-                        <li><strong>Script Sync:</strong> Embedded PDF viewer synchronizes page turns with lighting cues.</li>
-                    </ul>
-                    
-                    <!-- Nowe zdjęcie puszek -->
-                    <div style="margin-top: 2rem;">
-                        <img src="../images/stage-photo2.jpg" alt="Master and Slave Hardware Nodes" class="side-image" onerror="this.src='https://via.placeholder.com/600x400/e2e8f0/64748b?text=Hardware+Nodes'">
-                        <div class="gallery-caption">Pre-installation: 1x Master & 2x Slave Nodes (ESP32).</div>
-                    </div>
-                </div>
-
-                <!-- Prawa kolumna: Pionowe zdjęcie statywu -->
-                <div>
-                    <img src="../images/stage-photo1.jpg" alt="Slave Node on Stand" class="side-image" onerror="this.src='https://via.placeholder.com/400x600/e2e8f0/64748b?text=Slave+Node+Photo'">
-                    <div class="gallery-caption">Field Implementation: Slave unit mounted directly on the lighting stand.</div>
-                </div>
-                
-            </div>
+         <div class="feature-split">
+    
+    <!-- Lewa kolumna: Tekst + zdjęcie puszek -->
+    <div class="feature-left">
+        <h3 style="color: #475569; margin-bottom: 1rem;">Feature Implementation</h3>
+        <ul class="feature-list">
+            <li><strong>Web Audio API:</strong> Supports multi-track playback (up to 32 channels) mapped to a Behringer X32 mixer via USB.</li>
+            <li><strong>Mobile Freedom:</strong> The director can trigger cues from a smartphone while walking on stage, drastically reducing rehearsal iteration time.</li>
+            <li><strong>Script Sync:</strong> Embedded PDF viewer synchronizes page turns with lighting cues.</li>
+        </ul>
+        
+        <div>
+            <img src="../images/stage-photo2.jpg" alt="Master and Slave Hardware Nodes" class="side-image" onerror="this.src='https://via.placeholder.com/600x400/e2e8f0/64748b?text=Hardware+Nodes'">
+            <div class="gallery-caption">Pre-installation: 1x Master & 2x Slave Nodes (ESP32).</div>
         </div>
+    </div>
+
+    <!-- Prawa kolumna: zdjęcie dopasowane wysokością -->
+    <div class="feature-right">
+        <div class="tall-fit-wrapper">
+            <img src="../images/stage-photo1.jpg" alt="Slave Node on Stand" class="tall-fit-image" onerror="this.src='https://via.placeholder.com/400x900/e2e8f0/64748b?text=Slave+Node+Photo'">
+            <div class="gallery-caption">Field Implementation: Slave unit mounted directly on the lighting stand.</div>
+        </div>
+    </div>
+    
+</div>
 
         <!-- LIVE PRODUCTION VIDEOS -->
         <div class="section">
