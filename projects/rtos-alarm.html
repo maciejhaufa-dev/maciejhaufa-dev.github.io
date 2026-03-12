@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTOS Safety Annunciator | Maciej Haufa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Główne style -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project-stage.css">
+
+    <style>
+        /* Jedyny styl lokalny - lista priorytetów (specyficzna dla tego projektu) */
+        .priority-list {
+            list-style: none;
+            counter-reset: priority-counter;
+            padding: 0;
+        }
+        .priority-list li {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1rem;
+            padding: 1rem 1rem 1rem 3.5rem;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .priority-list li::before {
+            counter-increment: priority-counter;
+            content: counter(priority-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2.5rem;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        .priority-list strong {
+            display: block;
+            color: #1e293b;
+            margin-bottom: 0.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header style="padding: 2rem; text-align: center;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">RTOS Priority Voice Annunciator</h1>
+        <p class="subtitle" style="margin-bottom: 0;">Deterministic Safety Systems & Concurrent Handling</p>
+    </header>
+
+    <div class="project-container">
+        
+        <!-- MAIN HERO IMAGE (Schemat z Mermaid) -->
+        <img src="../images/rtos-diagram.png" alt="RTOS Logic Flowchart" class="project-hero-img" onerror="this.src='https://via.placeholder.com/1000x400/e2e8f0/64748b?text=RTOS+Logic+Diagram'">
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <strong>Role</strong>
+                Firmware Engineer
+            </div>
+            <div class="meta-item">
+                <strong>Core Tech</strong>
+                FreeRTOS / Embedded C
+            </div>
+            <div class="meta-item">
+                <strong>Architecture</strong>
+                Multi-threaded / Priority Queue
+            </div>
+            <div class="meta-item">
+                <strong>Application</strong>
+                Industrial Safety Monitoring
+            </div>
+        </div>
+
+        <!-- CONTEXT -->
+        <div class="section">
+            <h2><i class="fas fa-microchip"></i> The Engineering Challenge</h2>
+            <p>
+                In industrial safety environments, multiple fault conditions often occur simultaneously (cascade failure). A standard sequential loop (super-loop) architecture is insufficient, as processing a low-priority event (e.g., "Low Water Level") could block the announcement of a critical life-safety event (e.g., "Fire Detected").
+            </p>
+            <p>
+                The objective was to design a <strong>deterministic annunciator panel</strong> capable of monitoring 10+ hybrid inputs (Analog/Digital). The system required a non-blocking architecture to buffer incoming concurrent signals, sort them by criticality, and execute audio alerts in a strictly defined priority order.
+            </p>
+        </div>
+
+        <!-- ALGORITHM LOGIC -->
+        <div class="section">
+            <h2><i class="fas fa-layer-group"></i> RTOS & Priority Queue Logic</h2>
+            <p>
+                To solve the concurrency problem, I implemented a Real-Time Operating System (RTOS) architecture. The firmware separates input polling from audio processing into distinct threads, communicating via dynamic buffers.
+            </p>
+            
+            <div class="architecture-grid">
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-clock"></i> Acquisition Window</h3>
+                    <p style="font-size: 0.95rem;">
+                        Upon the first trigger, the system initiates a 3000ms "Listening Window". During this non-blocking phase, high-frequency interrupts scan all analog and digital inputs to capture the full scope of the cascade failure before taking action.
+                    </p>
+                </div>
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-sort-amount-down"></i> Dynamic Sorting</h3>
+                    <p style="font-size: 0.95rem;">
+                        Detected faults are pushed into a buffer array. A sorting algorithm then reorders the buffer based on a pre-defined Criticality Index (Row 1 of the configuration table), ensuring that regardless of detection order, the most critical alert is vocalized first.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPERATIONAL WORKFLOW -->
+        <div class="section">
+            <h2><i class="fas fa-cogs"></i> System Workflow</h2>
+            <p>The logic follows a strict industrial state machine to ensure reliability (as seen in the diagram above):</p>
+            
+            <ul class="priority-list">
+                <li>
+                    <strong>Input Detection & Mapping</strong>
+                    Analog inputs (sensors) are normalized against software-defined thresholds. Digital inputs are debounced. Active flags are written to the status register.
+                </li>
+                <li>
+                    <strong>Buffer Population</strong>
+                    If 6 concurrent alarms are detected, a dynamic buffer of size 6 is created. No memory is wasted on inactive states.
+                </li>
+                <li>
+                    <strong>Priority Execution</strong>
+                    The sorted buffer drives the MP3 Hardware Abstraction Layer (HAL). Audio files are called by their ID (Row 2), ensuring the operator hears "Evacuate" before "Check Valve".
+                </li>
+                <li>
+                    <strong>Interrupt Handling (ISR)</strong>
+                    External hardware interrupts allow for immediate "Last Message Replay" or "System Test" (Alarm 15), preempting standard operations for immediate operator feedback.
+                </li>
+            </ul>
+        </div>
+
+        <!-- VIDEO SECTION -->
+        <div class="section">
+            <h2><i class="fas fa-play-circle"></i> Prototype Validation</h2>
+            <p>
+                The video below demonstrates the system handling concurrent inputs. Note how the system captures multiple triggers using potentiometers (simulating analog sensors) and switches, then reorganizes the playback order based on priority logic, not activation order.
+            </p>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/uMmbLJjXbcc" title="RTOS Alarm System Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p style="text-align: center; font-style: italic; color: #64748b; margin-top: 0.5rem;">Bench test: Simulating cascade failure with Tilt & Proximity sensors.</p>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-check-circle"></i> Delivery & Documentation</h2>
+            <p>
+                The project was delivered as a turnkey solution, including the compiled firmware, full electrical schematics for the custom harness, and source code with documentation for the abstraction layers. This enables the client to scale the system (e.g., adding Alarm 11-14) by simply modifying the configuration arrays without touching the core logic.
+            </p>
+        </div>
+
+        <div class="back-wrapper">
+            <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <center><p style="margin-top: 2rem; color: #64748b;">&copy; <span id="current-year">2026</span> Maciej Haufa. Portfolio hosted on GitHub Pages.</p></center>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
