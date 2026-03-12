@@ -11,16 +11,19 @@
     <link rel="stylesheet" href="../css/project-stage.css">
 
     <style>
-        /* --- NAPRAWA ZDJĘCIA HERO (Dla interfejsów HMI) --- */
+        /* --- STYLE POMOCNICZE --- */
+        
+        /* 1. Naprawa zdjęć HMI (żeby nie ucinało interfejsów) */
         .project-hero-img.interface-mode {
-            height: auto !important;        /* Wysokość automatyczna, żeby nie rozciągać */
+            height: auto !important;
             min-height: 300px;
-            object-fit: contain !important; /* Pokaż całość, nie ucinaj! */
-            background-color: #0f172a;      /* Ciemne tło pasujące do interfejsu HMI */
+            object-fit: contain !important;
+            background-color: #0f172a;
             border-radius: 12px;
+            width: 100%; /* Pełna szerokość */
         }
 
-        /* --- STYLE LOKALNE --- */
+        /* 2. Grid dla architektury */
         .architecture-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -35,30 +38,36 @@
             border-radius: 0 8px 8px 0;
         }
 
-        .gallery-grid {
+        /* 3. Specjalny Grid: Tekst po lewej, Wysokie zdjęcie po prawej */
+        .feature-split {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: 1.2fr 0.8fr; /* Więcej miejsca na tekst */
+            gap: 2rem;
+            align-items: center; /* Wyśrodkowanie w pionie */
+            margin-top: 2rem;
         }
-        .gallery-grid img {
+        
+        .tall-image {
             width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            height: 100%;
+            max-height: 500px; /* Ograniczenie wysokości */
             object-fit: cover;
-        }
-        .gallery-caption {
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-            color: #64748b;
-            text-align: center;
-            font-style: italic;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
+        .feature-list li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .feature-list strong {
+            color: var(--primary);
+        }
+
+        /* 4. Wideo */
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 12px;
@@ -76,7 +85,8 @@
         }
 
         @media (max-width: 768px) {
-            .architecture-grid, .gallery-grid { grid-template-columns: 1fr; }
+            .architecture-grid, .feature-split { grid-template-columns: 1fr; }
+            .tall-image { max-height: 300px; }
         }
     </style>
 </head>
@@ -89,8 +99,8 @@
 
     <div class="project-container">
         
-        <!-- MAIN HERO IMAGE (HMI Screenshot) -->
-        <!-- Dodana klasa 'interface-mode' naprawia ucinanie -->
+        <!-- MAIN HERO IMAGE -->
+        <!-- Tutaj dajemy HMI jako główne, bo jest najbardziej "software'owe" -->
         <img src="../images/stage-hmi-main.jpg" alt="Web HMI Interface" class="project-hero-img interface-mode" onerror="this.src='https://via.placeholder.com/1000x500/0f172a/64748b?text=HMI+Interface+Screenshot'">
 
         <div class="project-meta">
@@ -145,30 +155,39 @@
             </div>
         </div>
 
-        <!-- HMI & SOFTWARE -->
+        <!-- HMI & SOFTWARE (Zmodyfikowany układ) -->
         <div class="section">
             <h2><i class="fas fa-laptop-code"></i> Web-Based HMI & Audio Engine</h2>
+            
             <p>
-                The interface runs directly from the ESP32's SPIFFS storage but leverages the client browser's power for heavy lifting, particularly audio processing.
+                The interface runs directly from the ESP32's SPIFFS storage but leverages the client browser's power for heavy lifting.
             </p>
 
-            <div class="gallery-grid">
-                <div>
-                    <!-- Tutaj też używamy HMI jako miniaturki, ale w trybie cover (wypełnienie) jest OK dla małych kafelków -->
-                    <img src="../images/stage-hmi-main.jpg" alt="Web Interface HMI" onerror="this.src='https://via.placeholder.com/600x400/e2e8f0/64748b?text=HMI+Interface'">
-                    <div class="gallery-caption">Responsive HMI: Scene management & Script viewer.</div>
-                </div>
-                <div>
-                    <img src="../images/stage-photo1.jpg" alt="Slave Node on Stand" onerror="this.src='https://via.placeholder.com/600x400/e2e8f0/64748b?text=Slave+Node+on+Stand'">
-                    <div class="gallery-caption">Field Implementation: Slave unit mounted directly on lighting stand.</div>
-                </div>
+            <!-- 1. HMI NA PEŁNĄ SZEROKOŚĆ -->
+            <div style="margin: 2rem 0;">
+                <img src="../images/stage-hmi-main.jpg" alt="Web Interface HMI" class="project-hero-img interface-mode" style="margin-bottom: 0.5rem;" onerror="this.src='https://via.placeholder.com/1000x500/e2e8f0/64748b?text=HMI+Interface'">
+                <div class="gallery-caption">Responsive HMI: Scene management, blackout controls & Script viewer.</div>
             </div>
 
-            <ul style="margin-top: 1rem; color: #475569;">
-                <li><strong>Web Audio API:</strong> Supports multi-track playback (up to 32 channels) mapped to a Behringer X32 mixer via USB.</li>
-                <li><strong>Mobile Freedom:</strong> The director can trigger cues from a smartphone while walking on stage, drastically reducing rehearsal iteration time.</li>
-                <li><strong>Script Sync:</strong> Embedded PDF viewer synchronizes page turns with lighting cues.</li>
-            </ul>
+            <!-- 2. TEKST + ZDJĘCIE PIONOWE -->
+            <div class="feature-split">
+                <!-- Lewa kolumna: Tekst -->
+                <div>
+                    <h3 style="color: #475569; margin-bottom: 1rem;">Feature Implementation</h3>
+                    <ul class="feature-list">
+                        <li><strong>Web Audio API:</strong> Supports multi-track playback (up to 32 channels) mapped to a Behringer X32 mixer via USB.</li>
+                        <li><strong>Mobile Freedom:</strong> The director can trigger cues from a smartphone while walking on stage, drastically reducing rehearsal iteration time.</li>
+                        <li><strong>Script Sync:</strong> Embedded PDF viewer synchronizes page turns with lighting cues.</li>
+                        <li><strong>Field Deployment:</strong> As seen in the photo, the Slave Node (black box) is mounted directly on the stand, minimizing cabling to just a single power cord.</li>
+                    </ul>
+                </div>
+
+                <!-- Prawa kolumna: Pionowe zdjęcie -->
+                <div>
+                    <img src="../images/stage-photo1.jpg" alt="Slave Node on Stand" class="tall-image" onerror="this.src='https://via.placeholder.com/400x600/e2e8f0/64748b?text=Slave+Node+Photo'">
+                    <div class="gallery-caption">Slave unit field implementation.</div>
+                </div>
+            </div>
         </div>
 
         <!-- LIVE PRODUCTION VIDEOS -->
