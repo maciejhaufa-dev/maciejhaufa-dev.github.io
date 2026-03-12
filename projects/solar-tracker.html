@@ -7,18 +7,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/project-stage.css">
+
+    <style>
+        /* Hero dla renderów / modeli 3D */
+        .project-hero-img.diagram-mode {
+            height: auto !important;
+            object-fit: contain !important;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 1rem;
+        }
+
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .arch-box {
+            background: white;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .gallery-caption {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #64748b;
+            text-align: center;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .architecture-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <header style="padding: 2rem; text-align: center;">
         <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Autonomous Dual-Axis Solar Tracker</h1>
-        <p class="subtitle" style="margin-bottom: 0;">Energy Optimization, Kinematics & Fail-Safe Logic</p>
+        <p class="subtitle" style="margin-bottom: 0;">Closed-Loop Tracking, Environmental Fail-Safes & Embedded HMI</p>
     </header>
 
     <div class="project-container">
         
-        <!-- MIEJSCE NA ZDJĘCIE (Użyj swojego modelu 3D obudowy) -->
-        <img src="../images/solar-tracker-3d.jpg" alt="Solar Tracker CAD Model" class="project-hero-img" style="object-fit: cover; background: #f8fafc; border: 1px solid #e2e8f0;">
+        <!-- HERO -->
+        <img src="../images/solar-tracker-v1.png"
+             alt="Solar Tracker Controller 3D Model"
+             class="project-hero-img diagram-mode"
+             onerror="this.src='https://via.placeholder.com/1000x500/f8fafc/64748b?text=Solar+Tracker+3D+Model'">
 
         <div class="project-meta">
             <div class="meta-item">
@@ -26,74 +69,140 @@
                 Solar Yield Maximization
             </div>
             <div class="meta-item">
-                <strong>Hardware</strong>
-                Arduino, LCD, Limit Switches
+                <strong>Platform</strong>
+                Arduino UNO
             </div>
             <div class="meta-item">
                 <strong>Sensors</strong>
                 Custom LDR Array, Anemometer
             </div>
             <div class="meta-item">
-                <strong>Documentation</strong>
-                KiCad Schematics, 3D CAD
+                <strong>Evolution</strong>
+                MVP → Embedded HMI
             </div>
         </div>
 
         <div class="section">
-            <h2><i class="fas fa-sun"></i> Project Context & Closed-Loop Logic</h2>
+            <h2><i class="fas fa-sun"></i> Project Context & Control Concept</h2>
             <p>
-                To maximize the efficiency of photovoltaic (PV) panels, they must remain perpendicular to the sun's rays throughout the day. I was tasked with designing an autonomous control unit capable of driving a heavy-duty, dual-axis mechanical structure.
+                The objective was to develop an autonomous dual-axis solar tracking controller capable of maximizing photovoltaic exposure throughout the day while protecting the mechanical structure against adverse environmental conditions.
             </p>
             <p>
-                Instead of relying on complex astronomical algorithms, I designed a reactive, closed-loop differential system. I engineered a <strong>custom cross-configured Light Dependent Resistor (LDR) array</strong>. The microcontroller continuously evaluates the analog voltage differentials across the 4 quadrants of the sensor, triggering the X and Y-axis motor relays until a state of luminous equilibrium is reached.
+                The first development stage was designed as a <strong>reactive closed-loop controller</strong>. A custom differential LDR sensor arrangement was used to detect luminous imbalance across the sensing plane. Based on these analog differentials, the controller actuated the azimuth and elevation drives until luminous equilibrium was re-established.
             </p>
         </div>
 
         <div class="section">
-            <h2><i class="fas fa-shield-alt"></i> Edge-Cases & Structural Fail-Safes</h2>
+            <h2><i class="fas fa-microchip"></i> Tracking Logic & Embedded Architecture</h2>
             <p>
-                A mature industrial system must account for environmental hazards and mechanical boundaries. The core tracking logic is overridden by critical operational states:
+                The platform combined sensor feedback, relay-based actuator control, and state-dependent safety logic into a standalone embedded controller prepared for autonomous field operation.
             </p>
-            
+
             <div class="architecture-grid">
                 <div class="arch-box">
-                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-wind"></i> Storm Protection (Anemometer)</h3>
-                    <p style="font-size: 0.95rem;">High winds pose a severe structural threat to large PV arrays. The system continuously polls an anemometer. If wind speeds exceed a critical threshold (e.g., 20 m/s), the MCU triggers a hardware override, driving the motors to park the panels in a flat, horizontal orientation to minimize aerodynamic drag.</p>
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-lightbulb"></i> Differential LDR Sensing</h3>
+                    <p style="font-size: 0.95rem;">
+                        A custom 4-quadrant LDR arrangement was used to compare incident light distribution. The controller continuously evaluated voltage differentials and drove the motors only when the imbalance exceeded defined thresholds.
+                    </p>
                 </div>
                 <div class="arch-box">
-                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-moon"></i> Dawn Anticipation & Limit Switches</h3>
-                    <p style="font-size: 0.95rem;">After sunset, the system automatically executes a homing sequence, returning the azimuthal axis to the East to capture early morning rays. This sequence relies on <strong>hardware limit switches</strong> to safely establish the absolute zero-position, preventing mechanical over-travel and structural damage.</p>
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-sync-alt"></i> Relay-Based Axis Control</h3>
+                    <p style="font-size: 0.95rem;">
+                        The system controlled both tracker axes through discrete actuator outputs, allowing directional correction in azimuth and elevation. The logic was intentionally kept modular to support future platform migration.
+                    </p>
                 </div>
             </div>
-        </div>
-
-        <div class="section" style="margin-top: 3rem;">
-            <h2><i class="fas fa-level-up-alt"></i> Evolution to v2.0: Introducing the HMI</h2>
-            <p>
-                Version 1.0 of the system was hardcoded. To make the system commercially viable and user-friendly, I developed Version 2.0.
-            </p>
-            <p>
-                V2 integrated a localized Human-Machine Interface (HMI) featuring a 2x16 LCD and a 4-button tactile keypad (Back, +, -, Enter). This empowered the end-user to dynamically adjust critical parameters such as LDR sensitivity margins, wind speed thresholds, and motor actuation delays. All user-defined parameters are securely stored in the MCU's EEPROM.
-            </p>
-            
-            <!-- SCHEMAT ELEKTRYCZNY (Zrób screena z Twojego PDF i wrzuć do folderu images) -->
-            <figure style="margin: 2rem 0; text-align: center;">
-                <img src="../images/solar-tracker-schematic.png" alt="Electrical Schematic" class="image-full" style="box-shadow: none; border: 1px solid #e2e8f0; background: white;">
-                <figcaption style="font-size: 0.85rem; color: #64748b; margin-top: -1rem;">System schematic detailing MCU I/O, relay logic, and limit switch integration.</figcaption>
-            </figure>
         </div>
 
         <div class="section">
-            <h2><i class="fas fa-video"></i> Prototype Demonstration (v2.0)</h2>
+            <h2><i class="fas fa-shield-alt"></i> Environmental Safety & Boundary Conditions</h2>
             <p>
-                The video below demonstrates the V2.0 workbench prototype. It showcases the menu navigation via the LCD interface, real-time sensor polling, and the relay actuation logic based on simulated LDR input.
+                Beyond light tracking, the controller was designed to account for operational edge cases and structural protection requirements.
             </p>
 
-            <!-- KONTENER NA WIDEO YOUTUBE -->
-            <div class="video-container">
-                <!-- Wklej tutaj swój link wygenerowany przez YouTube (Opcja "Umieść" / "Embed") -->
-                <iframe src="https://www.youtube.com/embed/TWOJ_ID_FILMU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="architecture-grid">
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-wind"></i> Wind Override</h3>
+                    <p style="font-size: 0.95rem;">
+                        The system monitored an anemometer input and switched from tracking mode into a protective parking routine whenever wind conditions exceeded the configured safe operating threshold.
+                    </p>
+                </div>
+                <div class="arch-box">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-compass"></i> Homing & Mechanical Limits</h3>
+                    <p style="font-size: 0.95rem;">
+                        Hardware end-stops and reference positions were used to prevent over-travel and support controlled repositioning. After sunset, the tracker could return toward its initial orientation in preparation for the next daylight cycle.
+                    </p>
+                </div>
             </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-flask"></i> Version 1.0 — Functional Validation & MVP</h2>
+            <p>
+                The first delivered iteration focused on validating subsystem cooperation and demonstrating the feasibility of the embedded control concept. Early bench testing verified the interaction between the sensing stage, actuator logic, and environmental overrides.
+            </p>
+            <p>
+                This phase evolved into an integrated MVP prototype prepared for client presentation and technical settlement. Version 1.0 established the control logic foundation for future usability and hardware improvements.
+            </p>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/iXBDNZI65IA" title="Solar Tracker V1.0 Prototype Validation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="gallery-caption">V1.0 development path: subsystem validation followed by integrated MVP demonstration.</p>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-laptop-code"></i> Version 2.0 — Embedded HMI & Local Configuration</h2>
+            <p>
+                The second iteration introduced an on-device operator interface, eliminating the need for PC-side parameter tuning. A local LCD display and keypad enabled direct access to configuration values, allowing the user to adjust control margins, delays, and threshold values directly from the controller enclosure.
+            </p>
+            <p>
+                This significantly improved field usability and moved the system closer to a standalone deployment-ready form. The added interface layer transformed the controller from a hardcoded MVP into a configurable embedded platform.
+            </p>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/m7nBb0pimRs" title="Solar Tracker V2.0 HMI Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="gallery-caption">V2.0 operator interface demonstrating local configuration and runtime interaction without a PC connection.</p>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-file-alt"></i> Documentation & Technical Notes</h2>
+            <p>
+                The project was accompanied by technical documentation covering both the integrated tracker controller and the custom differential LDR sensing module.
+            </p>
+
+            <div class="document-links">
+                <a href="../documents/solar-v-1.pdf" target="_blank" class="doc-link">
+                    <div class="doc-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="doc-text">
+                        <strong>Solar Tracker V1.0 Documentation</strong>
+                        <span>System overview, operating logic, and first integrated prototype description.</span>
+                    </div>
+                </a>
+
+                <a href="../documents/ldr.pdf" target="_blank" class="doc-link">
+                    <div class="doc-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="doc-text">
+                        <strong>Differential LDR Sensor Documentation</strong>
+                        <span>Design assumptions and functional description of the custom light sensing module.</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-road"></i> Planned Evolution & Project Outcome</h2>
+            <p>
+                The next planned development stage involved migration from Arduino UNO to an STM32-based platform, along with GPS-assisted astronomical tracking to complement the reactive sensor-based mode.
+            </p>
+            <p>
+                This evolution was intended to increase positioning precision, extend autonomy, and create a more scalable hardware platform. Further development was ultimately paused due to a change in client priorities rather than technical limitations.
+            </p>
         </div>
 
         <div class="back-wrapper">
